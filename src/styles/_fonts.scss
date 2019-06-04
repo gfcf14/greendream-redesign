@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron:400,500,700|Roboto:400,400i,500,500i,700,700i');
+@import './_mixins';
+
+$font-orbitron: 'Orbitron', sans-serif;
+$font-roboto: 'Roboto', sans-serif;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$font-size-sample: fluid-font-size(24px, 48px);
+$font-size-sample2: fluid-font-size(16px, 32px);
+

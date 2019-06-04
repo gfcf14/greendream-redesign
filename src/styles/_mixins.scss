@@ -1,0 +1,88 @@
+$max-window-width: 1900px;
+$min-window-width: 360px;
+
+/// Generates font with a stroke of the given color.
+/// @access public
+/// @param {Color} $color - Stroke Color in Hex value
+/// @param {Integer} $width - Stroke Width in pixels
+/// @example scss - Usage
+///   .fancytext {
+///     @include text-stroke(#00b456, 1px);
+///   }
+/// @example css - Result
+///   .fancytext {
+///     -webkit-text-stroke: #00b456 1px;
+///     text-stroke: #00b456 1px;
+///   }
+@mixin text-stroke($color, $width) {
+  -webkit-text-stroke: $width $color;
+  text-stroke: $width $color;
+}
+
+/// Removes the unit of a given number
+/// @access public
+/// @param {Integer} $number - number in pixels
+/// @example Usage
+///   strip-unit(50px)
+/// @example Result
+///   50
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+/// Generates a font given a minimum and maximum size based
+/// on minimum and maximum window width
+/// @access public
+/// @param {Integer} $min-size - minimum font size
+/// @param {Integer} $max-size - maximum font size
+/// @example scss - Usage
+///   .foo {
+///     font-size: fluid-font-size(72px, 96px);
+///   }
+/// @example css - Result
+///   .foo {
+///     font-size: 83px;
+///   }
+@function fluid-font-size($min-size, $max-size) {
+  @return calc(#{$min-size} + #{strip-unit($max-size - $min-size)} * (100vw - #{$min-window-width}) / #{strip-unit($max-window-width - $min-window-width)});
+}
+
+/// Generates a fluid spacing (for margin and padding) given
+/// a minimum and maximum size based on minimum and maximum
+/// window width
+/// @access public
+/// @param {Integer} $min-size - minimum spacing in pixels
+/// @param {Integer} $max-size - maximum spacing in pixels
+/// @example scss - Usage
+///   .foo {
+///     padding-top: fluid-spacing(6px, 12px);
+///   }
+/// @example css - Result
+///   .foo {
+///     padding-top: 9px;
+///   }
+@function fluid-spacing($min-size, $max-size) {
+  @return calc(#{$min-size} + #{strip-unit($max-size - $min-size)} * (100vw - #{$min-window-width}) / #{strip-unit($max-window-width - $min-window-width)});
+}
+
+/// Generates a width given a minimum and maximum size based
+/// on minimum and maximum window width
+/// @access public
+/// @param {Integer} $min-size - minimum font size
+/// @param {Integer} $max-size - maximum font size
+/// @example scss - Usage
+///   .foo {
+///     width: fluid-width(180px, 440px);
+///   }
+/// @example css - Result
+///   .foo {
+///     width: 440px;
+///   }
+@function fluid-width($min-size, $max-size) {
+  @return calc(#{$min-size} + #{strip-unit($max-size - $min-size)} * (100vw - #{$min-window-width}) / #{strip-unit($max-window-width - $min-window-width)});
+}
+
