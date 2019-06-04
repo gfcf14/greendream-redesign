@@ -22,7 +22,7 @@ pipelines:
           name: Push to GitHub
           script:
             - git config --global push.default matching
-            - git push https://$GITHUB_AUTH@github.com/gfcf14/greendream-redesign.git HEAD:master
+            - git push https://$GITHUB_AUTH@github.com/gfcf14/greendream-redesign.git HEAD:master -f
   default:
     - step: *install
     - parallel: *tests
