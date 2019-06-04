@@ -22,7 +22,7 @@ const { JSDOM } = require('jsdom');
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;
 
-function copyProps (src, target) {
+function copyProps(src, target) {
   const props = Object.getOwnPropertyNames(src)
     .filter(prop => typeof target[prop] === 'undefined')
     .reduce((result, prop) => ({
@@ -52,24 +52,21 @@ const { intl } = intlProvider.getChildContext();
 const nodeWithIntlProp = node => React.cloneElement(node, { intl });
 
 // shallow() with React Intl context
-global.shallowWithIntl = (node, { context, ...options } = {}) => {
-  return shallow(nodeWithIntlProp(node), {
-    ...options,
-    context: { ...context, intl },
-  });
-};
+global.shallowWithIntl = (node, { context, ...options } = {}) => shallow(nodeWithIntlProp(node), {
+  ...options,
+  context: { ...context, intl },
+});
 
 // mount() with React Intl context
 global.mountWithIntl = (
   node,
   { context, childContextTypes, ...options } = {}
-) => {
-  return mount(nodeWithIntlProp(node), {
-    ...options,
-    context: { ...context, intl },
-    childContextTypes: {
-      intl: intlShape,
-      ...childContextTypes,
-    },
-  });
-};
+) => mount(nodeWithIntlProp(node), {
+  ...options,
+  context: { ...context, intl },
+  childContextTypes: {
+    intl: intlShape,
+    ...childContextTypes,
+  },
+});
+

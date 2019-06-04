@@ -6,7 +6,7 @@ describe('NotFound Component Unit Test', () => {
     <NotFound />
   );
 
-  it ('renders without crashes', () => {
+  it('renders without crashes', () => {
     expect(wrapper.exists()).toBe(true);
   });
 });

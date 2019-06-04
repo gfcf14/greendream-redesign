@@ -6,7 +6,7 @@ describe('App Component Unit Test', () => {
     <App />
   );
 
-  it ('renders without crashes', () => {
+  it('renders without crashes', () => {
     expect(wrapper.exists()).toBe(true);
   });
 });

@@ -10,6 +10,6 @@ module.exports = {
       'utils': path.resolve(__dirname, 'src/utils'),
     },
     extensions: ['.jsx', '.js', '.scss', '.json'],
-  }
-}
+  },
+};
 

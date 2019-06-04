@@ -18,6 +18,10 @@ pipelines:
             name: Unit Testing
             script:
               - yarn test
+        - step:
+            name: ESLint
+            script:
+              - yarn run lint
       - step: &github-push
           name: Push to GitHub
           script:
