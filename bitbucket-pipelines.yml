@@ -13,8 +13,26 @@ pipelines:
           artifacts:
             - node_modules/**
             - public/**
+      - parallel: &tests
+        - step:
+            name: Unit Testing
+            script:
+              - yarn test
+      - step: &github-push
+          name: Push to GitHub
+          script:
+            - git config --global push.default matching
+            - git push https://$GITHUB_AUTH@github.com/gfcf14/greendream-redesign.git HEAD:master
   default:
     - step: *install
+    - parallel: *tests
   branches:
     master:
       - step: *install
+      - parallel: *tests
+      - step: *github-push
+  tags:
+    'github-*':
+      - step: *install
+      - parallel: *tests
+      - step: *github-push
