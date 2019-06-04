@@ -1,0 +1,82 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": "airbnb",
+  "globals": {
+    "Atomics": "readonly",
+    "mountWithIntl": true,
+    "shallowWithIntl": true,
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+      "react",
+      "jest"
+  ],
+  "rules": {
+    "arrow-body-style": ["error", "as-needed"],
+    "comma-dangle": ["error", "always-multiline"],
+    "comma-spacing":["error", {
+      "before": false,
+      "after": true
+    }],
+    "curly": 2,
+    "dot-notation": "off",
+    "eol-last": ["error", "always"],
+    "function-paren-newline": 0,
+    "global-require": 0,
+    "import/no-dynamic-require": 0,
+    "import/prefer-default-export": 0,
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 1 }],
+    "no-param-reassign": 0,
+    "no-trailing-spaces": "error",
+    "no-unused-vars": 2,
+    "object-curly-spacing": ["error", "always"],
+    "operator-linebreak": [0],
+    "prefer-const": ["error"],
+    "quote-props": ["error", "consistent"],
+    "react/button-has-type": 0,
+    "react/destructuring-assignment": [0, "always", {
+      "ignoreClassFields": true
+    }],
+    "react/forbid-prop-types": [
+      0,
+      {
+        "forbid": [
+          "any"
+        ],
+        "checkContextTypes": false,
+        "checkChildContextTypes": false
+      }
+    ],
+    "react/jsx-filename-extension": 0,
+    "react/jsx-uses-vars": 2,
+    "react/no-unescaped-entities": 0,
+    "react/prop-types": 0,
+    "semi": ["error", "always"],
+    "space-before-blocks": "error",
+    "spaced-comment": ["error", "always"]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src/"
+        ]
+      }
+    }
+  }
+}
