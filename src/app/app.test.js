@@ -1,9 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app/app';
+import App from './app';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('App Component Unit Test', () => {
+  const wrapper = mountWithIntl(
+    <App />
+  );
+
+  it ('renders without crashes', () => {
+    expect(wrapper.exists()).toBe(true);
+  });
 });
+

@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "global": "^4.3.2",
+    "jest-cli": "^24.8.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-intl": "^2.9.0",
     "react-scripts": "3.0.1",
     "rebass": "^3.1.1",
     "styled-components": "^4.2.1",
@@ -31,5 +34,29 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^.+\\.(css|less|scss)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png|gif|svg|wav|mp3|m4a)$": "<rootDir>/testing/file-mock.js",
+      "^components(.*)$": "<rootDir>/src/components/$1",
+      "^images(.*)$": "<rootDir>/src/images/$1",
+      "^styles(.*)$": "<rootDir>/src/styles/$1"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/testing/setup-tests.js"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.8.0"
   }
 }
