@@ -47,4 +47,8 @@ done
 if [ $COMPLETE = true ]
 then
   printf "${FINISH}All Tests successfully passed!\n\n${END}"
+  exit 0
 fi
+
+exit 1
+
