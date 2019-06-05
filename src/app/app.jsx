@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { NotFound } from 'components';
+import { RootHelmet } from 'containers';
 import './app.scss';
 
 function App() {
   return (
-    <NotFound />
+    <Fragment>
+      <RootHelmet />
+      <NotFound />
+    </Fragment>
   );
 }
 
