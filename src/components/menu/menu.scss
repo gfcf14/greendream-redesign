@@ -1,0 +1,32 @@
+@import '~styles/_index';
+
+.menu-rct-component {
+  margin-left: auto;
+
+  .division {
+    border-left: 1px solid $greendream-dark-green;
+    border-right: 1px solid $greendream-black-green;
+    height: 40px;
+    margin: 20px 0;
+  }
+
+  .menu-list {
+    list-style-type: none;
+    margin: 0;
+
+    li {
+      color: $white;
+      cursor: pointer;
+      font: $font-weight-bold 16px $font-roboto;
+      margin: 30px 15px;
+
+      &:hover {
+        color: $greendream-green;
+      }
+
+      &:active {
+        color: $green;
+      }
+    }
+  }
+}

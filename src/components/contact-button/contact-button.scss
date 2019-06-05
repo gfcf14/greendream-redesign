@@ -1,0 +1,24 @@
+@import '~styles/_index';
+
+.contact-button-rct-component {
+  background: transparent;
+  border: 2px solid $white;
+  border-radius: 20px;
+  color: $white;
+  cursor: pointer;
+  font: $font-weight-bold 16px $font-roboto;
+  height: 40px;
+  margin: 20px 15px;
+  padding: 10px 33px;
+
+  &:hover {
+    background: $white;
+    color: $black;
+  }
+
+  &:active {
+    background: $green;
+    border: 2px solid $green;
+    color: $greendream-black-green;
+  }
+}
