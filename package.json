@@ -70,8 +70,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "bash ./scripts/mock-pipeline.sh",
-      "postmerge": "if git-branch-is master; then bash ./scripts/github.sh; fi"
+      "pre-commit": "bash ./scripts/mock-pipeline.sh"
     }
   }
 }
