@@ -1,0 +1,33 @@
+@import '~styles/_index';
+
+.menu-button-rct-component {
+  background: $gradient-green-black-1;
+  border: 1px solid $greendream-dark-green;
+  border-radius: 25px;
+  cursor: pointer;
+  height: 50px;
+  margin: 15px;
+  width: 50px;
+
+  &.right {
+    margin-left: 7.5px;
+  }
+
+  &.left {
+    margin-right: 7.5px;
+  }
+
+  &__icon {
+    height: 35px;
+    margin-top: 2px;
+    width: 35px;
+  }
+
+  &:hover {
+    background: $gradient-light-green-green;
+  }
+
+  &:active {
+    background: $gradient-neon-light-green-green;
+  }
+}

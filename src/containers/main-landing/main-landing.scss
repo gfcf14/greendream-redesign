@@ -1,0 +1,12 @@
+@import '~styles/_index';
+
+.main-landing-rct-component {
+  background: $gradient-black-green-1;
+  height: 80px;
+  width: 100vw;
+
+  .logo {
+    height: 44px;
+    margin: 18px;
+  }
+}
