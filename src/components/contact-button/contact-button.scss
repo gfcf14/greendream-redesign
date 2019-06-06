@@ -1,6 +1,10 @@
 @import '~styles/_index';
 
 .contact-button-rct-component {
+  @include mquery($width-breakpoint-md) {
+    display: none;
+  }
+
   background: transparent;
   border: 2px solid $white;
   border-radius: 20px;

@@ -9,7 +9,11 @@ $black: #000000;
 $grey-darken-2: #090a0f;
 $grey-darken-1: #1b2735;
 
+$grey-lighten-1: #646464;
+
 $gradient-black-green-1: linear-gradient(to bottom, $black 0%, $greendream-dark-green 90%, $greendream-dark-green 100%);
+$gradient-black-green-2: radial-gradient(at top, $greendream-black-green 0%, $greendream-black-green 10%, $greendream-dark-green 100%);
+$gradient-black-green-3: radial-gradient(circle at bottom right, $greendream-dark-green 0%, $greendream-dark-green 20%, $greendream-black-green 70%);
 $gradient-green-black-1: linear-gradient(to bottom, $greendream-dark-green 0%, $greendream-dark-green 10%, $greendream-black-green 90%, $greendream-black-green 100%);
 $gradient-light-green-green: linear-gradient(to bottom, $greendream-green 0%, $greendream-green 10%, $greendream-dark-green 90%, $greendream-dark-green 100%);
 $gradient-neon-light-green-green: linear-gradient(to bottom, $green 0%, $green 10%, $greendream-green 90%, $greendream-green 100%);

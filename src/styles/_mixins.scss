@@ -86,3 +86,45 @@ $min-window-width: 360px;
   @return calc(#{$min-size} + #{strip-unit($max-size - $min-size)} * (100vw - #{$min-window-width}) / #{strip-unit($max-window-width - $min-window-width)});
 }
 
+/// Media query helper for declaring media queries by width, and, optionally, ratio.
+/// @access public
+/// @param {Length} $width - Max-width
+/// @param {Number | False} $ratio [false] - Min device pixel ratio
+/// @example scss - Usage
+///   .foo {
+///     @include mquery(350px, 2) {
+///       width: 100%;
+///     }
+///   }
+@mixin mquery($width, $ratio: false) {
+  @if $ratio {
+      @media
+          only screen and (max-width: $width) and  (min--moz-device-pixel-ratio: $ratio),
+          only screen and (max-width: $width) and  (-webkit-min-device-pixel-ratio: $ratio),
+          only screen and (max-width: $width) and  (min-device-pixel-ratio: $ratio) {
+          @content;
+      }
+  } @else {
+      @media only screen and (max-width: $width) {
+          @content;
+      }
+  }
+}
+
+/// Generates a background with a set opacity.
+/// @access public
+/// @param {String} $color - Color in Hex value
+/// @param {Float} $opacity - Opacity
+/// @example scss - Usage
+///   .foo {
+///     @include background-with-opacity(#00b456, 0.5);
+///   }
+/// @example css - Result
+///   .foo {
+///     background: #00b456;
+///     opacity: 0.5;
+///   }
+@mixin background-with-opacity($color, $opacity) {
+  background: $color;
+  opacity: $opacity;
+}

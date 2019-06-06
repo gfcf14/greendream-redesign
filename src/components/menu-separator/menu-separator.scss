@@ -1,0 +1,16 @@
+@import '~styles/_index';
+
+.menu-separator-rct-component {
+  margin-bottom: 5px;
+
+  .separator-title {
+    color: $grey-lighten-1;
+    font: $font-weight-bold 12px $font-orbitron;
+  }
+
+  .separator-bar {
+    border-bottom: 1px solid $grey-lighten-1;
+    width: 100%;
+  }
+}
+

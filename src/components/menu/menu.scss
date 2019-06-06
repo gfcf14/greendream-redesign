@@ -1,9 +1,26 @@
 @import '~styles/_index';
 
+%menu-item-color-and-events {
+  color: $white;
+  cursor: pointer;
+
+  &:hover {
+    color: $greendream-green;
+  }
+
+  &:active {
+    color: $green;
+  }
+}
+
 .menu-rct-component {
   margin-left: auto;
 
   .division {
+    @include mquery($width-breakpoint-sm) {
+      display: none;
+    }
+
     border-left: 1px solid $greendream-dark-green;
     border-right: 1px solid $greendream-black-green;
     height: 40px;
@@ -11,21 +28,117 @@
   }
 
   .menu-list {
+    @include mquery($width-breakpoint-md) {
+      display: none;
+    }
+
     list-style-type: none;
     margin: 0;
 
     li {
-      color: $white;
-      cursor: pointer;
+      @extend %menu-item-color-and-events;
+
       font: $font-weight-bold 16px $font-roboto;
       margin: 30px 15px;
+    }
+  }
 
-      &:hover {
-        color: $greendream-green;
-      }
+  .sandwhich-icon {
+    @include mquery($width-breakpoint-md) {
+      display: inline;
+    }
 
-      &:active {
-        color: $green;
+    display: none;
+    cursor: pointer;
+    margin: 0 15px;
+  }
+
+  .tablet-menu {
+    @include mquery($width-breakpoint-md) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include mquery($width-breakpoint-sm) {
+      display: none;
+    }
+
+    background: $gradient-black-green-2;
+    border-radius: 0 0 50px 50px;
+    display: none;
+    left: 0;
+    list-style-type: none;
+    margin: 0;
+    transition: top 0.4s;
+    padding: 20px;
+    position: absolute;
+    width: 100vw;
+    z-index: -1;
+
+    &.open {
+      top: 80px;
+    }
+
+    &.closed {
+      top: -200px;
+    }
+
+    li {
+      @extend %menu-item-color-and-events;
+
+      font: $font-weight-bold 20px $font-orbitron;
+      margin: 20px auto;
+    }
+  }
+
+  .mobile-menu {
+    @include mquery($width-breakpoint-sm) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    background: $gradient-black-green-3;
+    display: none;
+    height: 100vh;
+    margin: 0;
+    transition: right 0.4s;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    width: 320px;
+    z-index: 1;
+
+    &.open {
+      right: 0;
+    }
+
+    &.closed {
+      right: -320px;
+    }
+
+    .close-button {
+      @extend %menu-item-color-and-events;
+
+      background: transparent;
+      border: 0;
+      font: $font-weight-bold 48px $font-orbitron;
+      margin-left: auto;
+    }
+
+    .menus-container {
+      margin: 20px 60px 0;
+
+      .main-menu, .account-menu {
+        flex-direction: column;
+        list-style-type: none;
+        margin: 0;
+
+        li {
+          @extend %menu-item-color-and-events;
+
+          font: $font-weight-bold 18px $font-orbitron;
+          margin: 10px 0 10px auto;
+        }
       }
     }
   }

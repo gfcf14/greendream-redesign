@@ -1,6 +1,15 @@
 import { injectItemKey } from './helpers';
 
-export const ROUTES = [
+export const ACCOUNT_ROUTES = [
+  {
+    name: 'SIGN UP',
+  },
+  {
+    name: 'SIGN IN',
+  },
+].map(injectItemKey);
+
+export const MENU_ROUTES = [
   {
     name: 'PROGRAMS',
   },

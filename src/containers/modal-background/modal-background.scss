@@ -1,0 +1,25 @@
+@import '~styles/_index';
+
+.modal-background-rct-component {
+  @include background-with-opacity($black, 0.75);
+
+  @include mquery($width-breakpoint-sm) {
+    z-index: 0;
+  }
+
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: -2;
+
+  &.hidden {
+    display: none;
+  }
+
+  &.visible {
+    display: block;
+  }
+}
+

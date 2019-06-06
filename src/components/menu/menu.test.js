@@ -11,12 +11,13 @@ describe('Menu Component Unit Test', () => {
   });
 
   it('checks that the right elements are rendered', () => {
-    expect(wrapper.find('ul')).toHaveLength(1);
-    expect(wrapper.find('li')).toHaveLength(4);
+    expect(wrapper.find('ul')).toHaveLength(4);
+    expect(wrapper.find('li')).toHaveLength(14);
 
     expect(wrapper.find('ContactButton')).toHaveLength(1);
     expect(wrapper.find('div.division')).toHaveLength(1);
     expect(wrapper.find('MenuButton')).toHaveLength(2);
+    expect(wrapper.find('MenuSeparator')).toHaveLength(2);
   });
 });
 
