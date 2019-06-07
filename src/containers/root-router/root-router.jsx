@@ -6,7 +6,7 @@ import { MainLanding } from 'containers';
 
 function renderRoutes() {
   return (
-    <Route component={MainLanding} />
+    <Route exact path="/" component={MainLanding} />
   );
 }
 

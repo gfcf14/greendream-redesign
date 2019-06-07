@@ -1,6 +1,10 @@
 @import '~styles/_index';
 
 .menu-button-rct-component {
+  @include mquery($width-breakpoint-sm) {
+    display: none;
+  }
+
   background: $gradient-green-black-1;
   border: 1px solid $greendream-dark-green;
   border-radius: 25px;

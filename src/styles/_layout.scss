@@ -1,4 +1,14 @@
 @import './_mixins';
 
+$width-breakpoint-lg: 1440px;
+$width-breakpoint-md: 992px;
+$width-breakpoint-sm: 768px;
+
 $fluid-spacing-sample: fluid-spacing(6px, 12px);
+
+:export {
+  lg: $width-breakpoint-lg;
+  md: $width-breakpoint-md;
+  sm: $width-breakpoint-sm;
+}
 
