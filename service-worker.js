@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/greendream-redesign/precache-manifest.5014082ad5a7a09d47ac7091555f22cd.js"
+  "/greendream-redesign/precache-manifest.849c3572cacf0da7eed335f1e06571c3.js"
 );
 
 self.addEventListener('message', (event) => {
