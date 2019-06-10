@@ -17,7 +17,10 @@ $center-text-width: fluid-width(120px, 440px);
       @include text-stroke(1px, $white);
 
       color: $greendream-green;
-      font: $font-weight-bold $font-size-sample $font-orbitron;
+      // font: $font-weight-bold $font-size-sample $font-orbitron;
+      font-family: $font-orbitron;
+      font-size: $font-size-sample;
+      font-weight: $font-weight-bold;
       margin: auto;
       padding-top: $fluid-spacing-sample;
       width: $center-text-width;
@@ -28,7 +31,10 @@ $center-text-width: fluid-width(120px, 440px);
 
       bottom: 5%;
       color: $white;
-      font: $font-weight-bold $font-size-sample $font-roboto;
+      // font: $font-weight-bold $font-size-sample $font-roboto;
+      font-family: $font-roboto;
+      font-size: $font-size-sample;
+      font-weight: $font-weight-bold;
       left: 50%;
       margin: 0;
       position: absolute;

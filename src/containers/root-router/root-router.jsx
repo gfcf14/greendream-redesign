@@ -11,7 +11,7 @@ function renderRoutes() {
 }
 
 export const RootRouter = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       {renderRoutes()}
       <Route component={NotFound} />
