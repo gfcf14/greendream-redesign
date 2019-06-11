@@ -45,6 +45,7 @@
     "deploy": "gh-pages -d build -r https://github.com/gfcf14/greendream-redesign.git",
     "eject": "react-scripts eject",
     "ftp": "PUBLIC_URL=/ yarn build && bash ./scripts/htaccess.sh && node deploy",
+    "github": "bash ./scripts/github.sh",
     "lint": "eslint --ext .jsx,.js . ",
     "predeploy": "yarn run build",
     "start": "react-scripts start",

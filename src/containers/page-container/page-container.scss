@@ -1,0 +1,14 @@
+@import '~styles/_index';
+
+.page-container-rct-component {
+  @include mquery($width-breakpoint-md) {
+    height: calc(100vh - 140px);
+    margin: 30px;
+    width: calc(100vw - 60px);
+  }
+
+  border: 1px solid $greendream-green;
+  height: calc(100vh - 160px);
+  margin: 20px 60px 60px;
+  width: calc(100vw - 120px);
+}
