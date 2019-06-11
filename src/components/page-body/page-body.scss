@@ -1,9 +1,10 @@
 @import '~styles/_index';
 
-.page-title-rct-component {
+.page-body-rct-component {
   color: $greendream-dark-green;
   font-family: $font-roboto;
-  font-size:$font-size-lg;
+  font-size:$font-size-md;
   font-weight: $font-weight-bold;
   margin: 0 auto 20px;
+  text-align: center;
 }
