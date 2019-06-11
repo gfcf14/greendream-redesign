@@ -1,0 +1,1 @@
+cp ./.htaccess ./build/
