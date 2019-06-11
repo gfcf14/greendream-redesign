@@ -1,7 +1,12 @@
-$green: #00ff00;
+$green: #00ff88;
 $greendream-green: #00b456;
 $greendream-dark-green: #005a2b;
 $greendream-black-green: #002d16;
+
+$green-lighten-1: #00844c;
+$green-lighten-2: #00d466;
+$green-lighten-3: #00d466;
+$green-lighten-4: #00ee7f;
 
 $white: #ffffff;
 $black: #000000;
@@ -14,6 +19,8 @@ $grey-lighten-1: #646464;
 $gradient-black-green-1: linear-gradient(to bottom, $black 0%, $greendream-dark-green 90%, $greendream-dark-green 100%);
 $gradient-black-green-2: radial-gradient(at top, $greendream-black-green 0%, $greendream-black-green 10%, $greendream-dark-green 100%);
 $gradient-black-green-3: radial-gradient(circle at bottom right, $greendream-dark-green 0%, $greendream-dark-green 20%, $greendream-black-green 70%);
+$gradient-green-1: linear-gradient(to bottom, $green-lighten-1 0%, $green-lighten-3 100%);
+$gradient-green-2: linear-gradient(to bottom, $green-lighten-2 0%, $green-lighten-4 100%);
 $gradient-green-black-1: linear-gradient(to bottom, $greendream-dark-green 0%, $greendream-dark-green 10%, $greendream-black-green 90%, $greendream-black-green 100%);
 $gradient-light-green-green: linear-gradient(to bottom, $greendream-green 0%, $greendream-green 10%, $greendream-dark-green 90%, $greendream-dark-green 100%);
 $gradient-neon-light-green-green: linear-gradient(to bottom, $green 0%, $green 10%, $greendream-green 90%, $greendream-green 100%);

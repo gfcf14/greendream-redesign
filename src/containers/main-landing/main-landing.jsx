@@ -1,11 +1,11 @@
 import React from 'react';
 import { Flex, Image } from 'rebass';
+import PropTypes from 'prop-types';
 import { logoImage } from 'images';
 import { Menu } from 'components';
-import { PageContainer } from 'containers';
 import './main-landing.scss';
 
-export function MainLanding() {
+export function MainLanding({ contentComponent }) {
   return (
     <Flex as="section" className="main-landing-rct-component">
       <Flex as="section" className="main-landing-rct-component__header">
@@ -18,8 +18,12 @@ export function MainLanding() {
           <Menu />
         </Flex>
       </Flex>
-      <PageContainer />
+      {contentComponent}
     </Flex>
   );
 }
+
+MainLanding.propTypes = {
+  contentComponent: PropTypes.element.isRequired,
+};
 

@@ -1,6 +1,6 @@
 @import '~styles/_index';
 
-$center-text-width: fluid-width(120px, 440px);
+$center-text-width: $fluid-dim-sm;
 
 .not-found-rct-component {
   overflow: hidden;
@@ -17,12 +17,11 @@ $center-text-width: fluid-width(120px, 440px);
       @include text-stroke(1px, $white);
 
       color: $greendream-green;
-      // font: $font-weight-bold$font-size-lg $font-orbitron;
       font-family: $font-orbitron;
-      font-size:$font-size-lg;
+      font-size: $font-size-lg;
       font-weight: $font-weight-bold;
       margin: auto;
-      padding-top: $fluid-spacing-sample;
+      padding-top: $fluid-spacing-sm;
       width: $center-text-width;
     }
 
@@ -31,9 +30,8 @@ $center-text-width: fluid-width(120px, 440px);
 
       bottom: 5%;
       color: $white;
-      // font: $font-weight-bold$font-size-lg $font-roboto;
       font-family: $font-roboto;
-      font-size:$font-size-lg;
+      font-size: $font-size-lg;
       font-weight: $font-weight-bold;
       left: 50%;
       margin: 0;
@@ -98,7 +96,7 @@ $center-text-width: fluid-width(120px, 440px);
     .logo {
       margin: auto;
       opacity: 0.1;
-      width: fluid-width(250px, 500px);
+      width: $fluid-dim-md;
     }
   }
 }
