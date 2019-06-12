@@ -1,18 +1,5 @@
 @import '~styles/_index';
 
-%menu-item-color-and-events {
-  color: $white;
-  cursor: pointer;
-
-  &:hover {
-    color: $greendream-green;
-  }
-
-  &:active {
-    color: $green;
-  }
-}
-
 .menu-rct-component {
   margin-left: auto;
 
@@ -34,13 +21,6 @@
 
     list-style-type: none;
     margin: 0;
-
-    li {
-      @extend %menu-item-color-and-events;
-
-      font: $font-weight-bold 16px $font-roboto;
-      margin: 30px 15px;
-    }
   }
 
   .sandwhich-icon {
@@ -82,13 +62,6 @@
     &.closed {
       top: -216px;
     }
-
-    li {
-      @extend %menu-item-color-and-events;
-
-      font: $font-weight-bold 20px $font-orbitron;
-      margin: 20px auto;
-    }
   }
 
   .mobile-menu {
@@ -117,12 +90,20 @@
     }
 
     .close-button {
-      @extend %menu-item-color-and-events;
-
       background: transparent;
       border: 0;
+      color: $white;
+      cursor: pointer;
       font: $font-weight-bold 48px $font-orbitron;
       margin-left: auto;
+
+      &:hover {
+        color: $greendream-green;
+      }
+
+      &:active {
+        color: $green;
+      }
     }
 
     .menus-container {
@@ -132,13 +113,6 @@
         flex-direction: column;
         list-style-type: none;
         margin: 0;
-
-        li {
-          @extend %menu-item-color-and-events;
-
-          font: $font-weight-bold 18px $font-orbitron;
-          margin: 10px 0 10px auto;
-        }
       }
     }
   }

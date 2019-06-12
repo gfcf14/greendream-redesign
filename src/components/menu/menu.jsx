@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Flex, Image } from 'rebass';
 import classNames from 'classnames';
-import { ContactButton, MenuButton, MenuSeparator } from 'components';
+import {
+  ContactButton,
+  MenuButton,
+  MenuItem,
+  MenuSeparator,
+} from 'components';
 import { ModalBackground } from 'containers';
 import { ACCOUNT_ROUTES, MENU_ROUTES } from 'utils/routes';
 import { sandwhichIcon } from 'images';
@@ -19,11 +24,28 @@ const rightbuttonProps = {
 };
 
 function renderAccountItems() {
-  return ACCOUNT_ROUTES.map(route => <li key={route.key}>{route.name}</li>);
+  return ACCOUNT_ROUTES.map((route) => {
+    const accountItemProps = {
+      itemName: route.name,
+      itemType: 'mobile',
+    };
+
+    return <MenuItem key={route.key} {...accountItemProps} />;
+  });
 }
 
-function renderMenuItems() {
-  return MENU_ROUTES.map(route => <li key={route.key}>{route.name}</li>);
+function renderMenuItems(menuType) {
+  return MENU_ROUTES.map((route) => {
+    const { name, path } = route;
+
+    const menuItemProps = {
+      itemName: name,
+      itemPath: path,
+      itemType: menuType,
+    };
+
+    return <MenuItem key={route.key} {...menuItemProps} />;
+  });
 }
 
 export function Menu() {
@@ -45,7 +67,7 @@ export function Menu() {
   return (
     <Flex as="section" className="menu-rct-component">
       <Flex as="ul" className="menu-list">
-        {renderMenuItems()}
+        {renderMenuItems('desktop')}
       </Flex>
       <ContactButton />
       <Image
@@ -64,7 +86,7 @@ export function Menu() {
           menu ? 'open' : 'closed',
         )}
       >
-        {renderMenuItems()}
+        {renderMenuItems('tablet')}
       </Box>
       <Box className={classNames(
         'mobile-menu',
@@ -78,7 +100,7 @@ export function Menu() {
             as="ul"
             className="main-menu"
           >
-            {renderMenuItems()}
+            {renderMenuItems('mobile')}
           </Flex>
           <MenuSeparator separatorTitle="ACCOUNT" />
           <Flex

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Image } from 'rebass';
+import { Flex, Image, Link } from 'rebass';
 import PropTypes from 'prop-types';
 import { logoImage } from 'images';
 import { Menu } from 'components';
@@ -10,11 +10,13 @@ export function MainLanding({ contentComponent }) {
     <Flex as="section" className="main-landing-rct-component">
       <Flex as="section" className="main-landing-rct-component__header">
         <Flex as="section" className="background">
-          <Image
-            src={logoImage}
-            className="logo"
-            alt="logo"
-          />
+          <Link href={`${process.env.PUBLIC_URL}/`}>
+            <Image
+              src={logoImage}
+              className="logo"
+              alt="logo"
+            />
+          </Link>
           <Menu />
         </Flex>
       </Flex>

@@ -1,0 +1,33 @@
+@import '~styles/_index';
+
+.menu-item-rct-component {
+  cursor: pointer;
+  font-weight: $font-weight-bold;
+  text-decoration: none;
+
+  &.desktop {
+    font-family: $font-roboto;
+    font-size: 16px;
+    margin: 30px 15px;
+  }
+
+  &.tablet {
+    font-family: $font-orbitron;
+    font-size: 20px;
+    margin: 20px auto;
+  }
+
+  &.mobile {
+    font-family: $font-orbitron;
+    font-size: 18px;
+    margin: 10px 0 10px auto;
+  }
+
+  &:hover {
+    color: $greendream-green;
+  }
+
+  &:active {
+    color: $green;
+  }
+}
