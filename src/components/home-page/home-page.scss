@@ -1,0 +1,46 @@
+@import '~styles/_index';
+
+.home-page-rct-component {
+  flex-direction: column;
+
+  &__slideshow-container {
+    background-position: center;
+    background-size: 100vw;
+    height: $fluid-dim-lg;
+    overflow: hidden;
+    width: 100vw;
+
+    .image-descriptor {
+      @include mquery($width-breakpoint-md) {
+        border-radius: 15px;
+        margin: auto auto 20px;
+        padding-right: $fluid-spacing-md;
+      }
+
+      @include mquery($width-breakpoint-sm) {
+        border-radius: 10px;
+        font-size: 10px;
+      }
+
+      background: background-with-opacity($greendream-green, 0.5);
+      border-radius: 0 20px 20px 0;
+      color: $white;
+      display: inline-block;
+      font-family: $font-roboto;
+      font-size: 20px;
+      font-weight: $font-weight-bold;
+      margin: auto 0 20px;
+      padding: $fluid-spacing-md;
+      padding-right: calc(#{$fluid-spacing-md} + 10px);
+    }
+  }
+
+  &__welcome-text {
+    color: $greendream-dark-green;
+    font-family: $font-roboto;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    margin: 20px;
+    text-align: center;
+  }
+}
