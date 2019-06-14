@@ -24,3 +24,7 @@ $gradient-green-2: linear-gradient(to bottom, $green-lighten-2 0%, $green-lighte
 $gradient-green-black-1: linear-gradient(to bottom, $greendream-dark-green 0%, $greendream-dark-green 10%, $greendream-black-green 90%, $greendream-black-green 100%);
 $gradient-light-green-green: linear-gradient(to bottom, $greendream-green 0%, $greendream-green 10%, $greendream-dark-green 90%, $greendream-dark-green 100%);
 $gradient-neon-light-green-green: linear-gradient(to bottom, $green 0%, $green 10%, $greendream-green 90%, $greendream-green 100%);
+
+:export {
+  white: $white;
+}
