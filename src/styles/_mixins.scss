@@ -98,15 +98,15 @@ $min-window-width: 360px;
 ///   }
 @mixin mquery($width, $ratio: false) {
   @if $ratio {
-      @media
-          only screen and (max-width: $width) and  (min--moz-device-pixel-ratio: $ratio),
-          only screen and (max-width: $width) and  (-webkit-min-device-pixel-ratio: $ratio),
-          only screen and (max-width: $width) and  (min-device-pixel-ratio: $ratio) {
-          @content;
-      }
+    @media
+      only screen and (max-width: $width) and  (min--moz-device-pixel-ratio: $ratio),
+      only screen and (max-width: $width) and  (-webkit-min-device-pixel-ratio: $ratio),
+      only screen and (max-width: $width) and  (min-device-pixel-ratio: $ratio) {
+      @content;
+    }
   } @else {
       @media only screen and (max-width: $width) {
-          @content;
+        @content;
       }
   }
 }

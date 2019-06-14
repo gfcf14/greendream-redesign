@@ -22,8 +22,8 @@ END='\033[0m'
 
 COMPLETE=true
 
-STEPS=("yarn test" "yarn run lint")
-NAMES=("Unit Testing" "ESLint")
+STEPS=("yarn test" "yarn run lint" "yarn run stylelint")
+NAMES=("Unit Testing" "ESLint" "StyleLint")
 TOTAL_STEPS=${#STEPS[@]}
 
 printf "${TITLE}MOCK PIPELINE PRE-COMMIT CHECK thanks to Husky\n"

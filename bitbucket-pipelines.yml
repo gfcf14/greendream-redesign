@@ -22,6 +22,10 @@ pipelines:
             name: ESLint
             script:
               - yarn run lint
+        - step:
+            name: StyleLint
+            script:
+              - yarn run stylelint
       - step: &github-push
           name: Push to GitHub
           script:
