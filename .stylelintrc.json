@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
+    "scss/at-function-parentheses-space-before": "never",
+    "scss/at-if-closing-brace-space-after": "always-intermediate",
+    "scss/at-mixin-parentheses-space-before": "never",
+    "scss/declaration-nested-properties": "never",
+    "scss/dollar-variable-colon-space-after": "always",
+    "scss/dollar-variable-colon-space-before": "never",
+    "scss/double-slash-comment-inline": "never",
+    "scss/double-slash-comment-whitespace-inside": "always",
+    "scss/no-duplicate-dollar-variables": true,
+    "scss/operator-no-unspaced": true,
+    "scss/selector-no-redundant-nesting-selector": true
+  }
+}

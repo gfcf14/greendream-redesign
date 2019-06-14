@@ -38,7 +38,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "gh-pages": "^2.0.1",
     "husky": "^2.3.0",
-    "jest": "24.7.1"
+    "jest": "24.7.1",
+    "stylelint": "^10.1.0",
+    "stylelint-scss": "^3.8.0"
   },
   "scripts": {
     "build": "react-scripts build && cp build/index.html build/404.html",
@@ -49,6 +51,7 @@
     "lint": "eslint --ext .jsx,.js . ",
     "predeploy": "yarn run build",
     "start": "react-scripts start",
+    "stylelint": "stylelint '**/*.scss'",
     "test": "jest --env=jsdom"
   },
   "eslintConfig": {
