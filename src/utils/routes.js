@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageContainer } from '../containers/page-container/page-container';
+import { PageContainer } from 'containers/page-container/page-container';
 import { injectItemKey } from './helpers';
 
 const programsProps = {
