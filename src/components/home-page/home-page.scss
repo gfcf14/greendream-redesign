@@ -19,7 +19,6 @@
 
       @include mquery($width-breakpoint-sm) {
         border-radius: 10px;
-        font-size: 10px;
       }
 
       background: background-with-opacity($greendream-green, 0.5);
@@ -27,7 +26,7 @@
       color: $white;
       display: inline-block;
       font-family: $font-roboto;
-      font-size: 20px;
+      font-size: $font-size-md;
       font-weight: $font-weight-bold;
       margin: auto 0 20px;
       padding: $fluid-spacing-md;
