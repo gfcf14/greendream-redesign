@@ -12,6 +12,13 @@ $fluid-dim-lg: fluid-dim(202px, 448px);
 $fluid-dim-md: fluid-dim(250px, 500px);
 $fluid-dim-sm: fluid-dim(120px, 440px);
 
+// names are tentative
+$fluid-dim-xs: fluid-dim(40px, 52px);
+$fluid-dim-2xs: fluid-dim(15px, 25px);
+$fluid-dim-3xs: fluid-dim(8px, 13px);
+$fluid-dim-xxs: fluid-dim(50px, 75px);
+$fluid-dim-xxs-r: fluid-dim(25px, 38px);
+
 :export {
   lg: $width-breakpoint-lg;
   md: $width-breakpoint-md;
