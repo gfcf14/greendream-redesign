@@ -1,0 +1,30 @@
+@import '~styles/_index';
+
+.header-cell-rct-component {
+  color: $white;
+  font-family: $font-orbitron;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  margin: auto;
+  width: 33%;
+
+  &__content-container {
+    margin: auto;
+
+    .buttons-container {
+      flex-direction: column;
+      padding: 0 0 2px 5px;
+
+      .sort-button-up,
+      .sort-button-down {
+        cursor: pointer;
+        height: $fluid-dim-3xs;
+        width: $fluid-dim-2xs;
+      }
+    }
+
+    .cell-title {
+      margin: auto 0;
+    }
+  }
+}

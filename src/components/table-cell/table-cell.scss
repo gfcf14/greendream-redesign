@@ -1,0 +1,46 @@
+@import '~styles/_index';
+
+.table-cell-rct-component {
+  @include mquery($width-breakpoint-md) {
+    text-align: left;
+  }
+
+  @include mquery($width-breakpoint-sm) {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  font-family: $font-roboto;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  margin: auto;
+  text-align: center;
+  width: 33%;
+
+  &__app-icon {
+    @include mquery($width-breakpoint-md) {
+      margin: 0 18px;
+    }
+
+    @include mquery($width-breakpoint-sm) {
+      margin: auto;
+    }
+
+    border-radius: $fluid-dim-xxs-r;
+    height: $fluid-dim-xxs;
+    margin: 0 12px;
+    width: $fluid-dim-xxs;
+  }
+
+  &__cell-text {
+    margin: auto;
+
+    &.non-centered {
+      @include mquery($width-breakpoint-sm) {
+        margin: auto;
+      }
+
+      margin: auto 0;
+    }
+  }
+}
