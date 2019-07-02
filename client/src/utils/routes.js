@@ -1,4 +1,5 @@
 import React from 'react';
+import { AppsPage } from 'components/apps-page/apps-page';
 import { PageContainer } from 'containers/page-container/page-container';
 import { injectItemKey } from './helpers';
 
@@ -7,7 +8,7 @@ const programsProps = {
     title: 'PROGRAMS',
   },
   bodyContent: {
-    content: 'programs go here',
+    content: <AppsPage description="Below are apps that provide usefulness beyond interactivity and recreation. Including C++, Java and Javascript, and made to accomplish tasks like SMS text messaging, typing speed, or chord playing, feel free to give them a try!" tableName="Programs" />,
   },
 };
 
@@ -16,7 +17,7 @@ const gamesProps = {
     title: 'GAMES',
   },
   bodyContent: {
-    content: 'games go here',
+    content: <AppsPage description="From Java to JavaScript, from top view to first person, from racing to visual novel, here are some games I have developed. Have fun!" tableName="Games" />,
   },
 };
 

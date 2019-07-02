@@ -3,7 +3,7 @@ import { PageTable } from 'components';
 
 describe('PageTable Component Unit Test', () => {
   const wrapper = mountWithIntl(
-    <PageTable />
+    <PageTable tableName="Games" />
   );
 
   it('renders without crashes', () => {
