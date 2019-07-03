@@ -17,12 +17,14 @@ app.listen(process.env.REACT_APP_SERVER_PORT, () => {
   console.log(`App server now listening on port ${process.env.REACT_APP_SERVER_PORT}`);
 });
 
-app.get('/test', (req, res) => {
-  pool.query('select * from Programs', (err, results) => {
+app.get('/table', (req, res) => {
+  const { tableName, tableOrder } = req.query;
+
+  pool.query(`select * from ${tableName} ${tableOrder}`, (err, results) => {
     if (err) {
       return res.send(err);
     } else {
-      return res.send(results);
+      return res.json(results);
     }
   });
 });

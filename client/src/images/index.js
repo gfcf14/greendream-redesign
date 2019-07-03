@@ -10,12 +10,21 @@ export {
 } from './buttons';
 
 export {
+  chooseForMeIcon,
+  chordPlayerIcon,
+  employmentAssistantIcon,
+  orugaIcon,
   profileIcon,
+  raceMasterIcon,
   sandwhichIcon,
   signInIcon,
   signOutIcon,
   signUpIcon,
+  smsSenderIcon,
+  troubleShooterIcon,
+  typingTestIcon,
   urlPlayerIcon,
+  voteBusterIcon,
   whereforeTheHeckArtThouIcon,
 } from './icons';
 

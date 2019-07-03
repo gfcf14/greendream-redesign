@@ -1,38 +1,84 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import { Flex } from 'rebass';
 import classNames from 'classnames';
+import shortid from 'shortid';
 import { HeaderCell, TableCell } from 'components';
-import { urlPlayerIcon, whereforeTheHeckArtThouIcon } from 'images';
+import { injectItemKey } from 'utils/helpers';
 import './page-table.scss';
 
-export function PageTable() {
+function getTable(tableName, tableOrder, setTableData) {
+  axios.get(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/table`, {
+    params: {
+      tableName,
+      tableOrder,
+    },
+  }).then((response) => {
+    setTableData(response.data);
+  });
+}
+
+function renderTableRows(tableData) {
+  return tableData.map(injectItemKey).map((tableRow, i, arr) => (
+    <Flex
+      className={classNames(
+        'page-table-rct-component__table-row',
+        i % 2 === 0 ? 'even' : 'odd',
+        arr.length - 1 === i ? 'last' : '',
+      )}
+      key={tableRow.key}
+    >
+      <TableCell cellText={tableRow.name} icon={tableRow.imgurl} />
+      <TableCell cellText={tableRow.language} />
+      <TableCell cellText={tableRow.count} />
+    </Flex>
+  ));
+}
+
+function renderHeaderCells(changeOrder, tableOrder) {
+  const HEADER_CELLS = ['NAME', 'LANGUAGE', 'PLAYS'];
+
+  return HEADER_CELLS.map((headerCell) => {
+    const sortColumn = headerCell === 'PLAYS' ? 'count' : headerCell.toLowerCase();
+    const headerCellProps = {
+      cellTitle: headerCell,
+      changeOrder,
+      sortColumn,
+      tableOrder,
+    };
+
+    return <HeaderCell key={shortid.generate()} {...headerCellProps} />;
+  });
+}
+
+export function PageTable({ tableName }) {
+  const [tableData, setTableData] = useState([]);
+  const [tableOrder, setTableOrder] = useState('order by id desc');
+
+  useEffect(() => {
+    const getFirst = () => {
+      getTable(tableName, tableOrder, setTableData);
+    };
+
+    getFirst();
+  }, [tableOrder]);
+
+  function changeOrder(sortColumn, arrangement) {
+    setTableOrder(`order by ${sortColumn} ${arrangement}`);
+  }
+
   return (
     <Flex className="page-table-rct-component">
       <Flex className="page-table-rct-component__table-header">
-        <HeaderCell cellTitle="NAME" />
-        <HeaderCell cellTitle="LANGUAGE" />
-        <HeaderCell cellTitle="PLAYS" />
+        {renderHeaderCells(changeOrder, tableOrder)}
       </Flex>
-      <Flex className={classNames(
-        'page-table-rct-component__table-row',
-        'odd',
-      )}
-      >
-        <TableCell cellText="Wherefore The Heck Art Thou?" icon={whereforeTheHeckArtThouIcon} />
-        <TableCell cellText="JavaScript" />
-        <TableCell cellText="52" />
-      </Flex>
-      <Flex className={classNames(
-        'page-table-rct-component__table-row',
-        'even',
-        'last',
-      )}
-      >
-        <TableCell cellText="URL Player" icon={urlPlayerIcon} />
-        <TableCell cellText="JavaScript" />
-        <TableCell cellText="31" />
-      </Flex>
+      {renderTableRows(tableData)}
     </Flex>
   );
 }
+
+PageTable.propTypes = {
+  tableName: PropTypes.string.isRequired,
+};
 

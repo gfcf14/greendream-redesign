@@ -1,3 +1,4 @@
+export { AppsPage } from './apps-page/apps-page';
 export { ContactButton } from './contact-button/contact-button';
 export { HeaderCell } from './header-cell/header-cell';
 export { HomePage } from './home-page/home-page';
