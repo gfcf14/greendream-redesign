@@ -49,6 +49,7 @@
     "operator-linebreak": [0],
     "prefer-const": ["error"],
     "quote-props": ["error", "consistent"],
+    "quotes": ["error", "single", {"allowTemplateLiterals": true}],
     "react/button-has-type": 0,
     "react/destructuring-assignment": [0, "always", {
       "ignoreClassFields": true
