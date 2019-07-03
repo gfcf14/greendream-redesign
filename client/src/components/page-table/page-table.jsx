@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 import { HeaderCell, TableCell } from 'components';
 import { injectItemKey } from 'utils/helpers';
+import { MESSAGES } from 'utils/messages';
 import './page-table.scss';
 
 function getTable(tableName, tableOrder, setTableData) {
@@ -37,10 +38,14 @@ function renderTableRows(tableData) {
 }
 
 function renderHeaderCells(changeOrder, tableOrder) {
-  const HEADER_CELLS = ['NAME', 'LANGUAGE', 'PLAYS'];
+  const HEADER_CELLS = [
+    MESSAGES.PAGE_TABLE_NAMES,
+    MESSAGES.PAGE_TABLE_LANGUAGE,
+    MESSAGES.PAGE_TABLE_PLAYS,
+  ];
 
   return HEADER_CELLS.map((headerCell) => {
-    const sortColumn = headerCell === 'PLAYS' ? 'count' : headerCell.toLowerCase();
+    const sortColumn = headerCell === MESSAGES.PAGE_TABLE_PLAYS ? 'count' : headerCell.toLowerCase();
     const headerCellProps = {
       cellTitle: headerCell,
       changeOrder,

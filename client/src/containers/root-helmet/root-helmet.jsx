@@ -15,6 +15,7 @@ export const RootHelmet = () => (
     <meta property="og:type" content="article" />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href="https://www.greendreampg.com/" />
+    <html lang="en" />
   </Helmet>
 );
 

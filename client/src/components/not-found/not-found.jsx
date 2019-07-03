@@ -1,6 +1,7 @@
 import React from 'react';
 import { Flex, Image, Link } from 'rebass';
 import { logoImage, vortexImage } from 'images';
+import { MESSAGES } from 'utils/messages';
 import colors from 'styles/_colors.scss';
 import './not-found.scss';
 
@@ -9,14 +10,14 @@ export function NotFound() {
     <Flex as="section" className="not-found-rct-component">
       <section className="not-found-rct-component__text-section">
         <p className="center-text">
-          404 page not found
+          {MESSAGES.NOT_FOUND_404}
         </p>
         <Link
           className="bottom-text"
           color={colors.white}
           href={`${process.env.PUBLIC_URL}/`}
         >
-          Don't worry! Click here to go back to the homepage
+          {MESSAGES.NOT_FOUND_BACK}
         </Link>
       </section>
       <section className="not-found-rct-component__rotated-section">

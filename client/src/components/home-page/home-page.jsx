@@ -2,6 +2,7 @@ import React from 'react';
 import { Flex } from 'rebass';
 import { PageButton } from 'components';
 import { programsImage } from 'images';
+import { MESSAGES } from 'utils/messages';
 import './home-page.scss';
 
 export function HomePage() {
@@ -12,17 +13,13 @@ export function HomePage() {
         style={{ backgroundImage: `url(${programsImage})` }}
       >
         <div className="image-descriptor">
-          PROGRAMS: Non-gaming programs I've developed
+          {MESSAGES.SLIDESHOW_PROGRAMS}
         </div>
       </Flex>
       <span className="home-page-rct-component__welcome-text">
-        Welcome to GreenDream! Where it's all about software development and what the
-         joy of creating means. May the programs, games and tutorials here inspire you to create!
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-         ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-         ullamco laboris nisi ut aliquip ex ea commodo
+        {MESSAGES.HOMEPAGE}
       </span>
-      <PageButton buttonText="WHAT'S NEW?" />
+      <PageButton buttonText={MESSAGES.HOMEPAGE_BUTTON} />
     </Flex>
   );
 }
