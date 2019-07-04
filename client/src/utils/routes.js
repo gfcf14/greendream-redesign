@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppsPage } from 'components/apps-page/apps-page';
+import { TutorialsPage } from 'components/tutorials-page/tutorials-page';
 import { PageContainer } from 'containers/page-container/page-container';
 import { injectItemKey } from './helpers';
 
@@ -26,7 +27,7 @@ const tutorialsProps = {
     title: 'TUTORIALS',
   },
   bodyContent: {
-    content: 'tutorials go here',
+    content: <TutorialsPage />,
   },
 };
 

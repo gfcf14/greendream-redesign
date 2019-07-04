@@ -6,8 +6,6 @@
   }
 
   flex-direction: column;
-
-  // top margin must be removed when added to pages
   margin: 20px 0 60px;
 
   &__table-header {
@@ -15,14 +13,14 @@
     border: 3px solid $greendream-dark-green;
     border-bottom: 0;
     border-radius: $fluid-dim-2xs $fluid-dim-2xs 0 0;
-    height: $fluid-dim-xs;
+    min-height: $fluid-dim-xs;
     width: 100%;
   }
 
   &__table-row {
     border-left: 3px solid $greendream-dark-green;
     border-right: 3px solid $greendream-dark-green;
-    height: 100px;
+    min-height: 100px;
     width: 100%;
 
     &.even {
