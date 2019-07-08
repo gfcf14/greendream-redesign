@@ -10,6 +10,13 @@ export {
 } from './buttons';
 
 export {
+  meCrackedCartoon,
+  meHiCartoon,
+  meProudCartoon,
+  meSuccessCartoon,
+} from './cartoon';
+
+export {
   orugaLogo,
   raceMasterLogo,
   troubleShooterLogo,
@@ -26,11 +33,19 @@ export {
 } from './icons';
 
 export {
+  CodePenLogo,
   CPlusPlusWhiteLogo,
   CSharpWhiteLogo,
+  DeviantArtLogo,
+  FacebookLogo,
+  FanfictionLogo,
+  GithubLogo,
   HTML5WhiteLogo,
-  javaWhiteLogo,
+  JavaWhiteLogo,
+  LinkedinLogo,
+  TwitterLogo,
   VBDotNetWhiteLogo,
+  YoutubeLogo,
 } from './logos';
 
 export {

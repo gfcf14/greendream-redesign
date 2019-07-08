@@ -1,6 +1,6 @@
 @import '~styles/_index';
 
-$center-text-width: $fluid-dim-sm;
+$center-text-width: $fluid-dim-lg;
 
 .not-found-rct-component {
   overflow: hidden;
@@ -96,7 +96,7 @@ $center-text-width: $fluid-dim-sm;
     .logo {
       margin: auto;
       opacity: 0.1;
-      width: $fluid-dim-md;
+      width: $fluid-dim-xl;
     }
   }
 }

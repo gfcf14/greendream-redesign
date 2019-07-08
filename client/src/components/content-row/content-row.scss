@@ -1,0 +1,49 @@
+@import '~styles/_index';
+
+.content-row-rct-component {
+  margin: 0 auto 20px;
+
+  &.normal {
+    flex-direction: row;
+  }
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  &.last {
+    margin: 0 auto;
+  }
+
+  &__row-text {
+    margin: auto;
+
+    &.normal {
+      text-align: left;
+    }
+
+    &.reverse {
+      text-align: right;
+    }
+  }
+
+  &__row-picture {
+    margin: auto;
+
+    &.normal {
+      @include mquery($width-breakpoint-md) {
+        margin-right: 30px;
+      }
+
+      margin-right: 60px;
+    }
+
+    &.reverse {
+      @include mquery($width-breakpoint-md) {
+        margin-left: 30px;
+      }
+
+      margin-left: 60px;
+    }
+  }
+}
