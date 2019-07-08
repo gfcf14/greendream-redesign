@@ -17,7 +17,7 @@ services:
       - 3306:3306
     restart: unless-stopped
     volumes:
-      - ./db/greendream.sql:/docker-entrypoint-initdb.d/greendream.sql
+      - ./db/greendreamdb.sql:/docker-entrypoint-initdb.d/greendreamdb.sql
   phpmyadmin:
     depends_on:
       - mysql

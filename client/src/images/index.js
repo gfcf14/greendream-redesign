@@ -10,21 +10,35 @@ export {
 } from './buttons';
 
 export {
-  chooseForMeIcon,
-  chordPlayerIcon,
-  employmentAssistantIcon,
-  orugaIcon,
+  orugaLogo,
+  raceMasterLogo,
+  troubleShooterLogo,
+  voteBusterLogo,
+  whereforeTheHeckArtThouLogo,
+} from './games-logos';
+
+export {
   profileIcon,
-  raceMasterIcon,
   sandwhichIcon,
   signInIcon,
   signOutIcon,
   signUpIcon,
-  smsSenderIcon,
-  troubleShooterIcon,
-  typingTestIcon,
-  urlPlayerIcon,
-  voteBusterIcon,
-  whereforeTheHeckArtThouIcon,
 } from './icons';
+
+export {
+  CPlusPlusWhiteLogo,
+  CSharpWhiteLogo,
+  HTML5WhiteLogo,
+  javaWhiteLogo,
+  VBDotNetWhiteLogo,
+} from './logos';
+
+export {
+  chooseForMeLogo,
+  chordPlayerLogo,
+  employmentAssistantLogo,
+  smsSenderLogo,
+  typingTestLogo,
+  urlPlayerLogo,
+} from './programs-logos';
 

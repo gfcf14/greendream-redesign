@@ -3,54 +3,56 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Flex, Image } from 'rebass';
 import {
-  chooseForMeIcon,
-  chordPlayerIcon,
-  employmentAssistantIcon,
-  orugaIcon,
-  raceMasterIcon,
-  smsSenderIcon,
-  troubleShooterIcon,
-  typingTestIcon,
-  urlPlayerIcon,
-  voteBusterIcon,
-  whereforeTheHeckArtThouIcon,
-} from 'images/icons';
+  orugaLogo,
+  raceMasterLogo,
+  troubleShooterLogo,
+  voteBusterLogo,
+  whereforeTheHeckArtThouLogo,
+} from 'images/games-logos';
+import {
+  chooseForMeLogo,
+  chordPlayerLogo,
+  employmentAssistantLogo,
+  smsSenderLogo,
+  typingTestLogo,
+  urlPlayerLogo,
+} from 'images/programs-logos';
 import './table-cell.scss';
 
-function getImageSource(icon) {
-  switch (icon) {
+function getImageSource(logo) {
+  switch (logo) {
     case 'chooseforme': {
-      return chooseForMeIcon;
+      return chooseForMeLogo;
     }
     case 'chordplayer': {
-      return chordPlayerIcon;
+      return chordPlayerLogo;
     }
     case 'employmentassistant': {
-      return employmentAssistantIcon;
+      return employmentAssistantLogo;
     }
     case 'oruga': {
-      return orugaIcon;
+      return orugaLogo;
     }
     case 'racemaster': {
-      return raceMasterIcon;
+      return raceMasterLogo;
     }
     case 'smssender': {
-      return smsSenderIcon;
+      return smsSenderLogo;
     }
     case 'troubleshooter': {
-      return troubleShooterIcon;
+      return troubleShooterLogo;
     }
     case 'typingtest': {
-      return typingTestIcon;
+      return typingTestLogo;
     }
     case 'urlplayer': {
-      return urlPlayerIcon;
+      return urlPlayerLogo;
     }
     case 'votebuster': {
-      return voteBusterIcon;
+      return voteBusterLogo;
     }
     case 'whereforetheheckartthou': {
-      return whereforeTheHeckArtThouIcon;
+      return whereforeTheHeckArtThouLogo;
     }
     default: {
       return 'no-image';
@@ -58,23 +60,23 @@ function getImageSource(icon) {
   }
 }
 
-function renderAppIcon(icon) {
-  return icon ? (
+function renderAppIcon(logo) {
+  return logo ? (
     <Image
-      src={getImageSource(icon)}
-      className="table-cell-rct-component__app-icon"
-      alt={`${icon}-icon`}
+      src={getImageSource(logo)}
+      className="table-cell-rct-component__app-logo"
+      alt={`${logo}-logo`}
     />
   ) : '';
 }
 
-export function TableCell({ cellText, icon }) {
+export function TableCell({ cellText, logo }) {
   return (
     <Flex className="table-cell-rct-component">
-      {renderAppIcon(icon)}
+      {renderAppIcon(logo)}
       <p className={classNames(
         'table-cell-rct-component__cell-text',
-        icon ? 'non-centered' : '',
+        logo ? 'non-centered' : '',
       )}
       >
         {cellText}
@@ -85,10 +87,10 @@ export function TableCell({ cellText, icon }) {
 
 TableCell.propTypes = {
   cellText: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  icon: PropTypes.string,
+  logo: PropTypes.string,
 };
 
 TableCell.defaultProps = {
-  icon: '',
+  logo: '',
 };
 

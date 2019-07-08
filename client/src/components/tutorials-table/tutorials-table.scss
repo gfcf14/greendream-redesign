@@ -1,0 +1,74 @@
+@import '~styles/_index';
+
+.tutorials-table-rct-component {
+  @include mquery($width-breakpoint-md) {
+    margin-top: 30px;
+  }
+
+  flex-wrap: wrap;
+  margin-top: 60px;
+
+  &__tutorial-block {
+    @include mquery($width-breakpoint-md) {
+      height: 143px;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+
+    background: $gradient-light-green-green;
+    border: 3px solid $greendream-dark-green;
+    border-radius: 25px;
+    color: $white;
+    font: $font-roboto $font-weight-bold;
+    height: 252px;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    padding: 20px;
+    width: calc(50% - 30px);
+
+    &.left {
+      @include mquery($width-breakpoint-md) {
+        margin-right: 0;
+      }
+
+      flex-direction: row;
+      margin-right: 30px;
+      text-align: left;
+    }
+
+    &.right {
+      @include mquery($width-breakpoint-md) {
+        margin-left: 0;
+      }
+
+      flex-direction: row-reverse;
+      margin-left: 30px;
+      text-align: right;
+    }
+
+    .tutorial-text {
+      flex-direction: column;
+      width: calc(65% - 20px);
+
+      h3 {
+        font-size: $font-size-lg;
+        margin: 0 0 $fluid-spacing-lg;
+      }
+
+      p {
+        font-size: $font-size-xs;
+        margin: 0;
+      }
+    }
+
+    .tutorial-logo {
+      width: 35%;
+
+      img {
+        height: 80%;
+        margin: auto;
+        width: 80%;
+      }
+    }
+  }
+}

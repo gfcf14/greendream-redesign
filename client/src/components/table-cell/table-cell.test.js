@@ -1,11 +1,11 @@
 import React from 'react';
 import { TableCell } from 'components';
-import { whereforeTheHeckArtThouIcon } from 'images';
+import { whereforeTheHeckArtThouLogo } from 'images';
 
 describe('TableCell Component Unit Test', () => {
   const tablecellProps = {
     cellText: 'sample',
-    icon: whereforeTheHeckArtThouIcon,
+    logo: whereforeTheHeckArtThouLogo,
   };
 
   const wrapper = mountWithIntl(

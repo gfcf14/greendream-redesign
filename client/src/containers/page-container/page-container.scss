@@ -4,11 +4,11 @@
   @include mquery($width-breakpoint-md) {
     height: calc(100vh - 140px);
     margin: 30px;
-    width: calc(100vw - 60px);
+    width: calc(100% - 60px);
   }
 
   flex-direction: column;
   height: calc(100vh - 160px);
   margin: 20px 60px 60px;
-  width: calc(100vw - 120px);
+  width: calc(100% - 120px);
 }

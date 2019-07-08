@@ -12,4 +12,6 @@ export { PageButton } from './page-button/page-button';
 export { PageTable } from './page-table/page-table';
 export { PageTitle } from './page-title/page-title';
 export { TableCell } from './table-cell/table-cell';
+export { TutorialsPage } from './tutorials-page/tutorials-page';
+export { TutorialsTable } from './tutorials-table/tutorials-table';
 

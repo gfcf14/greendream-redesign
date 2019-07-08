@@ -1,24 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { Flex } from 'rebass';
 import classNames from 'classnames';
 import shortid from 'shortid';
 import { HeaderCell, TableCell } from 'components';
-import { injectItemKey } from 'utils/helpers';
+import { getTable, injectItemKey } from 'utils/helpers';
 import { MESSAGES } from 'utils/messages';
 import './page-table.scss';
-
-function getTable(tableName, tableOrder, setTableData) {
-  axios.get(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/table`, {
-    params: {
-      tableName,
-      tableOrder,
-    },
-  }).then((response) => {
-    setTableData(response.data);
-  });
-}
 
 function renderTableRows(tableData) {
   return tableData.map(injectItemKey).map((tableRow, i, arr) => (
@@ -30,7 +18,7 @@ function renderTableRows(tableData) {
       )}
       key={tableRow.key}
     >
-      <TableCell cellText={tableRow.name} icon={tableRow.imgurl} />
+      <TableCell cellText={tableRow.name} logo={tableRow.imgurl} />
       <TableCell cellText={tableRow.language} />
       <TableCell cellText={tableRow.count} />
     </Flex>

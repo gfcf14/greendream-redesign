@@ -8,4 +8,5 @@ export const MESSAGES = {
   PAGE_TABLE_NAMES: 'NAMES',
   PAGE_TABLE_PLAYS: 'PLAYS',
   SLIDESHOW_PROGRAMS: `PROGRAMS: Non-gaming programs I've developed`,
+  TUTORIALS: 'Below are the languages I have used and am familiar enough to teach, if even a little, to improve and increase the thirst for development knowledge',
 };
