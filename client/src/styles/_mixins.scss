@@ -1,5 +1,11 @@
 $max-window-width: 1366px;
 $min-window-width: 360px;
+$max-viewport-width: 100vw;
+
+:export {
+  minWindowWidth: $min-window-width;
+  maxViewportWidth: $max-viewport-width;
+}
 
 /// Generates font with a stroke of the given color.
 /// @access public

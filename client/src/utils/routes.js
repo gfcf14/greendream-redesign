@@ -1,30 +1,80 @@
 import React from 'react';
+import { AboutPage } from 'components/about-page/about-page';
 import { AppsPage } from 'components/apps-page/apps-page';
+import { SitesTable } from 'components/sites-table/sites-table';
 import { TutorialsPage } from 'components/tutorials-page/tutorials-page';
 import { PageContainer } from 'containers/page-container/page-container';
+import { meSuccessCartoon } from 'images/cartoon';
 import { injectItemKey } from './helpers';
+import { MESSAGES } from './messages';
+
+const ABOUT_MESSAGES = [
+  {
+    rowMainContent: MESSAGES.ABOUT_PARAGRAPH_1,
+  },
+  {
+    rowMainContent: MESSAGES.ABOUT_PARAGRAPH_2,
+    rowPicture: 'me-hi',
+    pictureDimensions: {
+      maxWidth: 80,
+      minWidth: 60,
+    },
+  },
+  {
+    rowMainContent: MESSAGES.ABOUT_PARAGRAPH_3,
+  },
+  {
+    rowMainContent: MESSAGES.ABOUT_PARAGRAPH_4,
+  },
+  {
+    rowMainContent: MESSAGES.ABOUT_PARAGRAPH_5,
+  },
+  {
+    rowMainContent: MESSAGES.ABOUT_PARAGRAPH_6,
+    rowPicture: 'me-cracked',
+    pictureDimensions: {
+      maxWidth: 150,
+      minWidth: 125,
+    },
+    rowOrder: 'reverse',
+  },
+  {
+    rowMainContent: MESSAGES.ABOUT_PARAGRAPH_7,
+  },
+  {
+    rowMainContent: <SitesTable />,
+    rowPicture: 'me-proud',
+    pictureDimensions: {
+      maxWidth: 175,
+      minWidth: 90,
+    },
+  },
+  {
+    rowMainContent: MESSAGES.ABOUT_PARAGRAPH_8,
+  },
+].map(injectItemKey);
 
 const programsProps = {
   titleContent: {
-    title: 'PROGRAMS',
+    title: MESSAGES.PROGRAMS_TITLE,
   },
   bodyContent: {
-    content: <AppsPage description="Below are apps that provide usefulness beyond interactivity and recreation. Including C++, Java and Javascript, and made to accomplish tasks like SMS text messaging, typing speed, or chord playing, feel free to give them a try!" tableName="Programs" />,
+    content: <AppsPage description={MESSAGES.PROGRAMS} tableName="Programs" />,
   },
 };
 
 const gamesProps = {
   titleContent: {
-    title: 'GAMES',
+    title: MESSAGES.GAMES_TITLE,
   },
   bodyContent: {
-    content: <AppsPage description="From Java to JavaScript, from top view to first person, from racing to visual novel, here are some games I have developed. Have fun!" tableName="Games" />,
+    content: <AppsPage description={MESSAGES.GAMES} tableName="Games" />,
   },
 };
 
 const tutorialsProps = {
   titleContent: {
-    title: 'TUTORIALS',
+    title: MESSAGES.TUTORIALS_TITLE,
   },
   bodyContent: {
     content: <TutorialsPage />,
@@ -33,40 +83,41 @@ const tutorialsProps = {
 
 const aboutProps = {
   titleContent: {
-    title: 'ABOUT',
+    title: MESSAGES.ABOUT_TITLE_1,
+    titleImage: meSuccessCartoon,
   },
   bodyContent: {
-    content: 'about info goes here',
+    content: <AboutPage paragraphs={ABOUT_MESSAGES} />,
   },
 };
 
 export const ACCOUNT_ROUTES = [
   {
-    name: 'SIGN UP',
+    name: MESSAGES.SIGN_UP,
   },
   {
-    name: 'SIGN IN',
+    name: MESSAGES.SIGN_IN,
   },
 ].map(injectItemKey);
 
 export const MENU_ROUTES = [
   {
-    name: 'PROGRAMS',
+    name: MESSAGES.PROGRAMS_PATH,
     path: '/programs',
     contentComponent: <PageContainer {...programsProps} />,
   },
   {
-    name: 'GAMES',
+    name: MESSAGES.GAMES_PATH,
     path: '/games',
     contentComponent: <PageContainer {...gamesProps} />,
   },
   {
-    name: 'TUTORIALS',
+    name: MESSAGES.TUTORIALS_PATH,
     path: '/tutorials',
     contentComponent: <PageContainer {...tutorialsProps} />,
   },
   {
-    name: 'ABOUT',
+    name: MESSAGES.ABOUT_PATH,
     path: '/about',
     contentComponent: <PageContainer {...aboutProps} />,
   },

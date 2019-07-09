@@ -1,5 +1,7 @@
+export { AboutPage } from './about-page/about-page';
 export { AppsPage } from './apps-page/apps-page';
 export { ContactButton } from './contact-button/contact-button';
+export { ContentRow } from './content-row/content-row';
 export { HeaderCell } from './header-cell/header-cell';
 export { HomePage } from './home-page/home-page';
 export { Menu } from './menu/menu';
@@ -11,7 +13,7 @@ export { PageBody } from './page-body/page-body';
 export { PageButton } from './page-button/page-button';
 export { PageTable } from './page-table/page-table';
 export { PageTitle } from './page-title/page-title';
+export { SitesTable } from './sites-table/sites-table';
 export { TableCell } from './table-cell/table-cell';
 export { TutorialsPage } from './tutorials-page/tutorials-page';
 export { TutorialsTable } from './tutorials-table/tutorials-table';
-

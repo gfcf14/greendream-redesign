@@ -2,13 +2,13 @@
 
 .page-container-rct-component {
   @include mquery($width-breakpoint-md) {
-    height: calc(100vh - 140px);
+    height: calc(100% - 140px);
     margin: 30px;
     width: calc(100% - 60px);
   }
 
   flex-direction: column;
-  height: calc(100vh - 160px);
+  height: calc(100% - 160px);
   margin: 20px 60px 60px;
   width: calc(100% - 120px);
 }

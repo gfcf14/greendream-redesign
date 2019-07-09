@@ -6,7 +6,7 @@ import {
   CPlusPlusWhiteLogo,
   CSharpWhiteLogo,
   HTML5WhiteLogo,
-  javaWhiteLogo,
+  JavaWhiteLogo,
   VBDotNetWhiteLogo,
 } from 'images/logos';
 import './tutorials-table.scss';
@@ -23,7 +23,7 @@ function getImageSource(name) {
       return HTML5WhiteLogo;
     }
     case 'Java': {
-      return javaWhiteLogo;
+      return JavaWhiteLogo;
     }
     case 'VB.NET': {
       return VBDotNetWhiteLogo;

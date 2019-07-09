@@ -19,6 +19,8 @@ PageContainer.propTypes = {
   }).isRequired,
   titleContent: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    titleImage: PropTypes.string,
+    order: PropTypes.oneOf(['normal', 'reverse']),
   }).isRequired,
 };
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jul 08, 2019 at 12:22 AM
+-- Generation Time: Jul 08, 2019 at 11:55 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.19
 
@@ -76,6 +76,32 @@ INSERT INTO `Programs` (`id`, `name`, `imgurl`, `language`, `count`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Sites`
+--
+
+CREATE TABLE `Sites` (
+  `id` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `url` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Sites`
+--
+
+INSERT INTO `Sites` (`id`, `name`, `url`) VALUES
+(1, 'Facebook', 'https://www.facebook.com/gfcf14greendream'),
+(2, 'LinkedIn', 'https://www.linkedin.com/in/carlos-cuba-a2a7b26a/'),
+(3, 'Twitter', 'https://twitter.com/gfcf14'),
+(4, 'GitHub', 'https://github.com/gfcf14'),
+(5, 'CodePen', 'https://codepen.io/gfcf14/'),
+(6, 'DeviantArt', 'https://www.deviantart.com/gfcf14'),
+(7, 'FanFiction', 'https://www.fanfiction.net/u/3545076/gfcf14'),
+(8, 'YouTube', 'https://www.youtube.com/user/gfcf14/videos');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Tutorials`
 --
 
@@ -113,6 +139,12 @@ ALTER TABLE `Programs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `Sites`
+--
+ALTER TABLE `Sites`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `Tutorials`
 --
 ALTER TABLE `Tutorials`
@@ -133,6 +165,12 @@ ALTER TABLE `Games`
 --
 ALTER TABLE `Programs`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `Sites`
+--
+ALTER TABLE `Sites`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `Tutorials`

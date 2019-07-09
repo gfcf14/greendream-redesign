@@ -1,9 +1,25 @@
 @import '~styles/_index';
 
 .page-title-rct-component {
-  color: $greendream-dark-green;
-  font-family: $font-roboto;
-  font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
   margin: 0 auto 20px;
+
+  &.normal {
+    flex-direction: column;
+  }
+
+  &.reverse {
+    flex-direction: column-reverse;
+  }
+
+  h2 {
+    color: $greendream-dark-green;
+    font-family: $font-roboto;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    margin: auto;
+  }
+
+  img {
+    width: $fluid-dim-md;
+  }
 }
