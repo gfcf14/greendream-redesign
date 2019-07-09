@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Flex } from 'rebass';
+import { Flex, Link } from 'rebass';
 import classNames from 'classnames';
 import shortid from 'shortid';
 import { HeaderCell, TableCell } from 'components';
@@ -8,21 +8,36 @@ import { getTable, injectItemKey } from 'utils/helpers';
 import { MESSAGES } from 'utils/messages';
 import './page-table.scss';
 
-function renderTableRows(tableData) {
-  return tableData.map(injectItemKey).map((tableRow, i, arr) => (
-    <Flex
-      className={classNames(
-        'page-table-rct-component__table-row',
-        i % 2 === 0 ? 'even' : 'odd',
-        arr.length - 1 === i ? 'last' : '',
-      )}
-      key={tableRow.key}
-    >
-      <TableCell cellText={tableRow.name} logo={tableRow.imgurl} />
-      <TableCell cellText={tableRow.language} />
-      <TableCell cellText={tableRow.count} />
-    </Flex>
-  ));
+function renderTableRows(tableData, tableName) {
+  return tableData.map(injectItemKey).map((tableRow, i, arr) => {
+    const {
+      name,
+      language,
+      count,
+      imgurl,
+      key,
+    } = tableRow;
+
+    return (
+      <Flex
+        className={classNames(
+          'page-table-rct-component__table-row',
+          i % 2 === 0 ? 'even' : 'odd',
+          arr.length - 1 === i ? 'last' : '',
+        )}
+        key={key}
+      >
+        <Link
+          className="preview-link"
+          href={`${process.env.PUBLIC_URL}/${tableName.toLowerCase()}/${imgurl}`}
+        >
+          <TableCell cellText={name} logo={imgurl} />
+          <TableCell cellText={language} />
+          <TableCell cellText={count} />
+        </Link>
+      </Flex>
+    );
+  });
 }
 
 function renderHeaderCells(changeOrder, tableOrder) {
@@ -66,7 +81,7 @@ export function PageTable({ tableName }) {
       <Flex className="page-table-rct-component__table-header">
         {renderHeaderCells(changeOrder, tableOrder)}
       </Flex>
-      {renderTableRows(tableData)}
+      {renderTableRows(tableData, tableName)}
     </Flex>
   );
 }

@@ -21,6 +21,7 @@ PageContainer.propTypes = {
     title: PropTypes.string.isRequired,
     titleImage: PropTypes.string,
     order: PropTypes.oneOf(['normal', 'reverse']),
+    isPreview: PropTypes.bool,
   }).isRequired,
 };
 

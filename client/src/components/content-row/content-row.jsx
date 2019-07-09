@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import classNames from 'classnames';
 import { Flex } from 'rebass';
-import { meCrackedCartoon, meHiCartoon, meProudCartoon } from 'images/cartoon';
 import dimensions from 'styles/_mixins.scss';
+import { getImageSource } from 'utils/helpers';
 import './content-row.scss';
 
 const FLUID_WIDTH = (minWidth, maxWidth) => css`
@@ -31,21 +31,7 @@ function renderMainContent(rowMainContent, rowOrder) {
 function renderPicture(rowPicture, pictureDimensions, rowOrder) {
   if (rowPicture === '') return null;
 
-  let pictureSource = '';
-  switch (rowPicture) {
-    case 'me-cracked':
-      pictureSource = meCrackedCartoon;
-      break;
-    case 'me-hi':
-      pictureSource = meHiCartoon;
-      break;
-    case 'me-proud':
-      pictureSource = meProudCartoon;
-      break;
-    default:
-      pictureSource = '';
-      break;
-  }
+  const pictureSource = getImageSource(rowPicture);
 
   return (
     <SiteImage

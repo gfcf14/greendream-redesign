@@ -1,0 +1,17 @@
+@import '~styles/_index';
+
+.app-preview-rct-component {
+  flex-direction: column;
+
+  &__app-description {
+    margin-bottom: 20px;
+  }
+
+  &__play-row {
+    @include mquery($width-breakpoint-sm) {
+      flex-direction: column;
+    }
+
+    margin: 0 auto;
+  }
+}

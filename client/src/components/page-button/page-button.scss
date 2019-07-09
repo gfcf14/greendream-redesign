@@ -5,6 +5,10 @@
     border-radius: 10px;
   }
 
+  @include mquery($width-breakpoint-sm) {
+    padding: 15px;
+  }
+
   background: $gradient-green-1;
   border: 0;
   border-radius: 20px;
@@ -13,8 +17,7 @@
   font-family: $font-orbitron;
   font-size: 20px;
   font-weight: $font-weight-bold;
-  padding: $fluid-spacing-xl 0 calc(#{$fluid-spacing-xl} - 5px);
-  margin: 0 30px;
+  padding: $fluid-spacing-xl 15px calc(#{$fluid-spacing-xl} - 5px);
 
   &:hover {
     background: $gradient-green-2;
@@ -22,5 +25,10 @@
 
   &:active {
     background: $green;
+  }
+
+  &.homepage {
+    margin: 0 30px;
+    padding: $fluid-spacing-xl 30px calc(#{$fluid-spacing-xl} - 5px);
   }
 }

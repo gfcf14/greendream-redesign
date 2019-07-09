@@ -4,7 +4,6 @@ import { AppsPage } from 'components/apps-page/apps-page';
 import { SitesTable } from 'components/sites-table/sites-table';
 import { TutorialsPage } from 'components/tutorials-page/tutorials-page';
 import { PageContainer } from 'containers/page-container/page-container';
-import { meSuccessCartoon } from 'images/cartoon';
 import { injectItemKey } from './helpers';
 import { MESSAGES } from './messages';
 
@@ -84,7 +83,7 @@ const tutorialsProps = {
 const aboutProps = {
   titleContent: {
     title: MESSAGES.ABOUT_TITLE_1,
-    titleImage: meSuccessCartoon,
+    titleImage: 'me-success',
   },
   bodyContent: {
     content: <AboutPage paragraphs={ABOUT_MESSAGES} />,

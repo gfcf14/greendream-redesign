@@ -1,0 +1,86 @@
+@import '~styles/_index';
+
+.game-controls-rct-component {
+  flex-direction: column;
+
+  &__table-header {
+    background: $gradient-green-black-1;
+    border: 3px solid $greendream-dark-green;
+    border-bottom: 0;
+    border-radius: $fluid-dim-2xs $fluid-dim-2xs 0 0;
+    min-height: $fluid-dim-xs;
+    width: 100%;
+
+    .header-text {
+      color: $white;
+      font-family: $font-orbitron;
+      font-size: $font-size-md;
+      font-weight: $font-weight-bold;
+      margin: auto;
+    }
+  }
+
+  &__table-row {
+    border-left: 3px solid $greendream-dark-green;
+    border-right: 3px solid $greendream-dark-green;
+    min-height: 100px;
+    padding: 10px;
+    width: 100%;
+
+    &.mouse {
+      background: $greendream-green;
+      color: $white;
+    }
+
+    &.keyboard {
+      background: $green-lighten-5;
+      color: $greendream-dark-green;
+    }
+
+    &.last {
+      border-bottom: 3px solid $greendream-dark-green;
+      border-radius: 0 0 $fluid-dim-2xs $fluid-dim-2xs;
+      margin-bottom: 20px;
+    }
+
+    .control-cell {
+      @include mquery($width-breakpoint-md) {
+        flex-direction: column;
+      }
+
+      margin: auto;
+      width: 30%;
+
+      .cell-text {
+        @include mquery($width-breakpoint-md) {
+          margin:  0 auto;
+          padding-left: 0;
+        }
+
+        font-family: $font-orbitron;
+        font-size: $font-size-md;
+        font-weight: $font-weight-bold;
+        margin: auto 0;
+        padding-left: 20px;
+      }
+
+      .cell-icon {
+        @include mquery($width-breakpoint-md) {
+          margin: 0 auto 10px;
+        }
+
+        @include mquery($width-breakpoint-xs) {
+          width: 75%;
+        }
+      }
+    }
+
+    .cell-description {
+      flex-direction: column;
+      margin: auto 0;
+      padding: 5px;
+      text-align: left;
+      width: 70%;
+    }
+  }
+}

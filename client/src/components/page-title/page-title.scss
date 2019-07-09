@@ -11,15 +11,26 @@
     flex-direction: column-reverse;
   }
 
-  h2 {
+  .title-text {
     color: $greendream-dark-green;
     font-family: $font-roboto;
     font-size: $font-size-xl;
     font-weight: $font-weight-bold;
     margin: auto;
+    text-align: center;
   }
 
-  img {
+  .title-image {
+    margin: 0 auto;
     width: $fluid-dim-md;
+
+    &.preview {
+      @include mquery($width-breakpoint-md) {
+        margin: 0 auto 30px;
+      }
+
+      margin: 0 auto 20px;
+      width: $fluid-dim-sample1;
+    }
   }
 }

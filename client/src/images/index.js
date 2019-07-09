@@ -25,6 +25,8 @@ export {
 } from './games-logos';
 
 export {
+  keyboardIcon,
+  mouseIcon,
   profileIcon,
   sandwhichIcon,
   signInIcon,
