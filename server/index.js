@@ -28,3 +28,15 @@ app.get('/table', (req, res) => {
     }
   });
 });
+
+app.get('/row', (req, res) => {
+  const { rowName, tableName, columnName } = req.query;
+
+  pool.query(`select * from ${tableName} where ${columnName} = '${rowName}'`, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.send(results);
+    }
+  });
+});

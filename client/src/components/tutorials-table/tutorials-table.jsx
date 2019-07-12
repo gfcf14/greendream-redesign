@@ -1,38 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Flex, Image } from 'rebass';
 import classNames from 'classnames';
-import { getTable, injectItemKey } from 'utils/helpers';
-import {
-  CPlusPlusWhiteLogo,
-  CSharpWhiteLogo,
-  HTML5WhiteLogo,
-  JavaWhiteLogo,
-  VBDotNetWhiteLogo,
-} from 'images/logos';
+import { getImageSource, getTable, injectItemKey } from 'utils/helpers';
 import './tutorials-table.scss';
-
-function getImageSource(name) {
-  switch (name) {
-    case 'C++': {
-      return CPlusPlusWhiteLogo;
-    }
-    case 'C#': {
-      return CSharpWhiteLogo;
-    }
-    case 'HTML': {
-      return HTML5WhiteLogo;
-    }
-    case 'Java': {
-      return JavaWhiteLogo;
-    }
-    case 'VB.NET': {
-      return VBDotNetWhiteLogo;
-    }
-    default: {
-      return 'no-image';
-    }
-  }
-}
 
 function renderTutorials(tableData) {
   return tableData.map(injectItemKey).map((tutorial, i) => {

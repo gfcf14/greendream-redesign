@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Flex } from 'rebass';
 import { PageTitle, ContentRow } from 'components';
-import './about-page.scss';
 import { MESSAGES } from 'utils/messages';
+import './about-page.scss';
 
 function renderRows(paragraphs) {
   return paragraphs.map((paragraph, i, arr) => {

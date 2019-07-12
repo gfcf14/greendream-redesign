@@ -1,0 +1,39 @@
+@import '~styles/_index';
+
+.plays-span-rct-component {
+  @include mquery($width-breakpoint-md) {
+    border-radius: 15px;
+    margin-left: 30px;
+  }
+
+  @include mquery($width-breakpoint-sm) {
+    border-radius: 0 0 15px 15px;
+    border-top: 0;
+    margin: 0 auto;
+  }
+
+  border: 1px solid $greendream-dark-green;
+  border-radius: 20px;
+  margin-left: 60px;
+  padding: 14px 28px;
+  width: $fluid-dim-sample2;
+
+  &__text {
+    font-family: $font-orbitron;
+    font-size: $font-size-sample1;
+    font-weight: $font-weight-bold;
+    margin: auto 0;
+  }
+
+  &__count {
+    @include text-stroke(1px, $greendream-dark-green);
+
+    color: $greendream-green;
+    font-family: $font-orbitron;
+    font-size: $font-size-sample2;
+    font-weight: $font-weight-bold;
+    height: $fluid-dim-xs;
+    line-height: $fluid-dim-xs;
+    margin: auto 0 auto auto;
+  }
+}

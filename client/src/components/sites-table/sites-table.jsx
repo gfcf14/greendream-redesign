@@ -1,49 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Flex, Image, Link } from 'rebass';
-import {
-  CodePenLogo,
-  DeviantArtLogo,
-  FacebookLogo,
-  FanfictionLogo,
-  GithubLogo,
-  LinkedinLogo,
-  TwitterLogo,
-  YoutubeLogo,
-} from 'images/logos';
-import { getTable, injectItemKey } from 'utils/helpers';
+import { getImageSource, getTable, injectItemKey } from 'utils/helpers';
 import './sites-table.scss';
-
-function getImageSource(name) {
-  switch (name) {
-    case 'Facebook': {
-      return FacebookLogo;
-    }
-    case 'LinkedIn': {
-      return LinkedinLogo;
-    }
-    case 'Twitter': {
-      return TwitterLogo;
-    }
-    case 'GitHub': {
-      return GithubLogo;
-    }
-    case 'CodePen': {
-      return CodePenLogo;
-    }
-    case 'DeviantArt': {
-      return DeviantArtLogo;
-    }
-    case 'FanFiction': {
-      return FanfictionLogo;
-    }
-    case 'YouTube': {
-      return YoutubeLogo;
-    }
-    default: {
-      return '';
-    }
-  }
-}
 
 function renderSites(tableData) {
   return tableData.map(injectItemKey).map((site) => {

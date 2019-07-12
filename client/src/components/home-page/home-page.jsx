@@ -19,8 +19,7 @@ export function HomePage() {
       <span className="home-page-rct-component__welcome-text">
         {MESSAGES.HOMEPAGE}
       </span>
-      <PageButton buttonText={MESSAGES.HOMEPAGE_BUTTON} />
+      <PageButton buttonText={MESSAGES.HOMEPAGE_BUTTON} isAtHomePage />
     </Flex>
   );
 }
-

@@ -37,5 +37,13 @@
       border-bottom: 3px solid $greendream-dark-green;
       border-radius: 0 0 $fluid-dim-2xs $fluid-dim-2xs;
     }
+
+    .preview-link {
+      color: inherit;
+      cursor: pointer;
+      display: flex;
+      text-decoration: none;
+      width: 100%;
+    }
   }
 }
