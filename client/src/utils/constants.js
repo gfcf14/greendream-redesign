@@ -1,3 +1,11 @@
+import React from 'react';
+import {
+  ChooseForMe,
+  TypingTest,
+  UrlPlayer,
+  VoteBuster,
+  WhereforeTheHeckArtThou,
+} from 'old/components';
 import { MESSAGES } from './messages';
 
 export const PREVIEW_GAMES = [
@@ -50,14 +58,41 @@ export const PREVIEW_PROGRAMS = [
   },
 ];
 
-export const DOWNLOADABLE_APPS = [
-  'chordplayer',
-  'employmentassistant',
-  'oruga',
-  'racemaster',
-  'smssender',
-  'troubleshooter',
-];
+export const DOWNLOADABLE_APPS = {
+  chordplayer: 'ChordPlayer.zip',
+  employmentassistant: 'EmploymentAssistant.zip',
+  oruga: 'Oruga.zip',
+  racemaster: 'RaceMaster.zip',
+  smssender: 'SMSSender.zip',
+  troubleshooter: 'TroubleShooter.zip',
+};
+
+export const OLD_APPS = {
+  programs: [
+    {
+      name: 'typingtest',
+      component: <TypingTest />,
+    },
+    {
+      name: 'chooseforme',
+      component: <ChooseForMe />,
+    },
+    {
+      name: 'urlplayer',
+      component: <UrlPlayer />,
+    },
+  ],
+  games: [
+    {
+      name: 'votebuster',
+      component: <VoteBuster />,
+    },
+    {
+      name: 'whereforetheheckartthou',
+      component: <WhereforeTheHeckArtThou />,
+    },
+  ],
+};
 
 export const APPS_PREVIEW = {
   chooseforme: MESSAGES.CHOOSE_FOR_ME,

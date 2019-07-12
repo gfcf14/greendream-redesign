@@ -3,9 +3,25 @@ import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import { AppPreview, HomePage, NotFound } from 'components';
 import { MainLanding, PageContainer } from 'containers';
-import { PREVIEW_GAMES, PREVIEW_PROGRAMS } from 'utils/constants';
+import { OLD_APPS, PREVIEW_GAMES, PREVIEW_PROGRAMS } from 'utils/constants';
 import { injectItemKey } from 'utils/helpers';
 import { MENU_ROUTES } from 'utils/routes';
+
+function renderOldAppRoutes() {
+  return Object.keys(OLD_APPS).map(key => (
+    OLD_APPS[`${key}`].map((oldApp) => {
+      const { name, component } = oldApp;
+
+      return (
+        <Route
+          exact
+          path={`/${key}/${name}/${name}`}
+          render={() => component}
+        />
+      );
+    })
+  ));
+}
 
 function renderPreviewRoutes(startingPath, appArray) {
   return appArray.map(injectItemKey).map((app) => {
@@ -66,6 +82,7 @@ export function RootRouter() {
         {renderRoutes()}
         {renderPreviewRoutes('/programs/', PREVIEW_PROGRAMS)}
         {renderPreviewRoutes('/games/', PREVIEW_GAMES)}
+        {renderOldAppRoutes()}
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
