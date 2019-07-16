@@ -6,6 +6,7 @@ module.exports = {
       'components': path.resolve(__dirname, 'src/components'),
       'containers': path.resolve(__dirname, 'src/containers'),
       'images': path.resolve(__dirname, 'src/images'),
+      'old': path.resolve(__dirname, 'src/old'),
       'styles': path.resolve(__dirname, 'src/styles'),
       'utils': path.resolve(__dirname, 'src/utils'),
     },

@@ -38,6 +38,22 @@ export function injectItemKey(itemObject) {
   return { ...itemObject, key: shortid.generate() };
 }
 
+export function sendMail(referer, email, message) {
+  return axios.get(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/email`, {
+    params: {
+      referer,
+      email,
+      message,
+    },
+  }).then((response) => {
+    if (response.status === 200) {
+      return 'success';
+    }
+
+    return response.data.text;
+  });
+}
+
 export function getTable(tableName, tableOrder, setTableData) {
   axios.get(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/table`, {
     params: {
