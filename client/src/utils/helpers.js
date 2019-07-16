@@ -77,6 +77,18 @@ export function getRow(rowName, tableName, columnName, setRowData) {
   });
 }
 
+export function incrementCount(rowName, tableName, columnName, setRowData) {
+  axios.get(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/increment`, {
+    params: {
+      rowName,
+      tableName,
+      columnName,
+    },
+  }).then((response) => {
+    setRowData(response.data);
+  });
+}
+
 export function renderString(text, delimiter) {
   return text.split(delimiter).map(line => (
     <span key={shortid.generate()}>{line}</span>

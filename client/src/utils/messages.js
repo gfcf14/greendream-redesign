@@ -36,7 +36,7 @@ export const MESSAGES = {
   ORUGA_CONTROLS_KEYBOARD: 'ARROWS / WASD = Movement;SPACE = Fire',
   ORUGA_CONTROLS_MOUSE: 'LEFT CLICK = Push buttons',
   PAGE_TABLE_LANGUAGE: 'LANGUAGE',
-  PAGE_TABLE_NAMES: 'NAMES',
+  PAGE_TABLE_NAME: 'NAME',
   PAGE_TABLE_PLAYS: 'PLAYS',
   PROGRAMS: 'Below are apps that provide usefulness beyond interactivity and recreation. Including C++, Java and Javascript, and made to accomplish tasks like SMS text messaging, typing speed, or chord playing, feel free to give them a try!',
   PROGRAMS_PATH: 'PROGRAMS',
