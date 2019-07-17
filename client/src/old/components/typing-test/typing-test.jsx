@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { Fragment } from 'react';
 import { startTypingTest } from 'old/scripts/typingtest.js';
 import 'old/styles/old-styles.css';

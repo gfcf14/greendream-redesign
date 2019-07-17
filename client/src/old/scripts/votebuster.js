@@ -1,3 +1,4 @@
+/*eslint-disable */
 import $ from 'jquery';
 import { onMobile } from './greendream';
 
@@ -1194,4 +1195,4 @@ function setFinalScreen() {
     }
   }, 20);
 }
-
+/*eslint-enable */

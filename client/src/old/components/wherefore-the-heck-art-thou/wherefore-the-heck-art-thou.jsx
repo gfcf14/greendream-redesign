@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react';
 import $ from 'jquery';
 import { Box } from 'rebass';
@@ -23,3 +24,4 @@ export function WhereforeTheHeckArtThou() {
     </Box>
   );
 }
+/*eslint-enable */

@@ -1,3 +1,4 @@
+/*eslint-disable */
 import $ from 'jquery';
 
 export let onMobile = '';
@@ -66,3 +67,4 @@ export function showStatsBar(text, error) {
     }
   });
 }
+/*eslint-enable */

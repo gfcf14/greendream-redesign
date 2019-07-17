@@ -1,3 +1,4 @@
+/*eslint-disable */
 /* global hasBoughtClothes, gameStates, gameStatesstr, princesshankerchief, princesshandmirror, princessnecklace, princessroomkey, dialogue, hasMetNurse */
 import $ from 'jquery';
 
@@ -10087,3 +10088,4 @@ function hideActionButtons() {
 	}
 	if (currentCharacter != characters[chars.SARELLE]) if(!onMobile) playSoundEffect("push");
 }
+/*eslint-enable */
