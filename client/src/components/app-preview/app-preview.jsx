@@ -77,6 +77,7 @@ function renderPlayRow(
 export function AppPreview({ rowName, rowTitle, tableName }) {
   const [rowData, setRowData] = useState([]);
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     const getFirst = () => {
       getRow(rowName, tableName, 'imgurl', setRowData);
@@ -84,6 +85,7 @@ export function AppPreview({ rowName, rowTitle, tableName }) {
 
     getFirst();
   }, []);
+  /* eslint-disable react-hooks/exhaustive-deps */
 
   return (
     <Flex as="section" className="app-preview-rct-component">

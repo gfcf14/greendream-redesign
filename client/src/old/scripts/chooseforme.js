@@ -1,3 +1,4 @@
+/*eslint-disable */
 import $ from 'jquery';
 
 var choices = 2;
@@ -257,3 +258,4 @@ function shuffleColors() {
     [colors[i], colors[j]] = [colors[j], colors[i]];
   }
 }
+/*eslint-enable */

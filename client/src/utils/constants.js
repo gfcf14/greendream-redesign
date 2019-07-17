@@ -8,6 +8,7 @@ import {
 } from 'old/components';
 import { MESSAGES } from './messages';
 
+export const SERVER_ADDRESS = `http://localhost:${process.env.REACT_APP_SERVER_PORT}`;
 export const PREVIEW_GAMES = [
   {
     path: 'votebuster',

@@ -64,6 +64,7 @@ export function PageTable({ tableName }) {
   const [tableData, setTableData] = useState([]);
   const [tableOrder, setTableOrder] = useState('order by id desc');
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     const getFirst = () => {
       getTable(tableName, tableOrder, setTableData);
@@ -71,6 +72,7 @@ export function PageTable({ tableName }) {
 
     getFirst();
   }, [tableOrder]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   function changeOrder(sortColumn, arrangement) {
     setTableOrder(`order by ${sortColumn} ${arrangement}`);

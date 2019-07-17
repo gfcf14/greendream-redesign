@@ -1,3 +1,4 @@
+/*eslint-disable */
 /* global YT, SC, Vimeo, DM */
 import $ from 'jquery';
 import { onMobile } from './greendream';
@@ -770,3 +771,4 @@ function forcePlay() {
   else if (activeIframe == 'vimeo') vimeoPlayer.play();
   else if (activeIframe == 'dailymotion') dailymotionPlayer.play();
 }
+/*eslint-enable */

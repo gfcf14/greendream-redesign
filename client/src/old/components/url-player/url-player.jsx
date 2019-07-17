@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box } from 'rebass';
@@ -206,4 +207,4 @@ export function UrlPlayer() {
     </Box>
   );
 }
-
+/*eslint-enable */

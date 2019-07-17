@@ -1,3 +1,4 @@
+/*eslint-disable */
 import { sendMail } from 'utils/helpers';
 import { showStatsBar } from './greendream';
 import $ from 'jquery';
@@ -108,3 +109,4 @@ function getResults() {
 	alert(resultString);
 	$('#yourtext').val(resultString);
 }
+/*eslint-enable */

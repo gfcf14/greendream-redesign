@@ -33,13 +33,14 @@ import {
   whereforeTheHeckArtThouLogo,
   YoutubeLogo,
 } from 'images';
+import { SERVER_ADDRESS } from './constants';
 
 export function injectItemKey(itemObject) {
   return { ...itemObject, key: shortid.generate() };
 }
 
 export function sendMail(referer, email, message) {
-  return axios.get(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/email`, {
+  return axios.get(`${SERVER_ADDRESS}/email`, {
     params: {
       referer,
       email,
@@ -55,7 +56,7 @@ export function sendMail(referer, email, message) {
 }
 
 export function getTable(tableName, tableOrder, setTableData) {
-  axios.get(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/table`, {
+  axios.get(`${SERVER_ADDRESS}/table`, {
     params: {
       tableName,
       tableOrder,
@@ -66,7 +67,7 @@ export function getTable(tableName, tableOrder, setTableData) {
 }
 
 export function getRow(rowName, tableName, columnName, setRowData) {
-  axios.get(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/row`, {
+  axios.get(`${SERVER_ADDRESS}/row`, {
     params: {
       rowName,
       tableName,
@@ -78,7 +79,7 @@ export function getRow(rowName, tableName, columnName, setRowData) {
 }
 
 export function incrementCount(rowName, tableName, columnName, setRowData) {
-  axios.get(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/increment`, {
+  axios.get(`${SERVER_ADDRESS}/increment`, {
     params: {
       rowName,
       tableName,

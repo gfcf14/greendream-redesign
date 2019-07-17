@@ -2,8 +2,7 @@ const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-const nodeMailer = require('nodemailer');
-const smtpTransport = require('nodemailer-smtp-transport');
+const mailgun = require("mailgun-js");
 
 const app = express();
 
@@ -14,21 +13,10 @@ const pool = mysql.createPool({
   database: process.env.MYSQL_DATABASE,
 });
 
-// set up SMTP configuration
-const transporter = nodeMailer.createTransport(smtpTransport({
-  // FOR GMAIL: host: smtp.gmail.com, port: 465
-  // FOR IONOS: host: smtp.ionos.com, port: 587
-  host: 'smtp.gmail.com',
-  port: 465,
-  from: process.env.ADMIN_EMAIL,
-  auth: {
-    user: process.env.ADMIN_EMAIL,
-    pass: process.env.ADMIN_PASSWORD,
-  },
-  tls: { // Fix self-signed certificate error
-    rejectUnauthorized: false,
-  },
-}));
+const mg = mailgun({
+  apiKey: process.env.MAILGUN_API_KEY,
+  domain: process.env.MAILGUN_DOMAIN,
+});
 
 function getSubject(referer) {
   switch(referer) {
@@ -124,14 +112,14 @@ app.get('/increment', (req, res) => {
     if (err) {
       return res.send(err);
     } else {
-      const emailData = {
-        from: process.env.ADMIN_EMAIL,
-        to: process.env.ADMIN_EMAIL,
+      const data = {
+        from: `GreenDream Admin <postmaster@${process.env.MAILGUN_DOMAIN}>`,
+        to: process.env.RECEIVER_EMAIL,
         subject: getSubject('play'),
         text: `Someone has played the app ${getNameByRow(rowName)}`,
       };
 
-      transporter.sendMail(emailData, (error) => {
+      mg.messages().send(data, (error) => {
         try {
           pool.query(`select * from ${tableName} where ${columnName} = '${rowName}'`, (err, results) => {
             if (err) {
@@ -150,18 +138,19 @@ app.get('/increment', (req, res) => {
 
 app.get('/email', (req, res) => {
   const { referer, email, message } = req.query;
-  const emailData = {
-    from: process.env.ADMIN_EMAIL,
+
+  const data = {
+    from: `GreenDream Admin <postmaster@${process.env.MAILGUN_DOMAIN}>`,
     to: email,
     subject: getSubject(referer),
     text: message,
   };
 
-  transporter.sendMail(emailData, (error) => {
+  mg.messages().send(data, (error) => {
     try {
       return res.status(200).json({ text: 'success' });
     } catch (e) {
-      return res.status(500).json({ text: error });
+      return res.send(error);
     }
   });
 });

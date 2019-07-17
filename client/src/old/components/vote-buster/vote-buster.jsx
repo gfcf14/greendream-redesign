@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react';
 import { Box } from 'rebass';
 import {
@@ -266,4 +267,4 @@ export function VoteBuster() {
     </Box>
   );
 }
-
+/*eslint-enable */
