@@ -42,7 +42,7 @@ function renderTableRows(tableData, tableName) {
 
 function renderHeaderCells(changeOrder, tableOrder) {
   const HEADER_CELLS = [
-    MESSAGES.PAGE_TABLE_NAMES,
+    MESSAGES.PAGE_TABLE_NAME,
     MESSAGES.PAGE_TABLE_LANGUAGE,
     MESSAGES.PAGE_TABLE_PLAYS,
   ];

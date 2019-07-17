@@ -14,13 +14,73 @@ const pool = mysql.createPool({
   database: process.env.MYSQL_DATABASE,
 });
 
+// set up SMTP configuration
+const transporter = nodeMailer.createTransport(smtpTransport({
+  // FOR GMAIL: host: smtp.gmail.com, port: 465
+  // FOR IONOS: host: smtp.ionos.com, port: 587
+  host: 'smtp.gmail.com',
+  port: 465,
+  from: process.env.ADMIN_EMAIL,
+  auth: {
+    user: process.env.ADMIN_EMAIL,
+    pass: process.env.ADMIN_PASSWORD,
+  },
+  tls: { // Fix self-signed certificate error
+    rejectUnauthorized: false,
+  },
+}));
+
 function getSubject(referer) {
   switch(referer) {
     case 'typingtest': {
       return 'GreenDream: Your TypingTest results';
     }
+    case 'play': {
+      return 'GreenDream: New App Play';
+    }
     default: {
       return 'No referer';
+    }
+  }
+}
+
+function getNameByRow(rowName) {
+  switch (rowName) {
+    case 'chooseforme': {
+      return 'Choose For Me';
+    }
+    case 'chordplayer': {
+      return 'Chord Player';
+    }
+    case 'employmentassistant': {
+      return 'Employment Assistant';
+    }
+    case 'oruga': {
+      return 'Oruga';
+    }
+    case 'racemaster': {
+      return 'RaceMaster';
+    }
+    case 'smssender': {
+      return 'SMS Sender';
+    }
+    case 'troubleshooter': {
+      return 'TroubleShooter';
+    }
+    case 'typingtest': {
+      return 'Typing Test';
+    }
+    case 'urlplayer': {
+      return 'URL Player';
+    }
+    case 'votebuster': {
+      return 'VoteBuster';
+    }
+    case 'whereforetheheckartthou': {
+      return 'Wherefore The Heck Art Thou?';
+    }
+    default: {
+      return 'Non-specified game';
     }
   }
 }
@@ -57,31 +117,43 @@ app.get('/row', (req, res) => {
   });
 });
 
+app.get('/increment', (req, res) => {
+  const { rowName, tableName, columnName } = req.query;
+
+  pool.query(`update ${tableName} set count = count + 1 where ${columnName} = '${rowName}'`, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      const emailData = {
+        from: process.env.ADMIN_EMAIL,
+        to: process.env.ADMIN_EMAIL,
+        subject: getSubject('play'),
+        text: `Someone has played the app ${getNameByRow(rowName)}`,
+      };
+
+      transporter.sendMail(emailData, (error) => {
+        try {
+          pool.query(`select * from ${tableName} where ${columnName} = '${rowName}'`, (err, results) => {
+            if (err) {
+              return res.send(err);
+            } else {
+              return res.send(results);
+            }
+          });
+        } catch (e) {
+          return res.send(error);
+        }
+      });
+    }
+  });
+});
+
 app.get('/email', (req, res) => {
-  // set up SMTP configuration
-  const transporter = nodeMailer.createTransport(smtpTransport({
-    // FOR GMAIL: host: smtp.gmail.com, port: 465
-    // FOR IONOS: host: smtp.ionos.com, port: 587
-    host: 'smtp.gmail.com',
-    port: 465,
-    from: process.env.ADMIN_EMAIL,
-    auth: {
-      user: process.env.ADMIN_EMAIL,
-      pass: process.env.ADMIN_PASSWORD,
-    },
-    tls: { // Fix self-signed certificate error
-      rejectUnauthorized: false,
-    },
-  }));
-
   const { referer, email, message } = req.query;
-
-  const subject = getSubject(referer);
-
   const emailData = {
-    from: 'carloscuba014@gmail.com',
+    from: process.env.ADMIN_EMAIL,
     to: email,
-    subject,
+    subject: getSubject(referer),
     text: message,
   };
 

@@ -9,7 +9,7 @@ import {
   ProgramSpecs,
 } from 'components';
 import { APPS_PREVIEW, DOWNLOADABLE_APPS } from 'utils/constants';
-import { getRow } from 'utils/helpers';
+import { getRow, incrementCount } from 'utils/helpers';
 import { MESSAGES } from 'utils/messages';
 import './app-preview.scss';
 
@@ -18,6 +18,7 @@ function renderPageButton(
   isDownloadable,
   rowName,
   tableName,
+  setRowData,
 ) {
   if (isDownloadable) {
     return (
@@ -25,6 +26,7 @@ function renderPageButton(
         to={`/downloads/${DOWNLOADABLE_APPS[`${rowName}`]}`}
         target="_blank"
         download
+        onClick={() => incrementCount(rowName, tableName, 'imgurl', setRowData)}
       >
         <PageButton buttonText={buttonText} />
       </DownloadLink>
@@ -35,6 +37,7 @@ function renderPageButton(
     <OldAppLink
       className="old-app-link"
       href={`${process.env.PUBLIC_URL}/${tableName.toLowerCase()}/${rowName}/${rowName}`}
+      onClick={() => incrementCount(rowName, tableName, 'imgurl', setRowData)}
     >
       <PageButton buttonText={buttonText} />
     </OldAppLink>
@@ -52,6 +55,7 @@ function renderPlayRow(
   rowTitle,
   rowData,
   tableName,
+  setRowData,
 ) {
   if (rowData.length !== 0) {
     const { CLICK_HERE_TO_DOWNLOAD, CLICK_HERE_TO_PLAY } = MESSAGES;
@@ -61,7 +65,7 @@ function renderPlayRow(
 
     return (
       <Flex className="app-preview-rct-component__play-row">
-        {renderPageButton(buttonText, isDownloadable, rowName, tableName)}
+        {renderPageButton(buttonText, isDownloadable, rowName, tableName, setRowData)}
         <PlaysSpan playsNumber={rowData[0].count} />
       </Flex>
     );
@@ -87,7 +91,7 @@ export function AppPreview({ rowName, rowTitle, tableName }) {
         {APPS_PREVIEW[`${rowName}`]}
       </span>
       {renderAppInfo(tableName, rowName)}
-      {renderPlayRow(rowName, rowTitle, rowData, tableName)}
+      {renderPlayRow(rowName, rowTitle, rowData, tableName, setRowData)}
     </Flex>
   );
 }
