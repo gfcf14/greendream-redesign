@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   ChooseForMe,
   TypingTest,
@@ -72,25 +71,25 @@ export const OLD_APPS = {
   programs: [
     {
       name: 'typingtest',
-      component: <TypingTest />,
+      component: TypingTest,
     },
     {
       name: 'chooseforme',
-      component: <ChooseForMe />,
+      component: ChooseForMe,
     },
     {
       name: 'urlplayer',
-      component: <UrlPlayer />,
+      component: UrlPlayer,
     },
   ],
   games: [
     {
       name: 'votebuster',
-      component: <VoteBuster />,
+      component: VoteBuster,
     },
     {
       name: 'whereforetheheckartthou',
-      component: <WhereforeTheHeckArtThou />,
+      component: WhereforeTheHeckArtThou,
     },
   ],
 };

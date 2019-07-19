@@ -16,7 +16,7 @@ function renderOldAppRoutes() {
         <Route
           exact
           path={`/${key}/${name}/${name}`}
-          render={() => component}
+          component={component}
         />
       );
     })

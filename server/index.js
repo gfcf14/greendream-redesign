@@ -18,6 +18,8 @@ const mg = mailgun({
   domain: process.env.MAILGUN_DOMAIN,
 });
 
+const admin = `GreenDream Admin <${process.env.ADMIN_EMAIL}>`;
+
 function getSubject(referer) {
   switch(referer) {
     case 'typingtest': {
@@ -113,7 +115,7 @@ app.get('/increment', (req, res) => {
       return res.send(err);
     } else {
       const data = {
-        from: `GreenDream Admin <postmaster@${process.env.MAILGUN_DOMAIN}>`,
+        from: admin,
         to: process.env.RECEIVER_EMAIL,
         subject: getSubject('play'),
         text: `Someone has played the app ${getNameByRow(rowName)}`,
@@ -140,7 +142,7 @@ app.get('/email', (req, res) => {
   const { referer, email, message } = req.query;
 
   const data = {
-    from: `GreenDream Admin <postmaster@${process.env.MAILGUN_DOMAIN}>`,
+    from: admin,
     to: email,
     subject: getSubject(referer),
     text: message,
