@@ -1,7 +1,6 @@
 {
   "name": "greendream-redesign",
   "version": "0.1.0",
-  "homepage": "https://gfcf14.github.io/greendream-redesign",
   "private": true,
   "proxy": "http://server:8000",
   "dependencies": {
@@ -46,13 +45,10 @@
     "stylelint-scss": "^3.8.0"
   },
   "scripts": {
-    "build": "react-scripts build && cp build/index.html build/404.html",
-    "deploy": "gh-pages -d build -r https://github.com/gfcf14/greendream-redesign.git",
+    "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "ftp": "PUBLIC_URL=/ yarn build && bash ./scripts/htaccess.sh && node deploy",
     "github": "bash ./scripts/github.sh",
     "lint": "eslint --ext .jsx,.js . ",
-    "predeploy": "yarn run build",
     "start": "react-scripts start",
     "stylelint": "stylelint \"**/*.scss\"",
     "test": "jest --env=jsdom"
