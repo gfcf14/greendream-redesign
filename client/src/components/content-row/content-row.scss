@@ -25,6 +25,10 @@
     &.reverse {
       text-align: right;
     }
+
+    &.with-image {
+      margin: auto 0;
+    }
   }
 
   &__row-picture {

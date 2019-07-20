@@ -1,1133 +1,332 @@
-/*GLOBAL ELEMENTS===========================================================================================*/
-  /*Applies Oxygen font to everything*/
-  /* * {
-    font-family: 'Oxygen', sans-serif;
-  } */
-/*==========================================================================================================*/
-
-/*DOM ELEMENTS==============================================================================================*/
-  /*Removes margin from the website*/
-  /* body {
-    opacity: 0;
-    margin: 0px;
-  } */
-
-  /* table {
-    table-layout: fixed;
-  } */
-
-  td {
-    word-wrap: break-word;
-    margin: 0px;
-    padding: 0px;
-  }
-/*==========================================================================================================*/
-
-/*SELECTORS=================================================================================================*/
-  ::selection {
-    background: #00b456;
-    color: #ffffff;
-  }
-
-  ::-moz-selection {
-    background: #00b456;
-  }
-
-  ::-webkit-scrollbar {
-      width: 12px;
-  }
-
-  ::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,180,86,0.3);
-      -webkit-border-radius: 10px;
-    border-radius: 10px;
-    box-shadow: inset 0 0 6px rgba(0,180,86,0.3);
-  }
-
-  ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-  	-webkit-border-radius: 10px;
-  	background: rgba(0,180,86,0.3);
-      -webkit-box-shadow: inset 0 0 6px rgba(0,180,86,0.5);
-      box-shadow: inset 0 0 6px rgba(0,180,86,0.5);
-  }
-/*==========================================================================================================*/
-
-/*HEADER====================================================================================================*/
-  /*The wrapper is the table that controls the positioning of the logo and the main navigation items*/
-  .wrapper {
-    width: 100%;
-    height: 0px;
-    font-size: 0px;
-    /* margin 0px auto; */
-    border-spacing: 0px;
-    background: url('/images/headerbar.png');
-    background-size: cover;
-  }
-
-  /*Positions the logo at the top left of the page*/
-  #headerlogo {
-    display: inline-block;
-    position: relative;
-    z-index: 99;
-  }
-
-  /*Element that contains the main navigation items*/
-  #headermenu {
-    height: 100%;
-    float: right;
-  }
-
-  /*The divs inside the wrapper are the main navigation items*/
-  .mainmenulink {
-    display: table-cell;
-    vertical-align: middle;
-    height: 0px;
-    padding: 0px 15px;
-  }
-  .mainmenulink:hover {
-    background: #00b456;
-  }
-  .mainmenulink:active {
-    background: #00ff00;
-  }
-
-  .mainmenulink a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: 30px;
-  }
-
-  /*For average mobile devices*/
-  #sandwhichtray {
-    display: block;
-    position: absolute;
-    z-index: -1;
-    text-align: center;
-    top: 0px;
-    right: 0px;
-    width: 90px;
-    height: 90px;
-  }
-  #sandwhichtray:hover {
-    cursor: pointer;
-  }
-
-  #sandwhich {
-    visibility: hidden;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  #mobileheadermenu {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    z-index: 99;
-    display: none;
-    width: 50%;
-    text-align: center;
-  }
-
-  .mobilemenuheader {
-    width: 100%;
-    font-size: 15px;
-    color: #ffffff;
-    background: linear-gradient(to right, #005000 15%, #007146 100%); /*00274e is a pretty blue*/
-    border-bottom: 1px solid #00b456;
-  }
-
-  .mobilemenuitem {
-    width: 100%;
-    padding: 5px 0px;
-    font-size: 20px;
-    color: #ffffff;
-    background: linear-gradient(to right, #007146 15%, #00b456 100%); /*00274e is a pretty blue*/
-    border-bottom: 1px solid #00ff00;
-  }
-  .mobilemenuitem:hover {
-    background: #00b456;
-    cursor: pointer;
-  }
-  .mobilemenuitem:active {
-    background: #00ff00;
-  }
-
-  .smallmobileobject {
-    display: none;
-  }
-
-  #accountbar {
-    position: absolute;
-    top: -30px;
-    width: 100%;
-    height: 28px;
-    display: block;
-    background: #027e4e;
-    color: #ffffff;
-  }
-
-  .accountcontainer {
-    float: right;
-    height: 25px;
-    line-height: 25px;
-    padding-right: 3px;
-  }
-
-  .hmenubutton {
-    display: inline-block;
-    z-index: 1;
-    padding: 0px 5px 0px 5px;
-    font-size: 12px;
-    height: 100%;
-    line-height: 25px;
-    cursor: pointer;
-    background: #00b456;
-  }
-  .hmenubutton:hover {
-    background: #00e16b;
-  }
-  .hmenubutton:active {
-    background: #00ff00;
-  }
-/*==========================================================================================================*/
-
 /*POP-UPS===================================================================================================*/
-  .popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-height: 100px;
-    border: 2px solid;
-    padding: 5px;
-    background-color: #003923;
-    color: #ffffff;
-    border-color: #007146;
-    border-radius: 10px;
-    display: block;
-    opacity: 0;
-    transition: opacity 0.5s;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-  }
+.errormessage {
+  background: #ffffff;
+  color: #ff0000;
+  width: 100%;
+  height: 20px;
+  border: 2px solid #ff0000;
+  border-radius: 10px;
+  text-align: center;
+  opacity: 0;
+}
 
-  .close {
-    float: right;
-    color: #ffffff;
-    width: 25px;
-    height: 25px;
-    border-radius: 25px;
-    border: none;
-    background: linear-gradient(#007146 35%, #00b456 100%);
-    cursor: pointer;
-  }
-  .close:hover {
-    background: linear-gradient(#00a869 35%, #00ff81 100%);
-  }
-  .close:active {
-    background: linear-gradient(#00e28c 35%, #00ffac 100%);
-  }
-  .close:disabled {
-    background: linear-gradient(#001c11 35%, #002d1a 100%);
-    cursor: initial;
-  }
+.popbtn {
+  background: #007146;
+  border: none;
+  padding: 5px 0px 5px 0px;
+  width: 100%;
+  min-height: 20px;
+  color: #ffffff;
+  cursor: pointer;
+}
 
-  #signinerror #mainformerror {
-    display: block;
-    width: 100%;
-    height: 20px;
-    border: 2px solid #ff0000;
-    border-radius: 10px;
-    opacity: 0;
-  }
+.popbtn:active {
+  background: #00e28c;
+}
 
-  .errormessage {
-    background: #ffffff;
-    color: #ff0000;
-    width: 100%;
-    height: 20px;
-    border: 2px solid #ff0000;
-    border-radius: 10px;
-    text-align: center;
-    opacity: 0;
-  }
+.popbtn:disabled {
+  background: #001c11;
+  cursor: initial;
+}
 
-  .poptable {
-    margin: 0px auto;
-    border-collapse: separate;
-    border-spacing: 1em 1em;
-  }
+.popbtn:hover {
+  background: #00a869;
+}
 
-  .popbtn {
-    background: #007146;
-    border: none;
-    padding: 5px 0px 5px 0px;
-    width: 100%;
-    min-height: 20px;
-    color: #ffffff;
-    cursor: pointer;
-  }
-  .popbtn:hover {
-    background: #00a869;
-  }
-  .popbtn:active {
-    background: #00e28c;
-  }
-  .popbtn:disabled {
-    background: #001c11;
-    cursor: initial;
-  }
-/*==========================================================================================================*/
-
-/*HOMEPAGE==================================================================================================*/
-  .slideshowimage {
-    position: absolute;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-    opacity: 1;
-    transition: opacity 1s;
-  }
-
-  #seccontent {
-    position: absolute;
-    width: 100%;
-  }
-
-  #featuredtitle {
-    display: block;
-    background: #007146;
-    color: #ffffff;
-    padding: 5px;
-    border-radius: 5px 5px 0px 0px;
-  }
-
-  #featuredcontent {
-    border: 1px solid #007146;
-    border-radius: 0px 0px 5px 5px;
-    padding: 5px;
-    margin-bottom: 10px;
-  }
-
-  #featuredlink {
-    color: #00b456;
-    font-weight: bold;
-    font-style: italic;
-  }
-
-  #sitelog {
-    width: 50%;
-    height: auto;
-  }
-
-  #sitelogcontent {
-    text-align: left;
-    background: #ffffff;
-    color: #007146;
-    height: 500px;
-    overflow-y: scroll;
-    border-radius: 5px;
-  }
-/*==========================================================================================================*/
-
-/*PROFILE===================================================================================================*/
-  #profilepic {
-    background: #00b456;
-  }
-
-  #profileinfo {
-    background: linear-gradient(to bottom, #ffffff 35%, #00b456 100%);;
-  }
-
-  .profilesection {
-    display: table-cell;
-    position: relative;
-    vertical-align: top;
-  }
-
-  #profilebtn {
-    width: 30%;
-  }
-
-  .profiletext {
-    color: #007146;
-    font-size: 20px;
-  }
-/*==========================================================================================================*/
-
-/*PROGRAMS/GAMES============================================================================================*/
-  #tablerowheader {
-    background: #007146;
-    font-size: 0px;
-    border-radius: 10px 10px 0px 0px;
-  }
-
-  .col3headercellouter {
-    width: 33.33%;
-    display: inline-block;
-  }
-
-  .col3headercellinner {
-    width: 33.34%;
-    display: inline-block;
-  }
-
-  .tabletitletext {
-    color: #ffffff;
-    font-size: 20px;
-  }
-
-  .tablerowodd {
-    color: #007146;
-    font-size: 0px;
-    padding: 5px;
-    border-left: 1px solid #00b456;
-    border-right: 1px solid #00b456;
-  }
-
-  .tableroweven {
-    background: #00b456;
-    color: #ffffff;
-    font-size: 0px;
-    padding: 5px;
-  }
-
-  .tablerowtext {
-    display: inline-block; /*for some reason, inline-block will align vertically if the code is dynamically generated (e.g. via PHP), but not if hard-coded. table-cell, while aligning vertically on both, overrides inherited width*/
-    font-size: 18px;
-  }
-
-  .col3cellouter {
-    width: 33.33%;
-  }
-
-  .col3cellinner {
-    width: 33.34%;
-  }
-
-  .imageball {
-    vertical-align: middle;
-    width: 80px;
-    height: 80px;
-    border-radius: 40px;
-  }
-
-  .lastrow {
-    border-radius: 0px 0px 10px 10px;
-  }
-
-  .tableborderbottom {
-    border-bottom: 1px solid #00b456;
-  }
-/*==========================================================================================================*/
-
-/*TUTORIALS=================================================================================================*/
-  .listcell {
-    display: inline-block;
-    padding: 10px;
-  }
-  .listcell:hover {
-    background: #007146;
-  }
-
-  .listcelllink {
-    display: inline-block;
-    width: 100%;
-    text-decoration: none;
-    color: #007146;
-  }
-  .listcelllink:hover {
-    color: #ffffff;
-  }
-/*==========================================================================================================*/
-
-/*LANGUAGES=================================================================================================*/
-  .cascadingul {
-    list-style: none;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    height: 0px;
-    overflow: hidden;
-    transition: height 0.5s;
-  }
-
-  .cascadingli1 {
-    background: #007146;
-    color: #ffffff;
-    padding-left: 10px;
-    cursor: pointer;
-  }
-
-  .cascadingli2 {
-    background: #00b456;
-    color: #ffffff;
-    padding-left: 10px;
-    cursor: pointer;
-  }
-
-  .expcolbullet {
-    width: 20px;
-    height: 20px;
-  }
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-height: 100px;
+  border: 2px solid;
+  padding: 5px;
+  background-color: #003923;
+  color: #ffffff;
+  border-color: #007146;
+  border-radius: 10px;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
 /*==========================================================================================================*/
 
 /*APP=======================================================================================================*/
-  #appcontent {
-    width: 80%;
-    margin: 0px auto;
-    text-align: center;
-    position: relative;
-  }
+#appcontent {
+  width: 80%;
+  margin: 0px auto;
+  text-align: center;
+  position: relative;
+}
 
-  #homeimg {
-    position: absolute;
-    left: 0px;
-  }
+#apptitle {
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  color: #007146;
+}
 
-  #apptitle {
-    font-size: 30px;
-    width: 100%;
-    text-align: center;
-    color: #007146;
-  }
+#homeimg {
+  position: absolute;
+  left: 0px;
+}
 /*==========================================================================================================*/
 
 /*REUSABLE==================================================================================================*/
-  #cover {
-    background-color: #000000;
-    opacity: 0.5;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    z-index: 99;
-    visibility: hidden;
-  }
+#cover {
+  background-color: #000000;
+  opacity: 0.5;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 99;
+  visibility: hidden;
+}
 
-  #statsbar {
-    position: absolute;
-    z-index: 999;
-    bottom: 50px;
-    height: 50px;
-    width: 0px;
-    opacity: 1;
-    display: block;
-    background: linear-gradient(#007146 35%, #00b456 100%);
-    color: #ffffff;
-    font-size: 30px;
-    text-align: center;
-    overflow: hidden;
-    /* vertical-align: middle; */
-    line-height: 50px;
-    transition: width 1s, opacity 2s;
-  }
+#statsbar {
+  position: absolute;
+  z-index: 999;
+  bottom: 50px;
+  height: 50px;
+  width: 0px;
+  opacity: 1;
+  display: block;
+  background: linear-gradient(#007146 35%, #00b456 100%);
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  overflow: hidden;
+  line-height: 50px;
+  transition: width 1s, opacity 2s;
+}
 
-  .maincontent {
-    position: relative;
-    width: 80%;
-    top: 35px;
-    margin: 0px auto;
-    padding-bottom: 10px;
-  }
+.grayedout {
+  filter: grayscale(100%);
+}
 
-  .gradientbar {
-    display: block;
-    background: linear-gradient(to right, #007146 15%, #00b456 100%);
-    color: #ffffff;
-    font-size: 30px;
-    max-height: 40px;
-    text-align: left;
-  }
+.handlink {
+  cursor: pointer;
+}
 
-  .regallink {
-  	display: block;
-  	background: #008000;
-  	color: #ffffff;
-  	border-radius: 15px;
-  	-moz-border-radius: 15px;
-  	-webkit-border-radius: 15px;
-  	border: 3px solid #ffff00;
-  	text-align: center;
-  }
+.hiddenoverflow {
+  overflow: hidden;
+}
 
-  .warning {
-  	display: block;
-  	background-color: #ff0000;
-  	color: #ffffff;
-  	border-radius: 15px;
-  	-moz-border-radius: 15px;
-  	-webkit-border-radius: 15px;
-  	border: 3px solid #ffff00;
-  	text-align: center;
-  }
+.nolinebreak {
+  display: inline-block;
+}
 
-  .nondecorlink {
-    text-decoration: none;
-  }
+.onlyYoverflow {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
-  .newline {
-    word-wrap: break-word;
-    text-align: center;
-  }
-
-  .nolinebreak {
-  	display: inline-block;
-  }
-
-  .tablecell {
-    display: table-cell;
-  }
-
-  .handlink {
-    cursor: pointer;
-  }
-
-  .onlyYoverflow {
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-
-  .grayedout {
-    filter: grayscale(100%);
-  }
-
-  .hiddenoverflow {
-    overflow: hidden;
-  }
+.tablecell {
+  display: table-cell;
+}
 /*==========================================================================================================*/
 
 /*TYPING TEST===============================================================================================*/
-  .nonselectable {
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
-  }
+.nonselectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
 
-  .textbtn {
-    display: inline-block;
-    background: #007146;
-    color: #ffffff;
-    border: none;
-    padding: 3px 5px;
-    cursor: pointer;
-  }
-  .textbtn:hover {
-    background: #00a869;
-  }
-  .textbtn:active {
-    background: #00e28c;
-  }
-  .textbtn:disabled {
-    background: #001c11;
-    cursor: initial;
-  }
+.textbtn {
+  display: inline-block;
+  background: #007146;
+  color: #ffffff;
+  border: none;
+  padding: 3px 5px;
+  cursor: pointer;
+}
+
+.textbtn:active {
+  background: #00e28c;
+}
+
+.textbtn:disabled {
+  background: #001c11;
+  cursor: initial;
+}
+
+.textbtn:hover {
+  background: #00a869;
+}
 /*==========================================================================================================*/
 
 /*CHOOSE FOR ME=============================================================================================*/
 .inactivesection {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 1s;
+position: absolute;
+z-index: -1;
+opacity: 0;
+transition: opacity 1s;
 }
 /*==========================================================================================================*/
 
-/*URL PLAYER=============================================================================================*/
+/*URL PLAYER================================================================================================*/
 .urlplayerimg {
-  width: 75px;
-  height: 75px;
+width: 75px;
+height: 75px;
 }
 /*==========================================================================================================*/
 
 /*ALIGNMENT=================================================================================================*/
-  .tablecenter {
-    margin: 0px auto;
-  }
+.center {
+  text-align: center;
+}
 
-  .center {
-    text-align: center;
-  }
+.fright {
+  float: right;
+}
 
-  .left {
-    text-align: left;
-  }
+.left {
+  text-align: left;
+}
 
-  .right {
-    text-align: right;
-  }
+.tablecenter {
+  margin: 0px auto;
+}
 
-  .top {
-    vertical-align: top;
-  }
-
-  .middle {
-    vertical-align: middle;
-  }
-
-  .fright {
-    float: right;
-  }
-
-  .fleft {
-    float: left;
-  }
+.top {
+  vertical-align: top;
+}
 /*==========================================================================================================*/
 
 /*DIMENSIONS================================================================================================*/
-  .statscol {
-    width: 25px ;
-  }
+.bottomspaced {
+  padding-bottom: 10px;
+}
 
-  .bottomspaced {
-    padding-bottom: 10px;
-  }
+.largebottomspace {
+  padding-bottom: 20px;
+}
 
-  .largebottomspace {
-    padding-bottom: 20px;
-  }
+.pad5v {
+  padding: 5px 0px;
+}
 
-  .w100p {
-    width: 100%;
-  }
+.w100p {
+  width: 100%;
+}
 
-  .w90p {
-    width: 90%;
-  }
+.w90p {
+  width: 90%;
+}
 
-  .w80p {
-    width: 80%;
-  }
+.w80p {
+  width: 80%;
+}
 
-  .w70p {
-    width: 70%;
-  }
+.w50p {
+  width: 50%;
+}
 
-  .w66p {
-    width: 66%;
-  }
+.w33p {
+  width: 33%;
+}
 
-  .w60p {
-    width: 60%;
-  }
-
-  .w50p {
-    width: 50%;
-  }
-
-  .w40p {
-    width: 40%;
-  }
-
-  .w33p {
-    width: 33%;
-  }
-
-  .w30p {
-    width: 30%;
-  }
-
-  .w20p {
-    width: 20%;
-  }
-
-  .w10p {
-    width: 10%;
-  }
-
-  .pad5v {
-    padding: 5px 0px;
-  }
+.w20p {
+  width: 20%;
+}
 /*==========================================================================================================*/
 
 /*FONT SIZE=================================================================================================*/
-  .small {
-  	font-size: 10px;
-  }
+.regulartext {
+  font-size: 18px;
+}
 
-  .wimp {
-  	font-size: 15px;
-  }
-
-  .normal {
-  	font-size: 20px;
-  }
-
-  .bully {
-  	font-size: 25px;
-  }
-
-  .big {
-  	font-size: 30px;
-  }
-
-  .great {
-  	font-size: 40px;
-  }
-
-  .huge {
-  	font-size: 50px;
-  }
-
-  .mammoth {
-  	font-size: 100px;
-  }
-
-  .subtitletext {
-    font-size: 25px;
-  }
-
-  .regulartext {
-    font-size: 18px;
-  }
+.subtitletext {
+  font-size: 25px;
+}
 /*==========================================================================================================*/
 
 /*FONT COLOR================================================================================================*/
-  .white {
-    color: #ffffff;
-  }
+.dreamgreen {
+  color: #007146;
+}
 
-  .green {
-    color: #008000;
-  }
-
-  .dreamgreen {
-    color: #007146;
-  }
-
-  .naturalgreen {
-    color: #00b456;
-  }
-
-  .pastelgreen {
-    color: #00bc37;
-  }
-
-  .seagreen {
-    color: #0c8b5b;
-  }
-
-  .streamgreen {
-    color: #027e4e;
-  }
-
-  .oceangreen {
-    color: #58a888;
-  }
-
-  .red {
-    color: #ff0000;
-  }
-
-  .blue {
-    color: #0000ff;
-  }
+.white {
+  color: #ffffff;
+}
 /*==========================================================================================================*/
 
 /*BACKGROUND COLOR==========================================================================================*/
-  .bgwhite {
-    background: #ffffff;
-  }
-
-  .bggreen {
-    background: #008000;
-  }
-
-  .bgdreamgreen {
-    background: #007146;
-  }
-
-  .bgnaturalgreen {
-    background: #00b456;
-  }
-
-  .bgpastelgreen {
-    background: #00bc37;
-  }
-
-  .bgred {
-    background: #ff0000;
-  }
-
-  .bgblue {
-    background: #0000ff;
-  }
-
-  .bgseagreen {
-    background: #0c8b5b;
-  }
-
-  .bgstreamgreen {
-    background: #027e4e;
-  }
-
-  .bgoceangreen {
-    background: #58a888;
-  }
-/*==========================================================================================================*/
-
-/*less than 1075px in width*/
-@media screen and (max-width: 1075px) {
-  .mainmenulink  a {
-    font-size: 25px;
-    font-weight: 25px;
-  }
-
-  .profiletext {
-    font-size: 18px;
-  }
-
-  .gradientbar {
-    font-size: 25px;
-  }
+.bgnaturalgreen {
+  background: #00b456;
 }
 
+.bgred {
+  background: #ff0000;
+}
+
+.bgwhite {
+  background: #ffffff;
+}
+/*==========================================================================================================*/
 @media screen and (max-width: 980px) {
-  .mainmenulink  a {
-    font-size: 20px;
-    font-weight: 20px;
-  }
-
-  .profiletext {
-    font-size: 15px;
-  }
-
-  #homeimg {
-    zoom: 75%;
-  }
-
   #apptitle {
     font-size: 25px;
   }
 
-  .gradientbar {
-    font-size: 20px;
+  #homeimg {
+    zoom: 75%;
   }
 }
 
 @media screen and (max-width: 890px) {
-  #headermenu {
-    display: none;
-  }
-
-  #sandwhichtray {
-    z-index: 1;
-  }
-
-  #sandwhich {
-    visibility: visible;
-  }
-
-  #profileimage {
-    width: 100px;
-    height: 100px;
-  }
-
-  .profiletext {
-    font-size: 12px;
-  }
-
-  #statsbar {
-    font-size: 25px;
-  }
-
-  .gradientbar {
-    font-size: 18px;
-  }
-
-  /*PROGRAMS/GAMES TABLE*/
-    .tablerowtext {
-      font-size: 15px;
-    }
-
-    .imageball {
-      width: 60px;
-      height: 60px;
-      border-radius: 30px;
-    }
-  /*PROGRAMS/GAMES TABLE*/
-
-  .expcolbullet {
-    width: 18px;
-    height: 18px;
+  #apptitle {
+    font-size: 20px;
   }
 
   #homeimg {
     zoom: 50%;
   }
 
-  #apptitle {
-    font-size: 20px;
-  }
-
-  .roundbutton {
-    zoom: 75%;
+  .regulartext {
+    font-size: 15px;
   }
 
   .subtitletext {
     font-size: 20px;
   }
-
-  .regulartext {
-    font-size: 15px;
-  }
 }
 
 @media screen and (max-width: 600px) {
-  #headerlogo {
-    width: 62.5%;
-  }
-
-  #logo {
-    width: 100%;
-    height: auto;
-  }
-
-  .smallmobileobject {
-    display: block;
-  }
-
-  .accountcontainer {
-    display: none;
-  }
-
-  .popup {
-    max-width: 300px;
-  }
-
-  .poptable {
-    border-spacing: 1em 0.5em;
-  }
-
-  .profiletext {
-    font-size: 8px;
-  }
-
-  #profilebtn {
-    width: 50%;
-  }
-
-  .profilebtn {
-    min-height: 15px;
-    font-size: 10px;
-  }
-
-  /*PROGRAMS/GAMES TABLE*/
-    .tabletitletext {
-      font-size: 15px;
-    }
-
-    .tablerowtext {
-      font-size: 12px;
-    }
-
-    .imageball {
-      width: 50px;
-      height: 50px;
-      border-radius: 25px;
-    }
-  /*PROGRAMS/GAMES TABLE*/
-
-  .expcolbullet {
-    width: 15px;
-    height: 15px;
-  }
-
-  .cartoonimg {
-    zoom: 50%;
+  #apptitle {
+    font-size: 15px;
   }
 
   #homeimg {
     zoom: 35%;
   }
 
-  #apptitle {
-    font-size: 15px;
+  .formtext {
+    font-size: 12px;
   }
 
-  #statsbar {
-    font-size: 20px;
+  .popup {
+    max-width: 300px;
   }
 
-  .gradientbar {
-    font-size: 15px;
+  .regulartext {
+    font-size: 12px;
   }
 
   .subtitletext {
     font-size: 18px;
   }
-
-  .regulartext {
-    font-size: 12px;
-  }
-
-  .formtext {
-    font-size: 12px;
-  }
-
-  .featuredimg {
-    zoom: 75%;
-  }
-
-  .urlplayerimg {
-    width: 50px;
-    height: 50px;
-  }
 }
 
 @media screen and (max-width: 450px) {
-  #profileimage {
-    width: 75px;
-    height: 75px;
-  }
-
-  /*PROGRAMS/GAMES TABLE*/
-    .tabletitletext {
-      font-size: 12px;
-    }
-
-    .tablerowtext {
-      font-size: 10px;
-    }
-
-    .imageball {
-      width: 40px;
-      height: 40px;
-      border-radius: 20px;
-    }
-
-    .sortarrow {
-      width: 15px;
-      height: 15px;
-    }
-  /*PROGRAMS/GAMES TABLE*/
-
-  .expcolbullet {
-    width: 12px;
-    height: 12px;
-  }
-
-  #statsbar {
-    font-size: 15px;
-  }
-
-  .roundbutton {
-    zoom: 50%;
+  .regulartext {
+    font-size: 10px;
   }
 
   .subtitletext {
     font-size: 15px;
-  }
-
-  .regulartext {
-    font-size: 10px;
-  }
-}
-
-@media screen and (max-height: 730px) {
-  #sitelogcontent {
-    height: 300px;
   }
 }

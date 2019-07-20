@@ -18,5 +18,11 @@
         margin: 18px;
       }
     }
+
+    &.menu {
+      @include mquery($width-breakpoint-sm) {
+        z-index: 0;
+      }
+    }
   }
 }

@@ -5,13 +5,14 @@ import { Box } from 'rebass';
 import './modal-background.scss';
 
 export function ModalBackground(props) {
-  const { isVisible, ...otherProps } = props;
+  const { isModal, isVisible, ...otherProps } = props;
 
   return (
     <Box
       as="section"
       className={classNames(
         'modal-background-rct-component',
+        isModal,
         isVisible,
       )}
       {...otherProps}
@@ -20,6 +21,7 @@ export function ModalBackground(props) {
 }
 
 ModalBackground.propTypes = {
+  isModal: PropTypes.oneOf(['modal', '']).isRequired,
   isVisible: PropTypes.oneOf(['hidden', 'visible']).isRequired,
   onClick: PropTypes.func.isRequired,
 };

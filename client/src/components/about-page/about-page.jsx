@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Flex } from 'rebass';
 import { PageTitle, ContentRow } from 'components';
 import { MESSAGES } from 'utils/messages';
+import breakpoints from 'styles/_layout.scss';
 import './about-page.scss';
 
-function renderRows(paragraphs) {
+function renderRows(paragraphs, isDesktop) {
   return paragraphs.map((paragraph, i, arr) => {
     const {
       rowMainContent,
@@ -20,6 +21,7 @@ function renderRows(paragraphs) {
       pictureDimensions,
       rowOrder,
       lastRow: arr.length - 1 === i,
+      isDesktop: pictureDimensions ? isDesktop : false,
     };
 
     return (i === 2) ? (
@@ -32,9 +34,23 @@ function renderRows(paragraphs) {
 }
 
 export function AboutPage({ paragraphs }) {
+  const [isDesktop, setDesktop] = useState(true);
+  useEffect(() => {
+    const checkViewPortSize = () => {
+      if (window.innerWidth >= parseInt(breakpoints.md, 10)) {
+        setDesktop(true);
+      } else {
+        setDesktop(false);
+      }
+    };
+
+    checkViewPortSize();
+    window.addEventListener('resize', checkViewPortSize);
+  });
+
   return (
     <Flex as="section" className="about-page-rct-component">
-      {renderRows(paragraphs)}
+      {renderRows(paragraphs, isDesktop)}
     </Flex>
   );
 }

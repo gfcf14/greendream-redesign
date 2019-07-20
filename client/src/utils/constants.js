@@ -6,6 +6,7 @@ import {
   WhereforeTheHeckArtThou,
 } from 'old/components';
 import { MESSAGES } from './messages';
+import { injectItemKey } from './helpers';
 
 export const SERVER_ADDRESS = `http://localhost:${process.env.REACT_APP_SERVER_PORT}`;
 export const PREVIEW_GAMES = [
@@ -157,4 +158,93 @@ export const GAME_CONTROLS = {
   whereforetheheckartthou: {
     mouse: MESSAGES.WHEREFORE_THE_HECK_ART_THOU_CONTROLS_MOUSE,
   },
+};
+
+export const FORM_CONFIGS = [
+  {
+    type: 'contact',
+    fields: [
+      {
+        value: 'name',
+      },
+      {
+        value: 'email',
+      },
+      {
+        value: 'message',
+      },
+    ].map(injectItemKey),
+  },
+  {
+    type: 'signup',
+    fields: [
+      {
+        value: 'name',
+      },
+      {
+        value: 'email',
+      },
+      {
+        value: 'sex',
+      },
+      {
+        value: 'pic',
+      },
+      {
+        value: 'username',
+      },
+      {
+        value: 'password',
+      },
+      {
+        value: 'repeat',
+      },
+      {
+        value: 'message',
+      },
+    ].map(injectItemKey),
+  },
+  {
+    type: 'signin',
+    fields: [
+      {
+        value: 'username',
+      },
+      {
+        value: 'password',
+      },
+      {
+        value: 'forgot',
+      },
+    ].map(injectItemKey),
+  },
+];
+
+export const DEFAULT_FORM_CONFIG = {
+  type: 'contact',
+  fields: [],
+};
+
+export const FORM_TITLES = {
+  contact: MESSAGES.CONTACT_BUTTON,
+  signup: MESSAGES.SIGN_UP,
+  signin: MESSAGES.SIGN_IN,
+};
+
+export const FIELD_TEXTS = {
+  name: MESSAGES.FORM_NAME,
+  email: MESSAGES.FORM_EMAIL,
+  sex: MESSAGES.FORM_SEX,
+  pic: MESSAGES.FORM_PIC,
+  username: MESSAGES.FORM_USERNAME,
+  password: MESSAGES.FORM_PASSWORD,
+  repeat: MESSAGES.FORM_REPEAT,
+  message: MESSAGES.FORM_MESSAGE,
+  forgot: MESSAGES.FORM_FORGOT,
+};
+
+export const ACTION_BUTTONS_MESSAGES = {
+  contact: MESSAGES.FORM_SUBMIT_CONTACT,
+  signin: MESSAGES.FORM_SUBMIT_SIGNIN,
+  signup: MESSAGES.FORM_SUBMIT_SIGNUP,
 };

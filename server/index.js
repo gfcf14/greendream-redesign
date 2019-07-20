@@ -2,7 +2,8 @@ const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-const mailgun = require("mailgun-js");
+const nodeMailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
 
 const app = express();
 
@@ -13,12 +14,20 @@ const pool = mysql.createPool({
   database: process.env.MYSQL_DATABASE,
 });
 
-const mg = mailgun({
-  apiKey: process.env.MAILGUN_API_KEY,
-  domain: process.env.MAILGUN_DOMAIN,
-});
-
 const admin = `GreenDream Admin <${process.env.ADMIN_EMAIL}>`;
+
+const transporter = nodeMailer.createTransport(smtpTransport({
+  host: 'smtp.mailgun.org',
+  port: 465,
+  from: admin,
+  auth: {
+    user: process.env.ADMIN_EMAIL,
+    pass: process.env.ADMIN_PASSWORD,
+  },
+  tls: { // Fix self-signed certificate error
+    rejectUnauthorized: false,
+  },
+}));
 
 function getSubject(referer) {
   switch(referer) {
@@ -114,14 +123,14 @@ app.get('/increment', (req, res) => {
     if (err) {
       return res.send(err);
     } else {
-      const data = {
+      const emailData = {
         from: admin,
         to: process.env.RECEIVER_EMAIL,
         subject: getSubject('play'),
         text: `Someone has played the app ${getNameByRow(rowName)}`,
       };
 
-      mg.messages().send(data, (error) => {
+      transporter.sendMail(emailData, (error) => {
         try {
           pool.query(`select * from ${tableName} where ${columnName} = '${rowName}'`, (err, results) => {
             if (err) {
@@ -141,18 +150,18 @@ app.get('/increment', (req, res) => {
 app.get('/email', (req, res) => {
   const { referer, email, message } = req.query;
 
-  const data = {
+  const emailData = {
     from: admin,
     to: email,
     subject: getSubject(referer),
     text: message,
   };
 
-  mg.messages().send(data, (error) => {
+  transporter.sendMail(emailData, (error) => {
     try {
       return res.status(200).json({ text: 'success' });
     } catch (e) {
-      return res.send(error);
+      return res.status(500).json({ text: error });
     }
   });
 });

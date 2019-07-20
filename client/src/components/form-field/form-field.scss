@@ -1,0 +1,87 @@
+@import '~styles/_index';
+
+.form-field-rct-component {
+  @include mquery($width-breakpoint-sm) {
+    padding-bottom: 15px;
+  }
+
+  padding-bottom: 20px;
+  width: 100%;
+
+  &__input {
+    @include placeholder-color($grey-darken-sample-1);
+
+    @include mquery($width-breakpoint-sm) {
+      height: 27px;
+    }
+
+    background: $gradient-white-grey-grey-1;
+    border: 0;
+    border-radius: 25px;
+    color: $greendream-dark-green;
+    font-family: $font-roboto;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-normal;
+    height: 36px;
+    padding-left: 36px;
+    width: 100%;
+  }
+
+  &__textarea {
+    @include placeholder-color($grey-darken-sample-1);
+
+    @include mquery($width-breakpoint-sm) {
+      padding: 7px 10px;
+    }
+
+    background: $gradient-white-grey-grey-1;
+    border: 0;
+    border-radius: 25px;
+    color: $greendream-dark-green;
+    font-family: $font-roboto;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-normal;
+    padding: 8px 16px;
+    resize: none;
+    width: 100%;
+
+    &.contact {
+      @include mquery($width-breakpoint-sm) {
+        height: 135px;
+      }
+
+      height: 180px;
+    }
+  }
+
+  &__input-image {
+    @include mquery($width-breakpoint-sm) {
+      height: 14px;
+      margin: 6px 10px;
+      width: 14px;
+    }
+
+    height: 16px;
+    margin: 10px;
+    opacity: 0.5;
+    position: absolute;
+    width: 16px;
+  }
+
+  &__textarea-image {
+    opacity: 0.5;
+    position: absolute;
+
+    &.contact {
+      @include mquery($width-breakpoint-sm) {
+        height: 120px;
+        margin: 15px 0 0 10px;
+        width: 120px;
+      }
+
+      height: 155px;
+      margin: 26px 0 0 17px;
+      width: 155px;
+    }
+  }
+}

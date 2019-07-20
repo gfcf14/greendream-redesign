@@ -52,7 +52,7 @@
     transition: top 0.4s;
     padding: 20px;
     position: absolute;
-    width: 100vw;
+    width: 100%;
     z-index: -1;
 
     &.open {
@@ -60,60 +60,7 @@
     }
 
     &.closed {
-      top: -216px;
-    }
-  }
-
-  .mobile-menu {
-    @include mquery($width-breakpoint-sm) {
-      display: flex;
-      flex-direction: column;
-    }
-
-    background: $gradient-black-green-3;
-    display: none;
-    height: 100vh;
-    margin: 0;
-    transition: right 0.4s;
-    padding: 20px;
-    position: absolute;
-    top: 0;
-    width: 320px;
-    z-index: 1;
-
-    &.open {
-      right: 0;
-    }
-
-    &.closed {
-      right: -320px;
-    }
-
-    .close-button {
-      background: transparent;
-      border: 0;
-      color: $white;
-      cursor: pointer;
-      font: $font-weight-bold 48px $font-orbitron;
-      margin-left: auto;
-
-      &:hover {
-        color: $greendream-green;
-      }
-
-      &:active {
-        color: $green;
-      }
-    }
-
-    .menus-container {
-      margin: 20px 60px 0;
-
-      .main-menu, .account-menu {
-        flex-direction: column;
-        list-style-type: none;
-        margin: 0;
-      }
+      top: -280px;
     }
   }
 }

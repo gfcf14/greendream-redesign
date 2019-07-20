@@ -1,17 +1,17 @@
 @import '~styles/_index';
 
 .modal-background-rct-component {
-  @include mquery($width-breakpoint-sm) {
-    z-index: 0;
-  }
-
   background: background-with-opacity($black, 0.75);
   height: 100vh;
   left: 0;
   position: absolute;
   top: 0;
   width: 100vw;
-  z-index: -2;
+  z-index: 0;
+
+  &.modal {
+    z-index: 99;
+  }
 
   &.hidden {
     display: none;

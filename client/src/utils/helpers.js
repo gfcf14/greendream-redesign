@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import axios from 'axios';
 import shortid from 'shortid';
+import { css } from 'styled-components';
+import { MenuItem } from 'components';
 import {
   chooseForMeLogo,
   chordPlayerLogo,
@@ -11,6 +13,9 @@ import {
   employmentAssistantLogo,
   FacebookLogo,
   FanfictionLogo,
+  formEmailIcon,
+  formNameIcon,
+  formTextIcon,
   GithubLogo,
   HTML5WhiteLogo,
   JavaWhiteLogo,
@@ -33,10 +38,47 @@ import {
   whereforeTheHeckArtThouLogo,
   YoutubeLogo,
 } from 'images';
+import dimensions from 'styles/_mixins.scss';
 import { SERVER_ADDRESS } from './constants';
+import { MESSAGES } from './messages';
+import { MENU_ROUTES } from './routes';
+
+export const FLUID_DIM = (property, min, max) => css`
+  ${property}: calc(${min}px + (${max} - ${min}) * ((${dimensions.maxViewportWidth} - ${dimensions.minWindowWidth}) / 1006));
+`;
 
 export function injectItemKey(itemObject) {
   return { ...itemObject, key: shortid.generate() };
+}
+
+export function renderMenuItems(menuType, modal, toggleModal) {
+  return MENU_ROUTES.map((route, i, arr) => {
+    const { name, path } = route;
+
+    const menuItemProps = {
+      itemName: name,
+      itemPath: path,
+      itemType: menuType,
+    };
+
+    if (i === arr.length - 1 && menuType !== 'desktop') {
+      const lastMenuItemProps = {
+        itemName: MESSAGES.CONTACT_BUTTON,
+        itemType: menuType,
+        modal,
+        toggleModal,
+      };
+
+      return (
+        <Fragment key={route.key}>
+          <MenuItem key={route.key} {...menuItemProps} />
+          <MenuItem key={shortid.generate()} {...lastMenuItemProps} />
+        </Fragment>
+      );
+    }
+
+    return <MenuItem key={route.key} {...menuItemProps} />;
+  });
 }
 
 export function sendMail(referer, email, message) {
@@ -116,6 +158,9 @@ export function getImageSource(identifier) {
     case 'DeviantArt': {
       return DeviantArtLogo;
     }
+    case 'email': {
+      return formEmailIcon;
+    }
     case 'employmentassistant': {
       return employmentAssistantLogo;
     }
@@ -140,6 +185,9 @@ export function getImageSource(identifier) {
     case 'keyboard': {
       return keyboardIcon;
     }
+    case 'message': {
+      return formTextIcon;
+    }
     case 'me-cracked': {
       return meCrackedCartoon;
     }
@@ -154,6 +202,9 @@ export function getImageSource(identifier) {
     }
     case 'mouse': {
       return mouseIcon;
+    }
+    case 'name': {
+      return formNameIcon;
     }
     case 'oruga': {
       return orugaLogo;
