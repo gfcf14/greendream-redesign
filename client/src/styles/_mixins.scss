@@ -132,3 +132,25 @@ $max-viewport-width: 100vw;
 @function background-with-opacity($color, $opacity) {
   @return rgba($color, $opacity);
 }
+
+/// Changes the color of a placeholder
+/// @access public
+/// @param {String} $color - Color in Hex value
+/// @example scss - Usage
+///   .foo {
+///     @include placeholder-color(#00b456);
+///   }
+@mixin placeholder-color($color) {
+  &::-webkit-input-placeholder { /* WebKit browsers */
+      color: $color;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: $color;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: $color;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+      color: $color;
+  }
+}

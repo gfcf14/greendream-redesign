@@ -15,8 +15,14 @@ const ABOUT_MESSAGES = [
     rowMainContent: MESSAGES.ABOUT_PARAGRAPH_2,
     rowPicture: 'me-hi',
     pictureDimensions: {
-      maxWidth: 80,
-      minWidth: 60,
+      height: {
+        min: 166,
+        max: 221,
+      },
+      width: {
+        min: 60,
+        max: 80,
+      },
     },
   },
   {
@@ -32,8 +38,14 @@ const ABOUT_MESSAGES = [
     rowMainContent: MESSAGES.ABOUT_PARAGRAPH_6,
     rowPicture: 'me-cracked',
     pictureDimensions: {
-      maxWidth: 150,
-      minWidth: 125,
+      height: {
+        min: 103,
+        max: 124,
+      },
+      width: {
+        min: 125,
+        max: 150,
+      },
     },
     rowOrder: 'reverse',
   },
@@ -44,8 +56,14 @@ const ABOUT_MESSAGES = [
     rowMainContent: <SitesTable />,
     rowPicture: 'me-proud',
     pictureDimensions: {
-      maxWidth: 175,
-      minWidth: 90,
+      height: {
+        min: 114,
+        max: 221,
+      },
+      width: {
+        min: 90,
+        max: 175,
+      },
     },
   },
   {

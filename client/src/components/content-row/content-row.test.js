@@ -7,9 +7,16 @@ describe('ContentRow Component Unit Test', () => {
     rowMainContent: MESSAGES.ABOUT_PARAGRAPH_2,
     rowPicture: 'me-hi',
     pictureDimensions: {
-      maxWidth: 80,
-      minWidth: 60,
+      height: {
+        min: 166,
+        max: 221,
+      },
+      width: {
+        min: 60,
+        max: 80,
+      },
     },
+    isDesktop: true,
   };
 
   const wrapper = mountWithIntl(

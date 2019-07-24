@@ -1,0 +1,22 @@
+@import '~styles/_index';
+
+.form-button-rct-component {
+  width: 100%;
+
+  &__action-button {
+    @include mquery($width-breakpoint-sm) {
+      height: 27px;
+      padding-bottom: 15px;
+    }
+
+    background: $grey-darken-sample-2;
+    border: 0;
+    border-radius: 25px;
+    color: $white;
+    font-family: $font-roboto;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    height: 36px;
+    width: 100%;
+  }
+}

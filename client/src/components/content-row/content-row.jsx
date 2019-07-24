@@ -1,31 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import classNames from 'classnames';
 import { Flex } from 'rebass';
-import dimensions from 'styles/_mixins.scss';
-import { getImageSource } from 'utils/helpers';
+import { getImageSource, FLUID_DIM } from 'utils/helpers';
 import './content-row.scss';
 
-const FLUID_WIDTH = (minWidth, maxWidth) => css`
-  width: calc(${minWidth}px + (${maxWidth} - ${minWidth}) * ((${dimensions.maxViewportWidth} - ${dimensions.minWindowWidth}) / 1006));
-`;
-
 const SiteImage = styled.img`
-  ${props => FLUID_WIDTH(props.minWidth, props.maxWidth)};
+  ${props => FLUID_DIM('width', props['width'].min, props['width'].max)};
+  ${props => FLUID_DIM('height', props['height'].min, props['height'].max)};
 `;
 
-function renderMainContent(rowMainContent, rowOrder) {
-  return rowMainContent.type === undefined ? (
-    <p
-      className={classNames(
-        'content-row-rct-component__row-text',
-        rowOrder,
-      )}
-    >
-      {rowMainContent}
-    </p>
-  ) : rowMainContent;
+const RowWithImage = styled.p`
+  width: calc(100% - ${props => (props.isDesktop ? '60' : '30')}px - ${props => `${props['width'].min}px + (${props['width'].max} - ${props['width'].min}) * ((100vw - 360px) / 1006)`});
+`;
+
+function renderMainContent(isDesktop, props) {
+  const {
+    rowMainContent,
+    rowOrder,
+    rowPicture,
+    pictureDimensions,
+  } = props;
+
+  if (rowMainContent.type === undefined) {
+    return rowPicture ? (
+      <RowWithImage
+        className={classNames(
+          'content-row-rct-component__row-text',
+          rowOrder,
+        )}
+        {...pictureDimensions}
+        isDesktop={isDesktop}
+      >
+        {rowMainContent}
+      </RowWithImage>
+    ) : (
+      <p
+        className={classNames(
+          'content-row-rct-component__row-text',
+          rowOrder,
+        )}
+      >
+        {rowMainContent}
+      </p>
+    );
+  }
+
+  return rowMainContent;
 }
 
 function renderPicture(rowPicture, pictureDimensions, rowOrder) {
@@ -53,7 +75,15 @@ export function ContentRow(props) {
     pictureDimensions,
     rowOrder,
     lastRow,
+    isDesktop,
   } = props;
+
+  const mainContentProps = {
+    rowMainContent,
+    rowOrder,
+    rowPicture,
+    pictureDimensions,
+  };
 
   return (
     <Flex
@@ -65,7 +95,7 @@ export function ContentRow(props) {
       )}
     >
       {renderPicture(rowPicture, pictureDimensions, rowOrder)}
-      {renderMainContent(rowMainContent, rowOrder)}
+      {renderMainContent(isDesktop, mainContentProps)}
     </Flex>
   );
 }
@@ -74,18 +104,31 @@ ContentRow.propTypes = {
   rowMainContent: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
   rowPicture: PropTypes.string,
   pictureDimensions: PropTypes.shape({
-    maxWidth: PropTypes.number,
-    minWidth: PropTypes.number,
+    height: PropTypes.shape({
+      min: PropTypes.number,
+      max: PropTypes.number,
+    }),
+    width: PropTypes.shape({
+      min: PropTypes.number,
+      max: PropTypes.number,
+    }),
   }),
   rowOrder: PropTypes.oneOf(['normal', 'reverse']),
   lastRow: PropTypes.bool,
+  isDesktop: PropTypes.bool.isRequired,
 };
 
 ContentRow.defaultProps = {
   rowPicture: '',
   pictureDimensions: {
-    maxWidth: 0,
-    minWidth: 0,
+    height: {
+      min: 0,
+      max: 0,
+    },
+    width: {
+      min: 0,
+      max: 0,
+    },
   },
   rowOrder: 'normal',
   lastRow: false,

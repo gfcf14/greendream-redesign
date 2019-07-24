@@ -25,6 +25,10 @@ export {
 } from './games-logos';
 
 export {
+  formEmailIcon,
+  formNameIcon,
+  formPasswordlIcon,
+  formTextIcon,
   keyboardIcon,
   mouseIcon,
   profileIcon,

@@ -1,7 +1,11 @@
+export { default as formEmailIcon } from './form-email.svg';
+export { default as formNameIcon } from './form-name.svg';
+export { default as formPasswordlIcon } from './form-password.svg';
+export { default as formTextIcon } from './form-text.svg';
 export { default as keyboardIcon } from './keyboard.svg';
 export { default as mouseIcon } from './mouse.svg';
-export { default as profileIcon } from './profile-icon.svg';
-export { default as sandwhichIcon } from './sandwhich-icon.svg';
-export { default as signInIcon } from './sign-in-icon.svg';
-export { default as signOutIcon } from './sign-out-icon.svg';
-export { default as signUpIcon } from './sign-up-icon.svg';
+export { default as profileIcon } from './profile.svg';
+export { default as sandwhichIcon } from './sandwhich.svg';
+export { default as signInIcon } from './sign-in.svg';
+export { default as signOutIcon } from './sign-out.svg';
+export { default as signUpIcon } from './sign-up.svg';
