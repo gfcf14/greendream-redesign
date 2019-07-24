@@ -4,6 +4,7 @@ import { FormButton } from 'components';
 describe('FormButton Component Unit Test', () => {
   const formButtonProps = {
     buttonText: 'sample',
+    isSubmit: true,
   };
 
   const wrapper = mountWithIntl(

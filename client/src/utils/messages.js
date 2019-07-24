@@ -24,7 +24,7 @@ export const MESSAGES = {
   EMPLOYMENT_ASSISTANT_LIMITATIONS: 'This is not a general job application submission form. You must apply online and input the necessary job application once done.',
   EMPLOYMENT_ASSISTANT_PURPOSE: 'To keep a listing of online job applications and notify upon their expiration.',
   EMPLOYMENT_ASSISTANT_REQUIREMENTS: 'Java Runtime Environment',
-  FORM_ABOUT: 'about yourself',
+  FORM_ABOUT: 'about yourself...',
   FORM_DEFAULT: 'Use a default image for now',
   FORM_EMAIL: 'Your Email',
   FORM_FORGOT: 'Forgot your email/password?',

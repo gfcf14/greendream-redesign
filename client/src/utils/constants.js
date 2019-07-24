@@ -248,3 +248,14 @@ export const ACTION_BUTTONS_MESSAGES = {
   signin: MESSAGES.FORM_SUBMIT_SIGNIN,
   signup: MESSAGES.FORM_SUBMIT_SIGNUP,
 };
+
+export const RADIO_BUTTON_CONFIGS = {
+  female: {
+    text: MESSAGES.FORM_SEX_FEMALE,
+    value: 'f',
+  },
+  male: {
+    text: MESSAGES.FORM_SEX_MALE,
+    value: 'm',
+  },
+};

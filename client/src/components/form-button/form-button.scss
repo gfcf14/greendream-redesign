@@ -6,10 +6,8 @@
   &__action-button {
     @include mquery($width-breakpoint-sm) {
       height: 27px;
-      padding-bottom: 15px;
     }
 
-    background: $grey-darken-sample-2;
     border: 0;
     border-radius: 25px;
     color: $white;
@@ -17,6 +15,27 @@
     font-size: $font-size-sm;
     font-weight: $font-weight-bold;
     height: 36px;
+    width: 100%;
+
+    &.pic {
+      background: $green-lighten-sample-1;
+      cursor: pointer;
+    }
+
+    &.submit {
+      background: $grey-darken-sample-2;
+    }
+  }
+
+  &.pic {
+    @include mquery($width-breakpoint-sm) {
+      width: calc(100% - 15px);
+    }
+
+    width: calc(100% - 20px);
+  }
+
+  &.submit {
     width: 100%;
   }
 }

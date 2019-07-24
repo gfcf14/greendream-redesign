@@ -1,0 +1,39 @@
+@import '~styles/_index';
+
+.form-radio-rct-component {
+  input[type=radio] {
+    -webkit-appearance:none;
+    background: $white;
+    border: 1px solid $greendream-black-green;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 0 $grey-lighten-1 inset;
+    height: 15px;
+    outline: none;
+    width: 15px;
+  }
+
+  input[type=radio]:hover {
+    box-shadow:0 0 5px 0px $greendream-green inset;
+  }
+
+  input[type=radio]:before {
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 55%;
+    margin: 20% auto;
+    width: 60%;
+  }
+
+  input[type=radio]:checked:before {
+    background: $green-lighten-sample-1;
+  }
+
+  &__text {
+    color: $white;
+    font-family: $font-roboto;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    margin-left: 5px;
+  }
+}

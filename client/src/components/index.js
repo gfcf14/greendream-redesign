@@ -5,6 +5,7 @@ export { ContactButton } from './contact-button/contact-button';
 export { ContentRow } from './content-row/content-row';
 export { FormButton } from './form-button/form-button';
 export { FormField } from './form-field/form-field';
+export { FormRadio } from './form-radio/form-radio';
 export { GameControls } from './game-controls/game-controls';
 export { HeaderCell } from './header-cell/header-cell';
 export { HomePage } from './home-page/home-page';

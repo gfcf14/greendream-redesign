@@ -44,7 +44,12 @@ function renderInstructionsText(type) {
 }
 
 function renderActionButton(type) {
-  return <FormButton buttonText={ACTION_BUTTONS_MESSAGES[`${type}`]} />;
+  const formButtonProps = {
+    buttonText: ACTION_BUTTONS_MESSAGES[`${type}`],
+    isSubmit: true,
+  };
+
+  return <FormButton {...formButtonProps} />;
 }
 
 export function ModalForm({ config, modal, fadeOut }) {
