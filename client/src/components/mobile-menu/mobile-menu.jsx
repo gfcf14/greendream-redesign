@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Flex } from 'rebass';
 import classNames from 'classnames';
@@ -7,6 +7,8 @@ import { renderMenuItems } from 'utils/helpers';
 import { ACCOUNT_ROUTES } from 'utils/routes';
 import './mobile-menu.scss';
 import { MESSAGES } from 'utils/messages';
+
+let mobileMenu = '';
 
 function renderAccountItems(modal, toggleModal) {
   return ACCOUNT_ROUTES.map((route) => {
@@ -21,17 +23,40 @@ function renderAccountItems(modal, toggleModal) {
   });
 }
 
+function hideIfOut() {
+  const shouldHide = mobileMenu.className.includes('close');
+
+  if (shouldHide) {
+    mobileMenu.classList.add('should-hide');
+  }
+}
+
 export function MobileMenu({
   menu,
   toggleMenu,
   modal,
   toggleModal,
 }) {
+  useEffect(() => {
+    mobileMenu = document.querySelector('div.mobile-menu-rct-component');
+    if (mobileMenu) {
+      mobileMenu.classList.add('should-hide');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (menu && mobileMenu) {
+      mobileMenu.classList.remove('should-hide');
+    }
+  }, [menu]);
+
   return (
-    <Box className={classNames(
-      'mobile-menu-rct-component',
-      menu ? 'open' : 'closed',
-    )}
+    <Box
+      className={classNames(
+        'mobile-menu-rct-component',
+        menu ? 'open' : 'closed',
+      )}
+      onTransitionEnd={() => hideIfOut()}
     >
       <button className="close-button" onClick={() => toggleMenu(!menu)} tabIndex="0">X</button>
       <Box className="menu-container">
