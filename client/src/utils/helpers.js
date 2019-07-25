@@ -15,6 +15,7 @@ import {
   FanfictionLogo,
   formEmailIcon,
   formNameIcon,
+  formPasswordlIcon,
   formTextIcon,
   GithubLogo,
   HTML5WhiteLogo,
@@ -203,11 +204,16 @@ export function getImageSource(identifier) {
     case 'mouse': {
       return mouseIcon;
     }
-    case 'name': {
+    case 'name':
+    case 'username': {
       return formNameIcon;
     }
     case 'oruga': {
       return orugaLogo;
+    }
+    case 'password':
+    case 'repeat': {
+      return formPasswordlIcon;
     }
     case 'racemaster': {
       return raceMasterLogo;
