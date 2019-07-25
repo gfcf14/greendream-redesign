@@ -130,4 +130,13 @@
     margin-left: 20px;
     width: 36px;
   }
+
+  &__external-link {
+    color: $white;
+    font-family: $font-roboto;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    margin: 0 auto;
+    text-decoration: underline;
+  }
 }

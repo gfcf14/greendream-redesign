@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import classNames from 'classnames';
-import { Flex, Image } from 'rebass';
+import { Flex, Image, Link } from 'rebass';
 import { FormButton, FormRadio } from 'components';
 import { FIELD_TEXTS, RADIO_BUTTON_CONFIGS } from 'utils/constants';
 import { getImageSource } from 'utils/helpers';
@@ -10,6 +10,8 @@ import { MESSAGES } from 'utils/messages';
 import './form-field.scss';
 
 function renderInput(value) {
+  const isPassword = ['password', 'repeat'].includes(value);
+
   return (
     <Fragment>
       <Image
@@ -20,6 +22,7 @@ function renderInput(value) {
       <input
         className="form-field-rct-component__input"
         placeholder={FIELD_TEXTS[`${value}`]}
+        type={isPassword ? 'password' : 'text'}
       />
     </Fragment>
   );
@@ -84,6 +87,16 @@ function renderProfileButtonArea() {
   );
 }
 
+/* eslint-disable jsx-a11y/anchor-is-valid */
+function renderExternalLink(value) {
+  return (
+    <Link className="form-field-rct-component__external-link" href="#">
+      {FIELD_TEXTS[`${value}`]}
+    </Link>
+  );
+}
+/* eslint-enable jsx-a11y/anchor-is-valid */
+
 function renderFieldByValue(type, value) {
   switch (value) {
     case 'name':
@@ -101,6 +114,9 @@ function renderFieldByValue(type, value) {
     }
     case 'pic': {
       return renderProfileButtonArea();
+    }
+    case 'forgot': {
+      return renderExternalLink(value);
     }
     default: {
       return null;
