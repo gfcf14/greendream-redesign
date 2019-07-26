@@ -7,6 +7,16 @@ import { renderMenuItems } from 'utils/helpers';
 import { sandwhichIcon } from 'images';
 import './menu.scss';
 
+function showMobileFirst(toggleMenu, menu) {
+  const mobileMenu = document.querySelector('.mobile-menu-rct-component');
+  if (mobileMenu) {
+    mobileMenu.classList.remove('should-hide');
+    setTimeout(() => {
+      toggleMenu(!menu);
+    }, 20);
+  }
+}
+
 export function Menu({
   menu,
   toggleMenu,
@@ -40,7 +50,7 @@ export function Menu({
         src={sandwhichIcon}
         className="sandwhich-icon"
         alt="sandwhich-icon"
-        onClick={() => toggleMenu(!menu)}
+        onClick={() => showMobileFirst(toggleMenu, menu)}
       />
       <div className="division" />
       <MenuButton {...leftButtonProps} />

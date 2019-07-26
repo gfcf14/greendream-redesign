@@ -23,10 +23,8 @@ function renderAccountItems(modal, toggleModal) {
   });
 }
 
-function hideIfOut() {
-  const shouldHide = mobileMenu.className.includes('close');
-
-  if (shouldHide) {
+function hideIfOut(menu) {
+  if (!menu) {
     mobileMenu.classList.add('should-hide');
   }
 }
@@ -38,17 +36,11 @@ export function MobileMenu({
   toggleModal,
 }) {
   useEffect(() => {
-    mobileMenu = document.querySelector('div.mobile-menu-rct-component');
+    mobileMenu = document.querySelector('.mobile-menu-rct-component');
     if (mobileMenu) {
       mobileMenu.classList.add('should-hide');
     }
   }, []);
-
-  useEffect(() => {
-    if (menu && mobileMenu) {
-      mobileMenu.classList.remove('should-hide');
-    }
-  }, [menu]);
 
   return (
     <Box
@@ -56,7 +48,7 @@ export function MobileMenu({
         'mobile-menu-rct-component',
         menu ? 'open' : 'closed',
       )}
-      onTransitionEnd={() => hideIfOut()}
+      onTransitionEnd={() => hideIfOut(menu)}
     >
       <button className="close-button" onClick={() => toggleMenu(!menu)} tabIndex="0">X</button>
       <Box className="menu-container">
