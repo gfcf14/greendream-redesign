@@ -52,7 +52,12 @@ function renderActionButton(type) {
   return <FormButton {...formButtonProps} />;
 }
 
-export function ModalForm({ config, modal, fadeOut }) {
+export function ModalForm({
+  config,
+  modal,
+  fadeOut,
+  isBigger,
+}) {
   const { type } = config;
 
   return (
@@ -61,6 +66,7 @@ export function ModalForm({ config, modal, fadeOut }) {
       className={classNames(
         'modal-form-rct-component',
         modal >= 0 ? 'modal' : '',
+        isBigger && type === 'signup' ? 'bigger' : '',
       )}
     >
       <Flex className="modal-form-rct-component__title-bar">
@@ -87,5 +93,6 @@ ModalForm.propTypes = {
   }).isRequired,
   modal: PropTypes.number.isRequired,
   fadeOut: PropTypes.func.isRequired,
+  isBigger: PropTypes.bool.isRequired,
 };
 
