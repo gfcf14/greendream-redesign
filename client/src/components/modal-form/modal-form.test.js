@@ -7,6 +7,7 @@ describe('ModalForm Component Unit Test', () => {
     config: DEFAULT_FORM_CONFIG,
     modal: -1,
     fadeOut: jest.fn(),
+    isBigger: false,
   };
 
   const wrapper = mountWithIntl(

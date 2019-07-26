@@ -6,12 +6,13 @@ import { Menu, MobileMenu, ModalForm } from 'components';
 import { ModalBackground } from 'containers';
 import { logoImage } from 'images';
 import breakpoints from 'styles/_layout.scss';
-import { DEFAULT_FORM_CONFIG, FORM_CONFIGS } from 'utils/constants';
+import { DEFAULT_FORM_CONFIG, FORM_CONFIGS, SIGN_UP_FORM_HEIGHT_MOBILE } from 'utils/constants';
 import './main-landing.scss';
 
 export function MainLanding({ contentComponent }) {
   const [menu, setMenu] = useState(false);
   const [modal, setModal] = useState(-1);
+  const [isBigger, setBigger] = useState(false);
   useEffect(() => {
     const resetMenu = () => {
       if (window.innerWidth >= parseInt(breakpoints.md, 10) && menu) {
@@ -19,8 +20,12 @@ export function MainLanding({ contentComponent }) {
       }
     };
 
+    if (window.innerHeight < SIGN_UP_FORM_HEIGHT_MOBILE) {
+      setBigger(true);
+    }
+
     window.addEventListener('resize', resetMenu);
-  });
+  }, [menu]);
 
   function toggleMenu(showMenu) {
     setMenu(showMenu);
@@ -50,6 +55,7 @@ export function MainLanding({ contentComponent }) {
     config: modal >= 0 ? FORM_CONFIGS[modal] : DEFAULT_FORM_CONFIG,
     modal,
     fadeOut,
+    isBigger,
   };
 
   return (
@@ -75,6 +81,7 @@ export function MainLanding({ contentComponent }) {
       <MobileMenu {...menuProps} />
       {contentComponent}
       <ModalBackground
+        isBigger={isBigger}
         isModal={modal >= 0 ? 'modal' : ''}
         isVisible={menu || modal >= 0 ? 'visible' : 'hidden'}
         onClick={() => fadeOut()}

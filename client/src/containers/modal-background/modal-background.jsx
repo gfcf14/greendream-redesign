@@ -5,7 +5,12 @@ import { Box } from 'rebass';
 import './modal-background.scss';
 
 export function ModalBackground(props) {
-  const { isModal, isVisible, ...otherProps } = props;
+  const {
+    isBigger,
+    isModal,
+    isVisible,
+    onClick,
+  } = props;
 
   return (
     <Box
@@ -14,13 +19,15 @@ export function ModalBackground(props) {
         'modal-background-rct-component',
         isModal,
         isVisible,
+        isBigger ? 'bigger' : '',
       )}
-      {...otherProps}
+      onClick={onClick}
     />
   );
 }
 
 ModalBackground.propTypes = {
+  isBigger: PropTypes.bool.isRequired,
   isModal: PropTypes.oneOf(['modal', '']).isRequired,
   isVisible: PropTypes.oneOf(['hidden', 'visible']).isRequired,
   onClick: PropTypes.func.isRequired,

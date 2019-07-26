@@ -259,3 +259,5 @@ export const RADIO_BUTTON_CONFIGS = {
     value: 'm',
   },
 };
+
+export const SIGN_UP_FORM_HEIGHT_MOBILE = 548;

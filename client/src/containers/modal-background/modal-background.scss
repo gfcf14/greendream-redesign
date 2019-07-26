@@ -9,6 +9,10 @@
   width: 100vw;
   z-index: 0;
 
+  &.bigger {
+    height: 608px;
+  }
+
   &.modal {
     z-index: 99;
   }
