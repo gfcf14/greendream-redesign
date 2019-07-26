@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router';
 import { AppPreview, HomePage, NotFound } from 'components';
 import { MainLanding, PageContainer } from 'containers';
 import { OLD_APPS, PREVIEW_GAMES, PREVIEW_PROGRAMS } from 'utils/constants';
-import { injectItemKey } from 'utils/helpers';
+import { capitalizeFromLower, injectItemKey } from 'utils/helpers';
 import { MENU_ROUTES } from 'utils/routes';
 
 function renderOldAppRoutes() {
@@ -28,7 +28,7 @@ function renderPreviewRoutes(startingPath, appArray) {
     const { path, title, key } = app;
 
     let tableName = startingPath.substring(1, startingPath.length - 1);
-    tableName = tableName.charAt(0).toUpperCase() + tableName.slice(1);
+    tableName = capitalizeFromLower(tableName);
 
     const appPreviewProps = {
       rowName: path,

@@ -9,21 +9,27 @@
     width: 80%;
   }
 
-  display: none;
   flex-direction: column;
   left: 50%;
+  opacity: 0;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+  transition: opacity 0.35s;
   width: 33%;
   z-index: 100;
 
   &.modal {
     display: flex;
+    opacity: 1;
   }
 
   &.bigger {
-    transform: translate(-50%, calc(-50% + 49px));
+    transform: translate(-50%, calc(-50% + 90px));
+  }
+
+  &.should-hide {
+    display: none;
   }
 
   &__title-bar {
@@ -73,19 +79,50 @@
   }
 
   &__field-container {
-    @include mquery($width-breakpoint-sm) {
-      padding: 15px;
-    }
-
     background: $gradient-black-green-4;
     border: 3px solid $greendream-dark-green;
     border-radius: 0 0 $fluid-dim-2xs $fluid-dim-2xs;
     border-top: 0;
     flex-direction: column;
     min-height: $fluid-dim-xs;
-    padding: 20px;
 
     .form-instructions {
+      @include mquery($width-breakpoint-sm) {
+        padding: 15px;
+      }
+
+      color: $white;
+      font-family: $font-roboto;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-bold;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .error-area {
+      @include mquery($width-breakpoint-sm) {
+        padding: 15px;
+      }
+
+      padding: 20px;
+      width: 100%;
+
+      &.error {
+        background: $red-lighten-2;
+      }
+
+      .error-text {
+        color: $white;
+        font-family: $font-roboto;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+        height: $fluid-dim-sample4;
+        margin: 0 auto;
+      }
+    }
+
+    .external-link {
       @include mquery($width-breakpoint-sm) {
         margin: 0 auto 15px;
       }
@@ -95,7 +132,7 @@
       font-size: $font-size-sm;
       font-weight: $font-weight-bold;
       margin: 0 auto 20px;
-      text-align: center;
+      text-decoration: underline;
     }
   }
 }

@@ -213,9 +213,6 @@ export const FORM_CONFIGS = [
       {
         value: 'password',
       },
-      {
-        value: 'forgot',
-      },
     ].map(injectItemKey),
   },
 ];
@@ -240,7 +237,6 @@ export const FIELD_TEXTS = {
   password: MESSAGES.FORM_PASSWORD,
   repeat: MESSAGES.FORM_REPEAT,
   message: MESSAGES.FORM_MESSAGE,
-  forgot: MESSAGES.FORM_FORGOT,
 };
 
 export const ACTION_BUTTONS_MESSAGES = {
@@ -260,4 +256,24 @@ export const RADIO_BUTTON_CONFIGS = {
   },
 };
 
-export const SIGN_UP_FORM_HEIGHT_MOBILE = 548;
+export const SIGN_UP_FORM_HEIGHT_MOBILE = 613;
+
+// export const FORM_ERROR_INDICES = {
+//   contact: [0, 1, 7],
+//   signup: [0, 1, 2, 3, 4, 5, 6, 7],
+//   signin: [4, 5],
+// };
+
+export const FORM_ERROR_MESSAGES = {
+  name: MESSAGES.FORM_ERROR_REQUIRED,
+  email: MESSAGES.FORM_ERROR_EMAIL,
+  pic: MESSAGES.FORM_ERROR_IMAGE_1,
+  password: MESSAGES.FORM_ERROR_PASSWORD,
+  repeat: MESSAGES.FORM_ERROR_PASSWORD,
+  message: MESSAGES.FORM_ERROR_MESSAGE,
+  username: MESSAGES.FORM_ERROR_SIGNIN,
+};
+
+export const EMAIL_REGEX = new RegExp('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`' +
+                                      '{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]' +
+                                      '(?:[a-z0-9-]*[a-z0-9])?');

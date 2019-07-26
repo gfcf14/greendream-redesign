@@ -4,8 +4,12 @@ import { FIELD_TEXTS } from 'utils/constants';
 
 describe('FormField Component Unit Test', () => {
   const formFieldProps = {
-    type: 'contact',
-    value: 'name',
+    formType: 'contact',
+    fieldType: 'name',
+    value: '',
+    error: false,
+    onChange: jest.fn(),
+    onBlur: jest.fn(),
   };
 
   const wrapper = mountWithIntl(
@@ -22,7 +26,17 @@ describe('FormField Component Unit Test', () => {
   });
 
   it('checks that the correct placeholder text is rendered', () => {
-    expect(wrapper.find('input').props().placeholder).toEqual(FIELD_TEXTS[`${formFieldProps.value}`]);
+    expect(wrapper.find('input').props().placeholder).toEqual(FIELD_TEXTS[`${formFieldProps.fieldType}`]);
+  });
+
+  it('checks that the onChange function is called correctly', () => {
+    wrapper.find('input').simulate('change', { target: { value: 'test' } });
+    expect(formFieldProps.onChange).toHaveBeenCalled();
+  });
+
+  it('checks that the onBlur function is called correctly', () => {
+    wrapper.find('input').simulate('blur');
+    expect(formFieldProps.onBlur).toHaveBeenCalled();
   });
 });
 

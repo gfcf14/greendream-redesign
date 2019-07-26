@@ -1,3 +1,5 @@
+export const MIN_MESSAGE_LENGTH = 15;
+
 export const MESSAGES = {
   ABOUT_PARAGRAPH_1: 'Welcome to my site! I have created it to be able to display my own programs and games, as well as to be able to provide with tutorials for the programming languages I know. I hope you like what you see! Hopefully my programs can allow you to become interested in the world of software development as well as web design, and that we may come to share this same passion on creating.',
   ABOUT_PARAGRAPH_2: 'Note that the difference between programs and games here is that the former refers to an application that would be used for productive means, while the latter is meant to be used for entertainment. Some of the programs and games you will find here (namely, the first ones) are meant to be downloaded as they were built in an environment not compatible with online browsers. These will either be updated or more elaborate programs similar to them will be released. Because most of these downloadable programs are made in either a .JAR or .EXE format, your browser might warn you about security issues upon download.',
@@ -27,6 +29,14 @@ export const MESSAGES = {
   FORM_ABOUT: 'about yourself...',
   FORM_DEFAULT: 'Use a default image for now',
   FORM_EMAIL: 'Your Email',
+  FORM_ERROR_EMAIL: 'Email format must be john@example.com',
+  FORM_ERROR_IMAGE_1: 'Wrong image size',
+  FORM_ERROR_IMAGE_2: 'Wrong file format',
+  FORM_ERROR_MESSAGE: `Write at least ${MIN_MESSAGE_LENGTH} characters`,
+  FORM_ERROR_USERNAME: 'Username is taken',
+  FORM_ERROR_PASSWORD: `Passwords don't match`,
+  FORM_ERROR_REQUIRED: 'is required',
+  FORM_ERROR_SIGNIN: 'Invalid credentials',
   FORM_FORGOT: 'Forgot your email/password?',
   FORM_INSTRUCTIONS: 'Please fill out all the fields.',
   FORM_COMPLETION: 'A confirmation email will be sent upon finish.',
@@ -73,6 +83,8 @@ export const MESSAGES = {
   SMS_SENDER_LIMITATIONS: `This program depends on SMS gateways, which are different for every phone carrier. Users must know their destination's phone carrier to send messages. Because of its simplicity, this program cannot bypass secured connections. (such as those of a University)`,
   SMS_SENDER_PURPOSE: 'To send SMS messages without wasting prepaid phone minutes/points.',
   SMS_SENDER_REQUIREMENTS: 'Visual C++ Redistributable Package;.NET Framework 4',
+  STATS_CONTACT_ERROR: 'ERROR: COULD NOT SEND MESSAGE',
+  STATS_CONTACT_SUCCESS: 'MESSAGE WAS SENT SUCCESSFULLY',
   TROUBLESHOOTER: 'This game was created as a practice to master the concepts of scrolling, jumping, and to a lesser extent looping music. This game was made in Java and while it is similar to games like Boulder Dash or Rockford, no intention of copy was intended on its creation.',
   TROUBLESHOOTER_CONTROLS_KEYBOARD: 'LEFT,RIGHT / A,D = Move;UP / W = Jump',
   TROUBLESHOOTER_CONTROLS_MOUSE: 'LEFT CLICK = Push buttons',
