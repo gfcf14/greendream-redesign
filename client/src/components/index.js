@@ -23,6 +23,7 @@ export { PageTitle } from './page-title/page-title';
 export { PlaysSpan } from './plays-span/plays-span';
 export { ProgramSpecs } from './program-specs/program-specs';
 export { SitesTable } from './sites-table/sites-table';
+export { StatsBar } from './stats-bar/stats-bar';
 export { TableCell } from './table-cell/table-cell';
 export { TutorialsPage } from './tutorials-page/tutorials-page';
 export { TutorialsTable } from './tutorials-table/tutorials-table';

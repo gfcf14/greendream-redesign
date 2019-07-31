@@ -31,11 +31,14 @@ const transporter = nodeMailer.createTransport(smtpTransport({
 
 function getSubject(referer) {
   switch(referer) {
-    case 'typingtest': {
-      return 'GreenDream: Your TypingTest results';
+    case 'contact': {
+      return 'GreenDream: New Contact message';
     }
     case 'play': {
       return 'GreenDream: New App Play';
+    }
+    case 'typingtest': {
+      return 'GreenDream: Your TypingTest results';
     }
     default: {
       return 'No referer';
@@ -150,11 +153,21 @@ app.get('/increment', (req, res) => {
 app.get('/email', (req, res) => {
   const { referer, email, message } = req.query;
 
+  let messageBody = message;
+
+  if (referer === 'contact') {
+    const { contactName, contactEmail, contactMessage } = JSON.parse(message);
+
+    messageBody = `New message received from ${contactName}:\n\n` +
+                  `${contactMessage}\n\n` +
+                  `Reply to them at ${contactEmail}`;
+  }
+
   const emailData = {
     from: admin,
-    to: email,
+    to: email ? email : process.env.RECEIVER_EMAIL,
     subject: getSubject(referer),
-    text: message,
+    text: messageBody,
   };
 
   transporter.sendMail(emailData, (error) => {

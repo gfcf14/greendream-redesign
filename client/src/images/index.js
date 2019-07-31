@@ -26,9 +26,17 @@ export {
 
 export {
   formEmailIcon,
+  formEmailErrorIcon,
+  formEmailReadyIcon,
   formNameIcon,
-  formPasswordlIcon,
+  formNameErrorIcon,
+  formNameReadyIcon,
+  formPasswordIcon,
+  formPasswordErrorIcon,
+  formPasswordReadyIcon,
   formTextIcon,
+  formTextErrorIcon,
+  formTextReadyIcon,
   keyboardIcon,
   mouseIcon,
   profileIcon,

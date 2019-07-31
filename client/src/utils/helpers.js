@@ -14,9 +14,17 @@ import {
   FacebookLogo,
   FanfictionLogo,
   formEmailIcon,
+  formEmailErrorIcon,
+  formEmailReadyIcon,
   formNameIcon,
-  formPasswordlIcon,
+  formNameErrorIcon,
+  formNameReadyIcon,
+  formPasswordIcon,
+  formPasswordErrorIcon,
+  formPasswordReadyIcon,
   formTextIcon,
+  formTextErrorIcon,
+  formTextReadyIcon,
   GithubLogo,
   HTML5WhiteLogo,
   JavaWhiteLogo,
@@ -48,8 +56,16 @@ export const FLUID_DIM = (property, min, max) => css`
   ${property}: calc(${min}px + (${max} - ${min}) * ((${dimensions.maxViewportWidth} - ${dimensions.minWindowWidth}) / 1006));
 `;
 
+export function allTrue(listOfConditions) {
+  return listOfConditions.reduce((prev, next) => Boolean(prev && next), true);
+}
+
 export function injectItemKey(itemObject) {
   return { ...itemObject, key: shortid.generate() };
+}
+
+export function capitalizeFromLower(value) {
+  return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 export function renderMenuItems(menuType, modal, toggleModal) {
@@ -162,6 +178,12 @@ export function getImageSource(identifier) {
     case 'email': {
       return formEmailIcon;
     }
+    case 'email-error': {
+      return formEmailErrorIcon;
+    }
+    case 'email-ready': {
+      return formEmailReadyIcon;
+    }
     case 'employmentassistant': {
       return employmentAssistantLogo;
     }
@@ -189,6 +211,12 @@ export function getImageSource(identifier) {
     case 'message': {
       return formTextIcon;
     }
+    case 'message-error': {
+      return formTextErrorIcon;
+    }
+    case 'message-ready': {
+      return formTextReadyIcon;
+    }
     case 'me-cracked': {
       return meCrackedCartoon;
     }
@@ -208,12 +236,28 @@ export function getImageSource(identifier) {
     case 'username': {
       return formNameIcon;
     }
+    case 'name-error':
+    case 'username-error': {
+      return formNameErrorIcon;
+    }
+    case 'name-ready':
+    case 'username-ready': {
+      return formNameReadyIcon;
+    }
     case 'oruga': {
       return orugaLogo;
     }
     case 'password':
     case 'repeat': {
-      return formPasswordlIcon;
+      return formPasswordIcon;
+    }
+    case 'password-error':
+    case 'repeat-error': {
+      return formPasswordErrorIcon;
+    }
+    case 'password-ready':
+    case 'repeat-ready': {
+      return formPasswordReadyIcon;
     }
     case 'racemaster': {
       return raceMasterLogo;
@@ -246,7 +290,7 @@ export function getImageSource(identifier) {
       return YoutubeLogo;
     }
     default: {
-      return 'no-image';
+      return identifier;
     }
   }
 }

@@ -8,6 +8,7 @@ describe('ModalForm Component Unit Test', () => {
     modal: -1,
     fadeOut: jest.fn(),
     isBigger: false,
+    showStatsBar: jest.fn(),
   };
 
   const wrapper = mountWithIntl(
@@ -19,8 +20,16 @@ describe('ModalForm Component Unit Test', () => {
   });
 
   it('checks that the fadeOut function is called', () => {
-    wrapper.find('span').simulate('click');
+    wrapper.find('.close-button span').simulate('click');
     expect(modalFormProps.fadeOut).toHaveBeenCalled();
+  });
+
+  it('checks that the error area has been rendered', () => {
+    expect(wrapper.find('div.error-area')).toHaveLength(1);
+  });
+
+  it('checks that the error text span has been rendered', () => {
+    expect(wrapper.find('span.error-text')).toHaveLength(1);
   });
 });
 

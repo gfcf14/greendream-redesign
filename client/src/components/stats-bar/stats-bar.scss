@@ -1,0 +1,37 @@
+@import '~styles/_index';
+
+.stats-bar-rct-component {
+  background: $gradient-green-3;
+  bottom: 0;
+  color: $white;
+  font-family: $font-orbitron;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  left: 0;
+  opacity: 1;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: width 1s, opacity 1s;
+  white-space: nowrap;
+  width: 0;
+
+  &.open {
+    @include mquery($width-breakpoint-sm) {
+      padding: 10px;
+      width: calc(90% - 20px);
+    }
+
+    padding: 20px;
+    width: calc(90% - 40px);
+  }
+
+  &.error {
+    background: $gradient-red-1;
+  }
+
+  &.should-fade {
+    opacity: 0;
+  }
+}

@@ -23,7 +23,18 @@
     }
 
     &.submit {
+      background: $green-lighten-sample-1;
+      cursor: pointer;
+    }
+
+    &.disabled {
       background: $grey-darken-sample-2;
+      cursor: not-allowed;
+
+      &.error {
+        background: $red-lighten-2;
+        border: 2px solid $white;
+      }
     }
   }
 
@@ -36,6 +47,16 @@
   }
 
   &.submit {
+    @include mquery($width-breakpoint-sm) {
+      padding: 0 15px 15px;
+    }
+
+    border-radius: 0 0 $fluid-dim-2xs $fluid-dim-2xs;
+    padding: 0 20px 20px;
     width: 100%;
+  }
+
+  &.error {
+    background: $red-lighten-2;
   }
 }

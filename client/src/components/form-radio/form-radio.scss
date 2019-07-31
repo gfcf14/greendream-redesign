@@ -2,12 +2,21 @@
 
 .form-radio-rct-component {
   input[type=radio] {
+    @include mquery($width-breakpoint-md) {
+      margin-top: 1px;
+    }
+
+    @include mquery($width-breakpoint-sm) {
+      margin-top: 0;
+    }
+
     -webkit-appearance:none;
     background: $white;
     border: 1px solid $greendream-black-green;
     border-radius: 50%;
     box-shadow: 0 0 5px 0 $grey-lighten-1 inset;
     height: 15px;
+    margin-top: 2px;
     outline: none;
     width: 15px;
   }
