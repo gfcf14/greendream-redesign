@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef } from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import classNames from 'classnames';
@@ -9,9 +9,7 @@ import { getImageSource } from 'utils/helpers';
 import { MESSAGES } from 'utils/messages';
 import './form-field.scss';
 
-function getBasedOnStatus(fieldType, otherProps) {
-  const { error, value } = otherProps;
-
+function getBasedOnStatus(fieldType, error, value) {
   if (error) {
     return `${fieldType}-error`;
   }
@@ -23,14 +21,14 @@ function getBasedOnStatus(fieldType, otherProps) {
   return fieldType;
 }
 
-function renderInput(fieldType, otherProps) {
-  const { error, ...inputProps } = otherProps;
+function renderInput(fieldType, inputProps) {
+  const { error, ...otherProps } = inputProps;
   const isPassword = ['password', 'repeat'].includes(fieldType);
 
   return (
     <Fragment>
       <Image
-        src={getImageSource(getBasedOnStatus(fieldType, otherProps))}
+        src={getImageSource(getBasedOnStatus(fieldType, error, inputProps.value))}
         className={classNames(
           'form-field-rct-component__input-image',
           error ? 'error' : '',
@@ -46,7 +44,7 @@ function renderInput(fieldType, otherProps) {
         name={fieldType}
         placeholder={FIELD_TEXTS[`${fieldType}`]}
         type={isPassword ? 'password' : 'text'}
-        {...inputProps}
+        {...otherProps}
       />
     </Fragment>
   );
@@ -60,13 +58,13 @@ function getTextAreaPlaceholder(formType, fieldType) {
   return FIELD_TEXTS[`${fieldType}`];
 }
 
-function renderTextArea(formType, fieldType, otherProps) {
-  const { error, ...textAreaProps } = otherProps;
+function renderTextArea(formType, fieldType, textAreaProps) {
+  const { error, ...otherProps } = textAreaProps;
 
   return (
     <Fragment>
       <Image
-        src={getImageSource(getBasedOnStatus(fieldType, otherProps))}
+        src={getImageSource(getBasedOnStatus(fieldType, error, textAreaProps.value))}
         className={classNames(
           'form-field-rct-component__textarea-image',
           formType,
@@ -82,42 +80,134 @@ function renderTextArea(formType, fieldType, otherProps) {
         )}
         name={fieldType}
         placeholder={getTextAreaPlaceholder(formType, fieldType)}
-        {...textAreaProps}
+        {...otherProps}
       />
     </Fragment>
   );
 }
 
-function renderFormRadios() {
-  return Object.keys(RADIO_BUTTON_CONFIGS).map(key => (
-    <FormRadio key={shortid.generate()} {...RADIO_BUTTON_CONFIGS[`${key}`]} />
-  ));
+function renderFormRadios(radioButtonProps) {
+  return Object.keys(RADIO_BUTTON_CONFIGS).map((key) => {
+    const formRadioProps = {
+      ...RADIO_BUTTON_CONFIGS[`${key}`],
+      ...radioButtonProps,
+    };
+
+    return <FormRadio key={shortid.generate()} {...formRadioProps} />;
+  });
 }
 
-function renderRadioButtons(fieldType) {
+function renderRadioButtons(fieldType, radioButtonProps) {
   return (
     <Flex className="form-field-rct-component__radio-field">
       <span className="radio-text">{FIELD_TEXTS[`${fieldType}`]}</span>
-      {renderFormRadios()}
+      {renderFormRadios(radioButtonProps)}
     </Flex>
   );
 }
 
-function renderProfileButtonArea(fieldType) {
+function isDefault() {
+  const defaultCheck = document.querySelector('.check-box');
+
+  if (defaultCheck) {
+    return defaultCheck.checked;
+  }
+
+  return false;
+}
+
+function decideIfShowing(value, error, selectedSex) {
+  if (isDefault() && selectedSex) {
+    return true;
+  }
+
+  if (value && !error) {
+    return true;
+  }
+
+  return false;
+}
+
+function getPreviewBasedOnSex(selectedSex) {
+  if (isDefault) {
+    return getImageSource(selectedSex || 'unknown');
+  }
+
+  return '#';
+}
+
+function renderProfileButtonArea(fieldType, profilePicRef, profilePicProps) {
+  const {
+    error,
+    onChange,
+    value,
+    selectedSex,
+  } = profilePicProps;
+
   const formButtonProps = {
     buttonText: MESSAGES.FORM_PIC,
     isSubmit: false,
+    onClick: () => profilePicRef.current.click(),
+    isDefault: isDefault(),
   };
+
+  if (value && value !== 'default') {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const previewPic = document.querySelector('.preview-pic');
+
+      if (previewPic) {
+        previewPic.src = e.target.result;
+      }
+    };
+
+    reader.readAsDataURL(value);
+  }
 
   return (
     <Fragment>
       <Flex className="form-field-rct-component__profile-pic">
         <FormButton {...formButtonProps} />
-        <Flex className="pic-area" />
+        <input
+          className="upload-button"
+          type="file"
+          accept="image/*"
+          name={fieldType}
+          ref={profilePicRef}
+          onChange={onChange}
+        />
+        <Flex className="pic-area">
+          <Image
+            className={classNames(
+              'preview-pic',
+              decideIfShowing(value, error, selectedSex) ? '' : 'hidden',
+            )}
+            src={getPreviewBasedOnSex(selectedSex)}
+            alt="preview-pic"
+          />
+        </Flex>
       </Flex>
       <Flex className="form-field-rct-component__checkbox-area">
-        <input className="check-box" type="checkbox" name={fieldType} />
-        <span className="default-text">
+        <input
+          className="check-box"
+          type="checkbox"
+          name={fieldType}
+          onClick={() => onChange({
+            target: {
+              name: fieldType,
+              value: isDefault() ?
+                'default' : '',
+            },
+          })}
+        />
+        <span
+          className="default-text"
+          onClick={() => document.querySelector('.check-box').click()}
+          onKeyUp={() => document.querySelector('.check-box').click()}
+          role="button"
+          tabIndex="-1"
+        >
           {MESSAGES.FORM_DEFAULT}
         </span>
       </Flex>
@@ -125,23 +215,57 @@ function renderProfileButtonArea(fieldType) {
   );
 }
 
-function renderFieldByType(formType, fieldType, otherProps) {
+function renderFieldByType(formType, fieldType, otherProps, profilePicRef) {
+  const {
+    value,
+    error,
+    onChange,
+    onBlur,
+    selectedSex,
+  } = otherProps;
+
   switch (fieldType) {
     case 'name':
     case 'email':
     case 'username':
     case 'password':
     case 'repeat': {
-      return renderInput(fieldType, otherProps);
+      const inputProps = {
+        value,
+        error,
+        onChange,
+        onBlur,
+      };
+
+      return renderInput(fieldType, inputProps);
     }
     case 'message': {
-      return renderTextArea(formType, fieldType, otherProps);
+      const textAreaProps = {
+        value,
+        error,
+        onChange,
+        onBlur,
+      };
+
+      return renderTextArea(formType, fieldType, textAreaProps);
     }
     case 'sex': {
-      return renderRadioButtons(fieldType);
+      const radioButtonProps = {
+        onChange,
+        isChecked: value,
+      };
+
+      return renderRadioButtons(fieldType, radioButtonProps);
     }
     case 'pic': {
-      return renderProfileButtonArea(fieldType);
+      const profilePicProps = {
+        error,
+        onChange,
+        value,
+        selectedSex,
+      };
+
+      return renderProfileButtonArea(fieldType, profilePicRef, profilePicProps);
     }
     default: {
       return null;
@@ -151,6 +275,7 @@ function renderFieldByType(formType, fieldType, otherProps) {
 
 export function FormField(props) {
   const { fieldType, formType, ...otherProps } = props;
+  const profilePicRef = useRef(null);
 
   return (
     <Flex
@@ -159,7 +284,7 @@ export function FormField(props) {
         fieldType === 'username' && formType === 'signin' ? 'top-space' : '',
       )}
     >
-      {renderFieldByType(formType, fieldType, otherProps)}
+      {renderFieldByType(formType, fieldType, otherProps, profilePicRef)}
     </Flex>
   );
 }
@@ -167,8 +292,13 @@ export function FormField(props) {
 FormField.propTypes = {
   fieldType: PropTypes.string.isRequired,
   formType: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   error: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
+  selectedSex: PropTypes.string,
+};
+
+FormField.defaultProps = {
+  selectedSex: '',
 };

@@ -258,22 +258,36 @@ export const RADIO_BUTTON_CONFIGS = {
 
 export const SIGN_UP_FORM_HEIGHT_MOBILE = 613;
 
-// export const FORM_ERROR_INDICES = {
-//   contact: [0, 1, 7],
-//   signup: [0, 1, 2, 3, 4, 5, 6, 7],
-//   signin: [4, 5],
-// };
-
 export const FORM_ERROR_MESSAGES = {
   name: MESSAGES.FORM_ERROR_REQUIRED,
   email: MESSAGES.FORM_ERROR_EMAIL,
-  pic: MESSAGES.FORM_ERROR_IMAGE_1,
+  pic: MESSAGES.FORM_ERROR_IMAGE_2,
   password: MESSAGES.FORM_ERROR_PASSWORD,
   repeat: MESSAGES.FORM_ERROR_PASSWORD,
   message: MESSAGES.FORM_ERROR_MESSAGE,
-  username: MESSAGES.FORM_ERROR_SIGNIN,
+  username: MESSAGES.FORM_ERROR_USERNAME,
 };
 
 export const EMAIL_REGEX = new RegExp('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`' +
                                       '{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]' +
                                       '(?:[a-z0-9-]*[a-z0-9])?');
+
+export const ACCEPTED_IMAGE_TYPES = [
+  'png',
+  'jpg',
+  'svg+xml',
+  'x-icon',
+];
+
+export const FORM_STATS_MESSAGES = {
+  success: {
+    contact: MESSAGES.STATS_CONTACT_SUCCESS,
+    signin: MESSAGES.STATS_SIGNIN_SUCCESS,
+    signup: MESSAGES.STATS_SIGNUP_SUCCESS,
+  },
+  failure: {
+    contact: MESSAGES.STATS_CONTACT_ERROR,
+    signin: MESSAGES.STATS_SIGNIN_ERROR,
+    signup: MESSAGES.STATS_SIGNUP_ERROR,
+  },
+};

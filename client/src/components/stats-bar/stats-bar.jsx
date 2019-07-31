@@ -36,7 +36,9 @@ export function StatsBar({ statsText, hasError, hideStatsBar }) {
       )}
       onTransitionEnd={() => hideFromView(hideStatsBar)}
     >
-      {statsText}
+      <span className="stats-bar-rct-component__stats-text">
+        {statsText}
+      </span>
     </Flex>
   );
 }

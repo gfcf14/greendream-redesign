@@ -17,14 +17,13 @@
     height: 36px;
     width: 100%;
 
-    &.pic {
+    &.pic, &.submit {
       background: $green-lighten-sample-1;
       cursor: pointer;
-    }
 
-    &.submit {
-      background: $green-lighten-sample-1;
-      cursor: pointer;
+      &:hover {
+        background: $greendream-green;
+      }
     }
 
     &.disabled {
@@ -34,6 +33,10 @@
       &.error {
         background: $red-lighten-2;
         border: 2px solid $white;
+      }
+
+      &:hover {
+        background: $grey-darken-sample-2;
       }
     }
   }

@@ -13,6 +13,7 @@ import {
   employmentAssistantLogo,
   FacebookLogo,
   FanfictionLogo,
+  femaleDefaultProfile,
   formEmailIcon,
   formEmailErrorIcon,
   formEmailReadyIcon,
@@ -30,17 +31,23 @@ import {
   JavaWhiteLogo,
   LinkedinLogo,
   keyboardIcon,
+  maleDefaultProfile,
   meCrackedCartoon,
   meHiCartoon,
   meProudCartoon,
   meSuccessCartoon,
   mouseIcon,
   orugaLogo,
+  profileIcon,
   raceMasterLogo,
+  signInIcon,
+  signOutIcon,
+  signUpIcon,
   smsSenderLogo,
   troubleShooterLogo,
   TwitterLogo,
   typingTestLogo,
+  unknownProfileIcon,
   urlPlayerLogo,
   VBDotNetWhiteLogo,
   voteBusterLogo,
@@ -112,6 +119,30 @@ export function sendMail(referer, email, message) {
 
     return response.data.text;
   });
+}
+
+export function insertRow(table, data) {
+  const config = {
+    headers: {
+      'content-type': 'multipart/form-data',
+    },
+  };
+
+  const formData = new FormData();
+  formData.append('table', table);
+
+  Object.keys(data).forEach((key) => {
+    formData.append(key, data[`${key}`]);
+  });
+
+  return axios.post(`${SERVER_ADDRESS}/insert`, formData, config)
+    .then((response) => {
+      if (!response.data.code) {
+        return 'success';
+      }
+
+      return response.data;
+    });
 }
 
 export function getTable(tableName, tableOrder, setTableData) {
@@ -187,6 +218,9 @@ export function getImageSource(identifier) {
     case 'employmentassistant': {
       return employmentAssistantLogo;
     }
+    case 'f': {
+      return femaleDefaultProfile;
+    }
     case 'Facebook': {
       return FacebookLogo;
     }
@@ -207,6 +241,9 @@ export function getImageSource(identifier) {
     }
     case 'keyboard': {
       return keyboardIcon;
+    }
+    case 'm': {
+      return maleDefaultProfile;
     }
     case 'message': {
       return formTextIcon;
@@ -259,8 +296,20 @@ export function getImageSource(identifier) {
     case 'repeat-ready': {
       return formPasswordReadyIcon;
     }
+    case 'profile': {
+      return profileIcon;
+    }
     case 'racemaster': {
       return raceMasterLogo;
+    }
+    case 'sign-in': {
+      return signInIcon;
+    }
+    case 'sign-out': {
+      return signOutIcon;
+    }
+    case 'sign-up': {
+      return signUpIcon;
     }
     case 'smssender': {
       return smsSenderLogo;
@@ -273,6 +322,9 @@ export function getImageSource(identifier) {
     }
     case 'typingtest': {
       return typingTestLogo;
+    }
+    case 'unknown': {
+      return unknownProfileIcon;
     }
     case 'urlplayer': {
       return urlPlayerLogo;

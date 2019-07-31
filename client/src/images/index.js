@@ -10,6 +10,8 @@ export {
 } from './buttons';
 
 export {
+  femaleDefaultProfile,
+  maleDefaultProfile,
   meCrackedCartoon,
   meHiCartoon,
   meProudCartoon,
@@ -44,6 +46,7 @@ export {
   signInIcon,
   signOutIcon,
   signUpIcon,
+  unknownProfileIcon,
 } from './icons';
 
 export {

@@ -1,11 +1,14 @@
+const bcrypt = require('bcryptjs');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
-const bodyParser = require('body-parser');
+const multer = require('multer');
 const mysql = require('mysql');
 const nodeMailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
 
 const app = express();
+const upload = multer();
 
 const pool = mysql.createPool({
   host: process.env.MYSQL_HOST_IP,
@@ -175,6 +178,45 @@ app.get('/email', (req, res) => {
       return res.status(200).json({ text: 'success' });
     } catch (e) {
       return res.status(500).json({ text: error });
+    }
+  });
+});
+
+app.get('/user', (req, res) => {
+  const { userName } = req.query;
+
+  pool.query(`select * from Users where username = '${userName}'`, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.send(results);
+    }
+  });
+});
+
+app.post('/insert', upload.none(), (req, res) => {
+  const { table, ...data } = req.body;
+
+  let columnList = '';
+  let valueList = '';
+
+  Object.keys(data).map((key, i, arr) => {
+    if (!(key === 'img' && data[`${key}`] === 'default')) {
+      columnList += `${key}${arr.length - 1 !== i ? ', ' : ''}`;
+
+      if (key === 'password') {
+        valueList += `"${bcrypt.hashSync(data[`${key}`], 10)}", `;
+      } else {
+        valueList += `"${data[`${key}`]}"${arr.length - 1 !== i ? ', ' : ''}`;
+      }
+    }
+  });
+
+  pool.query(`insert into ${table} (${columnList}) values (${valueList})`, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.send(results);
     }
   });
 });

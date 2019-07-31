@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { Flex, Link } from 'rebass';
 import classNames from 'classnames';
 import { FormButton, FormField } from 'components';
 import {
+  ACCEPTED_IMAGE_TYPES,
   ACTION_BUTTONS_MESSAGES,
   EMAIL_REGEX,
   FORM_ERROR_MESSAGES,
+  FORM_STATS_MESSAGES,
   FORM_TITLES,
+  SERVER_ADDRESS,
 } from 'utils/constants';
-import { allTrue, capitalizeFromLower, sendMail } from 'utils/helpers';
+import {
+  allTrue,
+  capitalizeFromLower,
+  insertRow,
+  sendMail,
+} from 'utils/helpers';
 import { MESSAGES, MIN_MESSAGE_LENGTH } from 'utils/messages';
 import './modal-form.scss';
 
@@ -20,6 +29,11 @@ const initialFormsStates = {
     name: '',
     email: '',
     message: '',
+    complete: {
+      name: false,
+      email: false,
+      message: false,
+    },
     errors: {
       name: false,
       email: false,
@@ -29,6 +43,10 @@ const initialFormsStates = {
   signin: {
     username: '',
     password: '',
+    complete: {
+      username: false,
+      password: false,
+    },
     errors: {
       username: false,
       password: false,
@@ -43,6 +61,16 @@ const initialFormsStates = {
     password: '',
     repeat: '',
     message: '',
+    complete: {
+      name: false,
+      email: false,
+      sex: false,
+      pic: false,
+      username: false,
+      password: false,
+      repeat: false,
+      message: false,
+    },
     errors: {
       name: false,
       email: false,
@@ -56,16 +84,76 @@ const initialFormsStates = {
   },
 };
 
-function fieldHasError(name, value) {
-  value = value.trim();
+function userNameExists(value) {
+  return axios.get(`${SERVER_ADDRESS}/user`, {
+    params: {
+      userName: value,
+    },
+  }).then(response => response.data)
+    .then(data => data.length > 0);
+}
+
+// for the repeat password in sign up forms only
+function isTheSamePassword(value, currentForm) {
+  return value === currentForm['password'];
+}
+
+function isNotAcceptedExtension(value) {
+  // for when the default checkbox is checked
+  if (value === 'default') {
+    return false;
+  }
+
+  // for when the default checkbox is unchecked
+  if (value === '') {
+    return true;
+  }
+
+  const fileType = value.type.replace('image/', '');
+
+  return !ACCEPTED_IMAGE_TYPES.includes(fileType);
+}
+
+function isNotAcceptedSize(value) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img.width > 150 && img.height > 150);
+    img.onerror = reject;
+    img.src = URL.createObjectURL(value);
+  });
+}
+
+async function picHasError(value) {
+  if (isNotAcceptedExtension(value)) {
+    return true;
+  }
+
+  if (await isNotAcceptedSize(value)) {
+    return true;
+  }
+
+  return false;
+}
+
+async function fieldHasError(name, value, currentForm) {
+  value = name !== 'pic' ? value.trim() : value;
 
   switch (name) {
     case 'name':
+    case 'password':
       return value.length === 0;
     case 'email':
       return value.length === 0 || !EMAIL_REGEX.test(value);
     case 'message':
       return value.length === 0 || value.length < MIN_MESSAGE_LENGTH;
+    case 'username': {
+      const userExists = await userNameExists(value);
+      return value.length === 0 || userExists;
+    }
+    case 'repeat':
+      return value.length === 0 || !isTheSamePassword(value, currentForm);
+    case 'pic':
+      return value === undefined || picHasError(value);
     default:
       return false;
   }
@@ -73,7 +161,7 @@ function fieldHasError(name, value) {
 
 function formIsComplete(form) {
   return allTrue(
-    Object.keys(form.errors).map(key => !fieldHasError(key, form[key]))
+    Object.keys(form.complete).map(key => form.complete[key] === true)
   );
 }
 
@@ -88,6 +176,7 @@ function renderByConfig(config, form, fieldFunctions) {
       value: form[`${value}`],
       error: form.errors[`${value}`],
       ...fieldFunctions,
+      selectedSex: value === 'pic' ? form['sex'] : '',
     };
 
     return <FormField key={field.key} {...formFieldProps} />;
@@ -144,8 +233,9 @@ function getErrorMessage(form) {
   const errorFound = form[`${errorKey}`];
 
   switch (errorKey) {
-    case 'name': {
-      return `${capitalizeFromLower(errorKey)} ${FORM_ERROR_MESSAGES[`${errorKey}`]}`;
+    case 'name':
+    case 'password': {
+      return `${capitalizeFromLower(errorKey)} ${MESSAGES.FORM_ERROR_REQUIRED}`;
     }
     case 'email': {
       if (errorFound) {
@@ -154,17 +244,33 @@ function getErrorMessage(form) {
 
       return `${capitalizeFromLower(errorKey)} ${MESSAGES.FORM_ERROR_REQUIRED}`;
     }
-    case 'pic': { // must change to reflect file upload
+    case 'pic': {
+      // blank image error
+      if (errorFound.type === undefined) {
+        return `${MESSAGES.FORM_ERROR_AN_IMAGE} ${MESSAGES.FORM_ERROR_REQUIRED}`;
+      }
+
+      // wrong format error
+      if (isNotAcceptedExtension(errorFound)) {
+        return MESSAGES.FORM_ERROR_IMAGE_1;
+      }
+
+      // wrong size error
       return FORM_ERROR_MESSAGES[`${errorKey}`];
     }
-    case 'username':
-    case 'password':
-    case 'repeat': {
+    case 'username': {
       if (errorFound) {
         return FORM_ERROR_MESSAGES[`${errorKey}`];
       }
 
       return `${capitalizeFromLower(errorKey)} ${MESSAGES.FORM_ERROR_REQUIRED}`;
+    }
+    case 'repeat': {
+      if (errorFound) {
+        return FORM_ERROR_MESSAGES[`${errorKey}`];
+      }
+
+      return MESSAGES.FORM_ERROR_REPEAT;
     }
     case 'message': {
       if (errorFound && errorFound.length < MIN_MESSAGE_LENGTH) {
@@ -223,6 +329,50 @@ function hideIfOut(modal) {
   }
 }
 
+function formSuccess(fadeOut, showStatsBar, form, setForm, type) {
+  resetForm(form, setForm, type);
+  fadeOut();
+  showStatsBar(FORM_STATS_MESSAGES.success[`${type}`], false);
+}
+
+function formFailure(fadeOut, showStatsBar, type, errorResponse) {
+  fadeOut();
+  showStatsBar(FORM_STATS_MESSAGES.failure[`${type}`], true);
+  console.error(errorResponse); // eslint-disable-line no-console
+}
+
+async function signUpSubmit(imageData, fadeOut, form, setForm, showStatsBar, type) {
+  const {
+    name,
+    email,
+    sex,
+    username,
+    password,
+    message,
+  } = form[`${type}`];
+
+  const insertUser = await insertRow('Users', {
+    name,
+    email,
+    sex,
+    img: imageData,
+    username,
+    password,
+    about: message,
+  });
+
+  if (insertUser === 'success') {
+    formSuccess(fadeOut, showStatsBar, form, setForm, type);
+  } else {
+    formFailure(fadeOut, showStatsBar, type, insertUser);
+  }
+}
+
+async function setUpSignUp(e, fadeOut, form, setForm, showStatsBar, type) {
+  const imageData = e.target.result;
+  signUpSubmit(imageData, fadeOut, form, setForm, showStatsBar, type);
+}
+
 export function ModalForm({
   config,
   modal,
@@ -244,10 +394,18 @@ export function ModalForm({
     }
   }, []);
 
-  function onChange(e) {
+  async function onChange(e) {
     const { name, value } = e.target;
     const currentForm = form[`${type}`];
     const { contact, signin, signup } = form;
+
+    const newValue = name === 'pic' && (value !== 'default' && value !== '')
+      ? e.target.files[0] : value;
+
+    const currentFieldHasError = await fieldHasError(name, newValue, currentForm);
+
+    const setFieldError = currentForm.errors[name] || name === 'pic' ?
+      currentFieldHasError : currentForm.errors[name];
 
     setForm({
       contact,
@@ -255,19 +413,28 @@ export function ModalForm({
       signup,
       [type]: {
         ...currentForm,
-        [name]: value || '',
+        [name]: newValue || '',
+        complete: {
+          ...currentForm.complete,
+          [name]: !currentFieldHasError,
+        },
         errors: {
           ...currentForm.errors,
-          [name]: currentForm.errors[name] ? fieldHasError(name, value) : currentForm.errors[name],
+          [name]: setFieldError,
         },
       },
     });
+
+    // console.log(currentForm);
   }
 
-  function onBlur(e) {
+  async function onBlur(e) {
     const { name, value } = e.target;
     const currentForm = form[`${type}`];
     const { contact, signin, signup } = form;
+
+    const newValue = name === 'pic' ? e.target.files[0] : value;
+    const currentFieldHasError = await fieldHasError(name, newValue, currentForm);
 
     setForm({
       contact,
@@ -275,9 +442,13 @@ export function ModalForm({
       signup,
       [type]: {
         ...currentForm,
+        complete: {
+          ...currentForm.complete,
+          [name]: !currentFieldHasError,
+        },
         errors: {
           ...currentForm.errors,
-          [name]: fieldHasError(name, value),
+          [name]: currentFieldHasError,
         },
       },
     });
@@ -286,24 +457,39 @@ export function ModalForm({
   async function handleSubmit(e) {
     e.preventDefault();
 
+    const currentForm = form[`${type}`];
+
     switch (type) {
       case 'contact': {
-        const currentForm = form[`${type}`];
+        const { name, email, message } = currentForm;
 
         const sendMessage = await sendMail('contact', '', {
-          contactName: currentForm.name,
-          contactEmail: currentForm.email,
-          contactMessage: currentForm.message,
+          contactName: name,
+          contactEmail: email,
+          contactMessage: message,
         });
 
         if (sendMessage === 'success') {
-          resetForm(form, setForm, type);
-          fadeOut();
-          showStatsBar(MESSAGES.STATS_CONTACT_SUCCESS, false);
+          formSuccess(fadeOut, showStatsBar, form, setForm, type);
         } else {
-          showStatsBar(MESSAGES.STATS_CONTACT_ERROR, true);
-          console.err(sendMessage); // eslint-disable-line no-console
+          formFailure(fadeOut, showStatsBar, type, sendMessage);
         }
+        break;
+      }
+      // case 'signin': {
+
+      //   break;
+      // }
+      case 'signup': {
+        const picReader = new FileReader();
+
+        if (currentForm['pic'] === 'default') {
+          signUpSubmit(currentForm['pic'], fadeOut, form, setForm, showStatsBar, type);
+        } else {
+          picReader.addEventListener('load', event => setUpSignUp(event, fadeOut, form, setForm, showStatsBar, type));
+          picReader.readAsDataURL(currentForm['pic']);
+        }
+
         break;
       }
       default:
