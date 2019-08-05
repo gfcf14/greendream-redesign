@@ -19,10 +19,11 @@ export function TableCell({ cellText, logo }) {
   return (
     <Flex className="table-cell-rct-component">
       {renderAppIcon(logo)}
-      <p className={classNames(
-        'table-cell-rct-component__cell-text',
-        logo ? 'non-centered' : '',
-      )}
+      <p
+        className={classNames(
+          'table-cell-rct-component__cell-text',
+          logo ? 'non-centered' : '',
+        )}
       >
         {cellText}
       </p>

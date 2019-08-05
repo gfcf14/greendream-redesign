@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jul 08, 2019 at 11:55 PM
+-- Generation Time: Aug 03, 2019 at 02:42 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.19
 
@@ -122,6 +122,26 @@ INSERT INTO `Tutorials` (`id`, `name`, `description`) VALUES
 (4, 'VB.NET', 'Backed by a powerful and easy to use GUI (via Microsoft\'s Visual Studio), it is the language of choice for developers who wish to focus on desktop event-driven applications oriented to the Windows Operating System'),
 (5, 'HTML', 'No need to flatter here. Without HTML, this page wouldn\'t exist! It\'s the starting point of pretty much every website, widget, and web application ever thought of and developed');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Users`
+--
+
+CREATE TABLE `Users` (
+  `id` int(10) NOT NULL,
+  `name` varchar(25) NOT NULL,
+  `email` varchar(25) NOT NULL,
+  `sex` varchar(1) NOT NULL,
+  `img` blob,
+  `username` varchar(25) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `about` varchar(100) NOT NULL,
+  `active` varchar(60) DEFAULT NULL,
+  `token` varchar(60) DEFAULT NULL,
+  `datelimit` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -151,6 +171,12 @@ ALTER TABLE `Tutorials`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `Users`
+--
+ALTER TABLE `Users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -177,6 +203,12 @@ ALTER TABLE `Sites`
 --
 ALTER TABLE `Tutorials`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `Users`
+--
+ALTER TABLE `Users`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

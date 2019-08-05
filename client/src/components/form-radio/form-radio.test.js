@@ -5,6 +5,8 @@ describe('FormRadio Component Unit Test', () => {
   const formRadioProps = {
     text: 'A Male',
     value: 'm',
+    onChange: jest.fn(),
+    isChecked: '',
   };
 
   const wrapper = mountWithIntl(
@@ -21,6 +23,12 @@ describe('FormRadio Component Unit Test', () => {
 
   it('checks that the value was correctly passed', () => {
     expect(wrapper.find('input').props().value).toEqual(formRadioProps.value);
+  });
+
+  it('checks that the onChange function was called', () => {
+    wrapper.find('input').simulate('change');
+
+    expect(formRadioProps.onChange).toHaveBeenCalled();
   });
 });
 

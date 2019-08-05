@@ -17,3 +17,4 @@ export { default as sandwhichIcon } from './sandwhich.svg';
 export { default as signInIcon } from './sign-in.svg';
 export { default as signOutIcon } from './sign-out.svg';
 export { default as signUpIcon } from './sign-up.svg';
+export { default as unknownProfileIcon } from './unknown.png';

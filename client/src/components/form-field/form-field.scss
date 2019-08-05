@@ -169,6 +169,25 @@
       height: 36px;
       margin-left: 20px;
       width: 36px;
+
+      .preview-pic {
+        @include mquery($width-breakpoint-sm) {
+          height: 27px;
+          width: 27px;
+        }
+
+        border-radius: 50%;
+        height: 36px;
+        width: 36px;
+
+        &.hidden {
+          display: none;
+        }
+      }
+    }
+
+    .upload-button {
+      display: none;
     }
   }
 
@@ -183,6 +202,7 @@
 
     .default-text {
       color: $white;
+      cursor: pointer;
       font-family: $font-roboto;
       font-size: $font-size-sm;
       font-weight: $font-weight-bold;

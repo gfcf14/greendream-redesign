@@ -34,4 +34,8 @@
   &.should-fade {
     opacity: 0;
   }
+
+  &__stats-text {
+    margin-top: $fluid-spacing-sample2;
+  }
 }
