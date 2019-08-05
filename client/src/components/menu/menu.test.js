@@ -7,7 +7,10 @@ describe('Menu Component Unit Test', () => {
     toggleMenu: jest.fn(),
     modal: -1,
     toggleModal: jest.fn(),
+    isLoggedIn: 'gfcf14',
+    showStatsBar: jest.fn(),
   };
+
   const wrapper = mountWithIntl(
     <Menu {...menuProps} />
   );

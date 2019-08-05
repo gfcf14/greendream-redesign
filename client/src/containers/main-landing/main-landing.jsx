@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import { Flex, Image, Link } from 'rebass';
 import classNames from 'classnames';
 import {
+  FacingMessage,
   Menu,
   MobileMenu,
   ModalForm,
@@ -17,6 +19,7 @@ import './main-landing.scss';
 const initialStatsBar = {
   statsText: '',
   hasError: false,
+  sessionAction: false,
 };
 
 export function MainLanding({ contentComponent }) {
@@ -24,6 +27,14 @@ export function MainLanding({ contentComponent }) {
   const [modal, setModal] = useState(-1);
   const [isBigger, setBigger] = useState(false);
   const [statsBar, setStatsBar] = useState(initialStatsBar);
+  const [acceptedCookies, setAcceptCookies] = useState(undefined);
+  const [isLoggedIn, setLoggedIn] = useState('');
+
+  useEffect(() => {
+    setLoggedIn(Cookies.get('greendream-user') || '');
+    setAcceptCookies(Cookies.get('greendream-accept-cookies') || false);
+  }, []);
+
   useEffect(() => {
     const resetMenu = () => {
       if (window.innerWidth >= parseInt(breakpoints.md, 10) && menu) {
@@ -50,10 +61,11 @@ export function MainLanding({ contentComponent }) {
     }
   }
 
-  function showStatsBar(statsText, hasError) {
+  function showStatsBar(statsText, hasError, sessionAction) {
     setStatsBar({
       statsText,
       hasError,
+      sessionAction,
     });
   }
 
@@ -85,6 +97,13 @@ export function MainLanding({ contentComponent }) {
     toggleMenu,
     modal,
     toggleModal,
+    isLoggedIn,
+    showStatsBar,
+  };
+
+  const mobileMenuProps = {
+    ...menuProps,
+    fadeOut,
   };
 
   const modalFormProps = {
@@ -93,6 +112,11 @@ export function MainLanding({ contentComponent }) {
     fadeOut,
     isBigger,
     showStatsBar,
+  };
+
+  const facingMessageProps = {
+    acceptedCookie: acceptedCookies,
+    setAcceptCookies,
   };
 
   return (
@@ -115,7 +139,7 @@ export function MainLanding({ contentComponent }) {
           <Menu {...menuProps} />
         </Flex>
       </Flex>
-      <MobileMenu {...menuProps} />
+      <MobileMenu {...mobileMenuProps} />
       {contentComponent}
       <ModalBackground
         isBigger={isBigger}
@@ -125,6 +149,7 @@ export function MainLanding({ contentComponent }) {
       />
       <ModalForm {...modalFormProps} />
       <StatsBar {...statsBarProps} />
+      <FacingMessage {...facingMessageProps} />
     </Flex>
   );
 }

@@ -1,6 +1,6 @@
 @import '~styles/_index';
 
-$center-text-width: $fluid-dim-lg;
+$center-text-width: $fluid-dim-xl-1;
 
 .not-found-rct-component {
   overflow: hidden;
@@ -18,7 +18,7 @@ $center-text-width: $fluid-dim-lg;
 
       color: $greendream-green;
       font-family: $font-orbitron;
-      font-size: $font-size-xl;
+      font-size: $font-size-xl-1;
       font-weight: $font-weight-bold;
       margin: auto;
       padding-top: $fluid-spacing-sm;
@@ -30,7 +30,7 @@ $center-text-width: $fluid-dim-lg;
 
       bottom: 5%;
       font-family: $font-roboto;
-      font-size: $font-size-xl;
+      font-size: $font-size-xl-1;
       font-weight: $font-weight-bold;
       left: 50%;
       margin: 0;
@@ -96,7 +96,7 @@ $center-text-width: $fluid-dim-lg;
     .logo {
       margin: auto;
       opacity: 0.1;
-      width: $fluid-dim-xl;
+      width: $fluid-dim-xl-3;
     }
   }
 }

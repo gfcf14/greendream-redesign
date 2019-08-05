@@ -4,19 +4,26 @@ import { Box, Flex } from 'rebass';
 import classNames from 'classnames';
 import { MenuItem, MenuSeparator } from 'components';
 import { renderMenuItems } from 'utils/helpers';
-import { ACCOUNT_ROUTES } from 'utils/routes';
-import './mobile-menu.scss';
 import { MESSAGES } from 'utils/messages';
+import { FORM_ROUTES, SESSION_ROUTES } from 'utils/routes';
+import './mobile-menu.scss';
 
 let mobileMenu = '';
 
-function renderAccountItems(modal, toggleModal) {
-  return ACCOUNT_ROUTES.map((route) => {
+function renderAccountItems(modal, toggleModal, isLoggedIn, showStatsBar, fadeOut) {
+  const chosenRoutes = isLoggedIn === '' ? FORM_ROUTES : SESSION_ROUTES;
+
+  return chosenRoutes.map((route) => {
     const accountItemProps = {
       itemName: route.name,
       itemType: 'mobile',
+      itemPath: route.name === MESSAGES.PROFILE ?
+        `${process.env.PUBLIC_URL}/profile?user=${isLoggedIn}` : '#',
       modal,
       toggleModal,
+      isLoggedIn,
+      showStatsBar,
+      fadeOut,
     };
 
     return <MenuItem key={route.key} {...accountItemProps} />;
@@ -29,12 +36,17 @@ function hideIfOut(menu) {
   }
 }
 
-export function MobileMenu({
-  menu,
-  toggleMenu,
-  modal,
-  toggleModal,
-}) {
+export function MobileMenu(props) {
+  const {
+    menu,
+    toggleMenu,
+    modal,
+    toggleModal,
+    isLoggedIn,
+    showStatsBar,
+    fadeOut,
+  } = props;
+
   useEffect(() => {
     mobileMenu = document.querySelector('.mobile-menu-rct-component');
     if (mobileMenu) {
@@ -64,7 +76,7 @@ export function MobileMenu({
           as="ul"
           className="account-menu"
         >
-          {renderAccountItems(modal, toggleModal)}
+          {renderAccountItems(modal, toggleModal, isLoggedIn, showStatsBar, fadeOut)}
         </Flex>
       </Box>
     </Box>
@@ -76,5 +88,8 @@ MobileMenu.propTypes = {
   toggleMenu: PropTypes.func.isRequired,
   modal: PropTypes.number.isRequired,
   toggleModal: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.string.isRequired,
+  showStatsBar: PropTypes.func.isRequired,
+  fadeOut: PropTypes.func.isRequired,
 };
 

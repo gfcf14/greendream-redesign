@@ -7,6 +7,7 @@ import {
   chooseForMeLogo,
   chordPlayerLogo,
   CodePenLogo,
+  cookiesIcon,
   CPlusPlusWhiteLogo,
   CSharpWhiteLogo,
   DeviantArtLogo,
@@ -121,6 +122,16 @@ export function sendMail(referer, email, message) {
   });
 }
 
+export function signIn(table, userName, password) {
+  return axios.get(`${SERVER_ADDRESS}/signin`, {
+    params: {
+      table,
+      userName,
+      password,
+    },
+  }).then(response => response.data);
+}
+
 export function insertRow(table, data) {
   const config = {
     headers: {
@@ -196,6 +207,9 @@ export function getImageSource(identifier) {
     }
     case 'CodePen': {
       return CodePenLogo;
+    }
+    case 'cookies': {
+      return cookiesIcon;
     }
     case 'C++': {
       return CPlusPlusWhiteLogo;

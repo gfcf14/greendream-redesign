@@ -6,6 +6,7 @@ describe('StatsBar Component Unit Test', () => {
     statsText: 'TEST',
     hasError: false,
     hideStatsBar: jest.fn(),
+    sessionAction: false,
   };
 
   const wrapper = mountWithIntl(

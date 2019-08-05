@@ -10,6 +10,10 @@ const smtpTransport = require('nodemailer-smtp-transport');
 const app = express();
 const upload = multer();
 
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 const pool = mysql.createPool({
   host: process.env.MYSQL_HOST_IP,
   user: process.env.MYSQL_USER,
@@ -90,10 +94,6 @@ function getNameByRow(rowName) {
   }
 }
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
 app.listen(process.env.REACT_APP_SERVER_PORT, () => {
   console.log(`App server now listening on port ${process.env.REACT_APP_SERVER_PORT}`);
 });
@@ -103,9 +103,9 @@ app.get('/table', (req, res) => {
 
   pool.query(`select * from ${tableName} ${tableOrder}`, (err, results) => {
     if (err) {
-      return res.send(err);
+      res.send(err);
     } else {
-      return res.json(results);
+      res.json(results);
     }
   });
 });
@@ -115,9 +115,9 @@ app.get('/row', (req, res) => {
 
   pool.query(`select * from ${tableName} where ${columnName} = '${rowName}'`, (err, results) => {
     if (err) {
-      return res.send(err);
+      res.send(err);
     } else {
-      return res.send(results);
+      res.send(results);
     }
   });
 });
@@ -127,7 +127,7 @@ app.get('/increment', (req, res) => {
 
   pool.query(`update ${tableName} set count = count + 1 where ${columnName} = '${rowName}'`, (err, results) => {
     if (err) {
-      return res.send(err);
+      res.send(err);
     } else {
       const emailData = {
         from: admin,
@@ -140,13 +140,13 @@ app.get('/increment', (req, res) => {
         try {
           pool.query(`select * from ${tableName} where ${columnName} = '${rowName}'`, (err, results) => {
             if (err) {
-              return res.send(err);
+              res.send(err);
             } else {
-              return res.send(results);
+              res.send(results);
             }
           });
         } catch (e) {
-          return res.send(error);
+          res.send(error);
         }
       });
     }
@@ -175,9 +175,9 @@ app.get('/email', (req, res) => {
 
   transporter.sendMail(emailData, (error) => {
     try {
-      return res.status(200).json({ text: 'success' });
+      res.status(200).json({ text: 'success' });
     } catch (e) {
-      return res.status(500).json({ text: error });
+      res.status(500).json({ text: error });
     }
   });
 });
@@ -187,9 +187,25 @@ app.get('/user', (req, res) => {
 
   pool.query(`select * from Users where username = '${userName}'`, (err, results) => {
     if (err) {
-      return res.send(err);
+      res.send(err);
     } else {
-      return res.send(results);
+      res.send(results);
+    }
+  });
+});
+
+app.get('/signin', (req, res) => {
+  const { table, userName, password } = req.query;
+
+  pool.query(`select * from ${table} where username = '${userName}'`, (err, results) => {
+    if (err) {
+      res.send(err);
+    } else {
+      if (bcrypt.compareSync(password, results[0].password)) {
+        res.send(results);
+      } else {
+        res.send([]);
+      }
     }
   });
 });
@@ -214,9 +230,9 @@ app.post('/insert', upload.none(), (req, res) => {
 
   pool.query(`insert into ${table} (${columnList}) values (${valueList})`, (err, results) => {
     if (err) {
-      return res.send(err);
+      res.send(err);
     } else {
-      return res.send(results);
+      res.send(results);
     }
   });
 });

@@ -11,7 +11,7 @@
   }
 
   font-family: $font-roboto;
-  font-size: $font-size-sm;
+  font-size: $font-size-sm-2;
   font-weight: $font-weight-bold;
   margin: auto;
   text-align: center;
@@ -27,9 +27,9 @@
     }
 
     border-radius: fluid-dim(25px, 38px);
-    height: $fluid-dim-sm;
+    height: $fluid-dim-md-2;
     margin: 0 12px;
-    width: $fluid-dim-sm;
+    width: $fluid-dim-md-2;
   }
 
   &__cell-text {

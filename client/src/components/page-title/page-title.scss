@@ -14,7 +14,7 @@
   .title-text {
     color: $greendream-dark-green;
     font-family: $font-roboto;
-    font-size: $font-size-xl;
+    font-size: $font-size-xl-1;
     font-weight: $font-weight-bold;
     margin: auto;
     text-align: center;
@@ -22,7 +22,7 @@
 
   .title-image {
     margin: 0 auto;
-    width: $fluid-dim-md;
+    width: $fluid-dim-lg-1;
 
     &.preview {
       @include mquery($width-breakpoint-md) {
@@ -30,7 +30,7 @@
       }
 
       margin: 0 auto 20px;
-      width: $fluid-dim-sample1;
+      width: $fluid-dim-md-3;
     }
   }
 }

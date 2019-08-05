@@ -3,7 +3,7 @@
 .header-cell-rct-component {
   color: $white;
   font-family: $font-orbitron;
-  font-size: $font-size-md;
+  font-size: $font-size-sm-1;
   font-weight: $font-weight-bold;
   margin: auto;
   width: 33%;
@@ -18,8 +18,8 @@
       .sort-button-up,
       .sort-button-down {
         cursor: pointer;
-        height: $fluid-dim-3xs;
-        width: $fluid-dim-2xs;
+        height: $fluid-dim-xs-3;
+        width: $fluid-dim-xs-1;
       }
     }
 

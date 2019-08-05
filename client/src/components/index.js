@@ -3,6 +3,7 @@ export { AppPreview } from './app-preview/app-preview';
 export { AppsPage } from './apps-page/apps-page';
 export { ContactButton } from './contact-button/contact-button';
 export { ContentRow } from './content-row/content-row';
+export { FacingMessage } from './facing-message/facing-message';
 export { FormButton } from './form-button/form-button';
 export { FormField } from './form-field/form-field';
 export { FormRadio } from './form-radio/form-radio';

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { Flex, Link } from 'rebass';
 import classNames from 'classnames';
 import { FormButton, FormField } from 'components';
@@ -18,6 +19,7 @@ import {
   capitalizeFromLower,
   insertRow,
   sendMail,
+  signIn,
 } from 'utils/helpers';
 import { MESSAGES, MIN_MESSAGE_LENGTH } from 'utils/messages';
 import './modal-form.scss';
@@ -51,6 +53,7 @@ const initialFormsStates = {
       username: false,
       password: false,
     },
+    loginError: false,
   },
   signup: {
     name: '',
@@ -135,7 +138,7 @@ async function picHasError(value) {
   return false;
 }
 
-async function fieldHasError(name, value, currentForm) {
+async function fieldHasError(name, value, currentForm, type) {
   value = name !== 'pic' ? value.trim() : value;
 
   switch (name) {
@@ -147,8 +150,12 @@ async function fieldHasError(name, value, currentForm) {
     case 'message':
       return value.length === 0 || value.length < MIN_MESSAGE_LENGTH;
     case 'username': {
-      const userExists = await userNameExists(value);
-      return value.length === 0 || userExists;
+      if (type === 'signup') {
+        const userExists = await userNameExists(value);
+        return value.length === 0 || userExists;
+      }
+
+      return value.length === 0;
     }
     case 'repeat':
       return value.length === 0 || !isTheSamePassword(value, currentForm);
@@ -211,6 +218,8 @@ function renderActionButton(type, form) {
     isSubmit: true,
     errors: form[`${type}`].errors,
     complete: !!formIsComplete(form[`${type}`]),
+    loginError: form['signin'].loginError,
+    formType: type,
   };
 
   return <FormButton {...formButtonProps} />;
@@ -221,6 +230,9 @@ function hasError(errors) {
 }
 
 function getErrorMessage(form) {
+  if (form.loginError) {
+    return MESSAGES.FORM_ERROR_SIGNIN;
+  }
   const { errors } = form;
 
   const errorIndex = hasError(errors);
@@ -286,11 +298,13 @@ function getErrorMessage(form) {
 }
 
 function renderErrorArea(type, form) {
+  const showError = hasError(form[`${type}`].errors) !== -1 || (type === 'signin' && form['signin'].loginError);
+
   return (
     <Flex
       className={classNames(
         'error-area',
-        hasError(form[`${type}`].errors) !== -1 ? 'error' : '',
+        showError ? 'error' : '',
       )}
     >
       <span className="error-text">
@@ -332,12 +346,12 @@ function hideIfOut(modal) {
 function formSuccess(fadeOut, showStatsBar, form, setForm, type) {
   resetForm(form, setForm, type);
   fadeOut();
-  showStatsBar(FORM_STATS_MESSAGES.success[`${type}`], false);
+  showStatsBar(FORM_STATS_MESSAGES.success[`${type}`], false, type === 'signin');
 }
 
 function formFailure(fadeOut, showStatsBar, type, errorResponse) {
   fadeOut();
-  showStatsBar(FORM_STATS_MESSAGES.failure[`${type}`], true);
+  showStatsBar(FORM_STATS_MESSAGES.failure[`${type}`], true, false);
   console.error(errorResponse); // eslint-disable-line no-console
 }
 
@@ -402,7 +416,7 @@ export function ModalForm({
     const newValue = name === 'pic' && (value !== 'default' && value !== '')
       ? e.target.files[0] : value;
 
-    const currentFieldHasError = await fieldHasError(name, newValue, currentForm);
+    const currentFieldHasError = await fieldHasError(name, newValue, currentForm, type);
 
     const setFieldError = currentForm.errors[name] || name === 'pic' ?
       currentFieldHasError : currentForm.errors[name];
@@ -424,8 +438,6 @@ export function ModalForm({
         },
       },
     });
-
-    // console.log(currentForm);
   }
 
   async function onBlur(e) {
@@ -434,7 +446,7 @@ export function ModalForm({
     const { contact, signin, signup } = form;
 
     const newValue = name === 'pic' ? e.target.files[0] : value;
-    const currentFieldHasError = await fieldHasError(name, newValue, currentForm);
+    const currentFieldHasError = await fieldHasError(name, newValue, currentForm, type);
 
     setForm({
       contact,
@@ -476,10 +488,29 @@ export function ModalForm({
         }
         break;
       }
-      // case 'signin': {
+      case 'signin': {
+        const { username, password } = currentForm;
 
-      //   break;
-      // }
+        const signInAttempt = await signIn('Users', username, password);
+
+        if (signInAttempt.length === 1) {
+          Cookies.set('greendream-user', signInAttempt[0].username, { expires: 7 });
+
+          formSuccess(fadeOut, showStatsBar, form, setForm, type);
+        } else {
+          const { contact, signup } = form;
+
+          setForm({
+            contact,
+            signup,
+            signin: {
+              ...currentForm,
+              loginError: true,
+            },
+          });
+        }
+        break;
+      }
       case 'signup': {
         const picReader = new FileReader();
 

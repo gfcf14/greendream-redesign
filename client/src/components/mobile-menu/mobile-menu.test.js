@@ -7,6 +7,9 @@ describe('MobileMenu Component Unit Test', () => {
     toggleMenu: jest.fn(),
     modal: -1,
     toggleModal: jest.fn(),
+    isLoggedIn: 'gfcf14',
+    showStatsBar: jest.fn(),
+    fadeOut: jest.fn(),
   };
   const wrapper = mountWithIntl(
     <MobileMenu {...menuProps} />

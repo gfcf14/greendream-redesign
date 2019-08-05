@@ -16,6 +16,8 @@ export function FormButton(props) {
     complete,
     onClick,
     isDefault,
+    loginError,
+    formType,
   } = props;
 
   return (
@@ -23,14 +25,14 @@ export function FormButton(props) {
       className={classNames(
         'form-button-rct-component',
         isSubmit ? 'submit' : 'pic',
-        isSubmit && hasError(errors) ? 'error' : '',
+        (isSubmit && hasError(errors)) || (loginError && formType === 'signin') ? 'error' : '',
       )}
     >
       <button
         className={classNames(
           'form-button-rct-component__action-button',
           isSubmit ? 'submit' : 'pic',
-          isSubmit && hasError(errors) ? 'error' : '',
+          (isSubmit && hasError(errors)) || (loginError && formType === 'signin') ? 'error' : '',
           (isSubmit && !complete) || (!isSubmit && isDefault) ? 'disabled' : '',
           complete ? '' : 'disabled',
         )}
@@ -51,6 +53,8 @@ FormButton.propTypes = {
   complete: PropTypes.bool,
   onClick: PropTypes.func,
   isDefault: PropTypes.bool,
+  loginError: PropTypes.bool,
+  formType: PropTypes.string,
 };
 
 FormButton.defaultProps = {
@@ -58,4 +62,6 @@ FormButton.defaultProps = {
   complete: true,
   onClick: () => null,
   isDefault: false,
+  loginError: false,
+  formType: '',
 };

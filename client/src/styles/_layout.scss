@@ -5,25 +5,26 @@ $width-breakpoint-md: 1024px;
 $width-breakpoint-sm: 768px;
 $width-breakpoint-xs: 540px;
 
-$fluid-spacing-xl: fluid-spacing(8px, 28px);
-$fluid-spacing-lg: fluid-spacing(5px, 15px);
-$fluid-spacing-md: fluid-spacing(10px, 15px);
+$fluid-spacing-xl-2: fluid-spacing(20px, 30px);
+$fluid-spacing-xl-1: fluid-spacing(8px, 28px);
+$fluid-spacing-lg: fluid-spacing(10px, 15px);
+$fluid-spacing-md: fluid-spacing(5px, 15px);
 $fluid-spacing-sm: fluid-spacing(6px, 12px);
-$fluid-spacing-sample1: fluid-spacing(20px, 30px);
-$fluid-spacing-sample2: fluid-spacing(3px, 5px);
+$fluid-spacing-xs: fluid-spacing(3px, 5px);
 
-$fluid-dim-2xl: fluid-dim(202px, 448px);
-$fluid-dim-xl: fluid-dim(250px, 500px);
-$fluid-dim-lg: fluid-dim(120px, 440px);
-$fluid-dim-md: fluid-dim(101px, 202px);
-$fluid-dim-sm: fluid-dim(50px, 75px);
-$fluid-dim-xs: fluid-dim(40px, 52px);
-$fluid-dim-2xs: fluid-dim(15px, 25px);
-$fluid-dim-3xs: fluid-dim(8px, 13px);
-$fluid-dim-sample1: fluid-dim(80px, 120px);
-$fluid-dim-sample2: fluid-dim(226px, 332px);
-$fluid-dim-sample3: fluid-dim(28px, 32px);
-$fluid-dim-sample4: fluid-dim(11px, 20px);
+$fluid-dim-xl-3: fluid-dim(250px, 500px);
+$fluid-dim-xl-2: fluid-dim(202px, 448px);
+$fluid-dim-xl-1: fluid-dim(120px, 440px);
+$fluid-dim-lg-2: fluid-dim(226px, 332px);
+$fluid-dim-lg-1: fluid-dim(101px, 202px);
+$fluid-dim-md-3: fluid-dim(80px, 120px);
+$fluid-dim-md-2: fluid-dim(50px, 75px);
+$fluid-dim-md-1: fluid-dim(35px, 75px);
+$fluid-dim-sm-1: fluid-dim(40px, 52px);
+$fluid-dim-sm-2: fluid-dim(28px, 32px);
+$fluid-dim-xs-1: fluid-dim(15px, 25px);
+$fluid-dim-xs-2: fluid-dim(11px, 20px);
+$fluid-dim-xs-3: fluid-dim(8px, 13px);
 
 :export {
   lg: $width-breakpoint-lg;

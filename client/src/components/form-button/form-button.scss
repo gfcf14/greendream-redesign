@@ -12,7 +12,7 @@
     border-radius: 25px;
     color: $white;
     font-family: $font-roboto;
-    font-size: $font-size-sm;
+    font-size: $font-size-sm-2;
     font-weight: $font-weight-bold;
     height: 36px;
     width: 100%;
@@ -23,6 +23,11 @@
 
       &:hover {
         background: $greendream-green;
+      }
+
+      &.error {
+        background: $red-lighten-2;
+        border: 2px solid $white;
       }
     }
 
@@ -54,7 +59,7 @@
       padding: 0 15px 15px;
     }
 
-    border-radius: 0 0 $fluid-dim-2xs $fluid-dim-2xs;
+    border-radius: 0 0 $fluid-dim-xs-1 $fluid-dim-xs-1;
     padding: 0 20px 20px;
     width: 100%;
   }

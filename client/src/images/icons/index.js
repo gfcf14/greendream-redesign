@@ -1,3 +1,4 @@
+export { default as cookiesIcon } from './cookies.svg';
 export { default as formEmailIcon } from './form-email.svg';
 export { default as formEmailErrorIcon } from './form-email-error.svg';
 export { default as formEmailReadyIcon } from './form-email-ready.svg';

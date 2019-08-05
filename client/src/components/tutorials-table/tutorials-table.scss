@@ -51,12 +51,12 @@
       width: calc(65% - 20px);
 
       h3 {
-        font-size: $font-size-lg;
-        margin: 0 0 $fluid-spacing-lg;
+        font-size: $font-size-lg-2;
+        margin: 0 0 $fluid-spacing-md;
       }
 
       p {
-        font-size: $font-size-xs;
+        font-size: $font-size-xs-2;
         margin: 0;
       }
     }

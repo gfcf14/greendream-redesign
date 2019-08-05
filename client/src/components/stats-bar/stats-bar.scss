@@ -5,7 +5,7 @@
   bottom: 0;
   color: $white;
   font-family: $font-orbitron;
-  font-size: $font-size-md;
+  font-size: $font-size-sm-1;
   font-weight: $font-weight-bold;
   left: 0;
   opacity: 1;
@@ -36,6 +36,6 @@
   }
 
   &__stats-text {
-    margin-top: $fluid-spacing-sample2;
+    margin-top: $fluid-spacing-xs;
   }
 }

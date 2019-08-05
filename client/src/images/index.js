@@ -27,6 +27,7 @@ export {
 } from './games-logos';
 
 export {
+  cookiesIcon,
   formEmailIcon,
   formEmailErrorIcon,
   formEmailReadyIcon,

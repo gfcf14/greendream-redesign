@@ -17,25 +17,31 @@ function showMobileFirst(toggleMenu, menu) {
   }
 }
 
-export function Menu({
-  menu,
-  toggleMenu,
-  modal,
-  toggleModal,
-}) {
+export function Menu(props) {
+  const {
+    menu,
+    toggleMenu,
+    modal,
+    toggleModal,
+    isLoggedIn,
+    showStatsBar,
+  } = props;
+
   const buttonProps = {
     modal,
     toggleModal,
+    isLoggedIn,
+    showStatsBar,
   };
 
   const leftButtonProps = {
-    buttonType: 'sign-up',
+    buttonType: isLoggedIn ? 'profile' : 'sign-up',
     position: 'left',
     ...buttonProps,
   };
 
   const rightbuttonProps = {
-    buttonType: 'sign-in',
+    buttonType: isLoggedIn ? 'sign-out' : 'sign-in',
     position: 'right',
     ...buttonProps,
   };
@@ -73,5 +79,7 @@ Menu.propTypes = {
   toggleMenu: PropTypes.func.isRequired,
   modal: PropTypes.number.isRequired,
   toggleModal: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.string.isRequired,
+  showStatsBar: PropTypes.func.isRequired,
 };
 
