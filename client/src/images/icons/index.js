@@ -1,16 +1,19 @@
+export {
+  formEmailIcon,
+  formEmailErrorIcon,
+  formEmailReadyIcon,
+  formNameIcon,
+  formNameErrorIcon,
+  formNameReadyIcon,
+  formPasswordIcon,
+  formPasswordErrorIcon,
+  formPasswordReadyIcon,
+  formTextIcon,
+  formTextErrorIcon,
+  formTextReadyIcon,
+} from './form';
+
 export { default as cookiesIcon } from './cookies.svg';
-export { default as formEmailIcon } from './form-email.svg';
-export { default as formEmailErrorIcon } from './form-email-error.svg';
-export { default as formEmailReadyIcon } from './form-email-ready.svg';
-export { default as formNameIcon } from './form-name.svg';
-export { default as formNameErrorIcon } from './form-name-error.svg';
-export { default as formNameReadyIcon } from './form-name-ready.svg';
-export { default as formPasswordIcon } from './form-password.svg';
-export { default as formPasswordErrorIcon } from './form-password-error.svg';
-export { default as formPasswordReadyIcon } from './form-password-ready.svg';
-export { default as formTextIcon } from './form-text.svg';
-export { default as formTextErrorIcon } from './form-text-error.svg';
-export { default as formTextReadyIcon } from './form-text-ready.svg';
 export { default as keyboardIcon } from './keyboard.svg';
 export { default as mouseIcon } from './mouse.svg';
 export { default as profileIcon } from './profile.svg';

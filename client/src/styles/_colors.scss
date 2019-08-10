@@ -2,19 +2,26 @@ $green: #00ff88;
 $greendream-green: #00b456;
 $greendream-dark-green: #005a2b;
 $greendream-black-green: #002d16;
+$greendream-dark-green-opaque: #005a2b7f;
+
+$green-darken-2: #006a33;
+$green-darken-1: #007146;
 
 $green-lighten-1: #00844c;
 $green-lighten-2: #00d466;
-$green-lighten-3: #00d466;
-$green-lighten-4: #00ee7f;
-$green-lighten-5: #00e16b26;
-$green-lighten-sample-1: #007146;
+$green-lighten-3: #00ee7f;
+$green-lighten-4: #00e16b26;
 
-$red-darken-2: #320000;
-$red-darken-1: #640000;
+$white-lighten-1: #f3f7f500;
+$white-lighten-2: #ffffff00;
+
+$red-darken-3: #320000;
+$red-darken-2: #640000;
+$red-darken-1: #6a0019;
 $red-lighten-1: #800000;
 $red-lighten-2: #c00000;
-$red-lighten-3: #e00000;
+$red-lighten-3: #d40033;
+$red-lighten-4: #e00000;
 
 $white: #ffffff;
 $black: #000000;
@@ -31,16 +38,19 @@ $gradient-black-green-1: linear-gradient(to bottom, $black 0%, $greendream-dark-
 $gradient-black-green-2: radial-gradient(at top, $greendream-black-green 0%, $greendream-black-green 10%, $greendream-dark-green 100%);
 $gradient-black-green-3: radial-gradient(circle at bottom right, $greendream-dark-green 0%, $greendream-dark-green 20%, $greendream-black-green 70%);
 $gradient-black-green-4: linear-gradient(to bottom, $greendream-black-green 0%, $greendream-dark-green 100%);
-$gradient-green-1: linear-gradient(to bottom, $green-lighten-1 0%, $green-lighten-3 100%);
-$gradient-green-2: linear-gradient(to bottom, $green-lighten-2 0%, $green-lighten-4 100%);
+$gradient-green-1: linear-gradient(to bottom, $green-lighten-1 0%, $green-lighten-2 100%);
+$gradient-green-2: linear-gradient(to bottom, $green-lighten-2 0%, $green-lighten-3 100%);
 $gradient-green-3: linear-gradient(to bottom, $greendream-green 0%, $greendream-dark-green 100%);
+$gradient-green-4: linear-gradient(to bottom, $green-lighten-2 0%, $green-darken-2 100%);
 $gradient-green-black-1: linear-gradient(to bottom, $greendream-dark-green 0%, $greendream-dark-green 10%, $greendream-black-green 90%, $greendream-black-green 100%);
 $gradient-light-green-green: linear-gradient(to bottom, $greendream-green 0%, $greendream-green 10%, $greendream-dark-green 90%, $greendream-dark-green 100%);
 $gradient-neon-light-green-green: linear-gradient(to bottom, $green 0%, $green 10%, $greendream-green 90%, $greendream-green 100%);
 $gradient-white-grey-grey-1: linear-gradient(to bottom, $white 0%, $grey-lighten-2 70%, $grey-lighten-1 100%);
+$gradient-white-white-green: radial-gradient(150vh at left, $white-lighten-2 0%, $white-lighten-1 60%, $greendream-dark-green-opaque 100%);
 
-$gradient-red-1: linear-gradient(to bottom, $red-lighten-2 0%, $red-lighten-3 100%);
-$gradient-red-black-1: linear-gradient(to bottom, $red-lighten-1 0%, $red-darken-1 75%, $red-darken-2 100%);
+$gradient-red-1: linear-gradient(to bottom, $red-lighten-2 0%, $red-lighten-4 100%);
+$gradient-red-2: linear-gradient(to bottom, $red-lighten-3 0%, $red-darken-2 100%);
+$gradient-red-black-1: linear-gradient(to bottom, $red-lighten-1 0%, $red-darken-2 75%, $red-darken-3 100%);
 
 :export {
   white: $white;

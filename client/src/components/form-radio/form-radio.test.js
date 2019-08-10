@@ -7,6 +7,7 @@ describe('FormRadio Component Unit Test', () => {
     value: 'm',
     onChange: jest.fn(),
     isChecked: '',
+    formClass: 'modal',
   };
 
   const wrapper = mountWithIntl(

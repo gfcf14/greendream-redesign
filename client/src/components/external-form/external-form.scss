@@ -1,0 +1,20 @@
+@import '~styles/_index';
+
+.external-form-rct-component {
+  flex-direction: column;
+  width: 100%;
+
+  &__error-text {
+    @include mquery($width-breakpoint-sm) {
+      margin: 0 auto 15px;
+    }
+
+    color: $white;
+    font-family: $font-roboto;
+    font-size: $font-size-sm-2;
+    font-weight: $font-weight-bold;
+    height: $fluid-dim-xs-2;
+    margin: 0 auto 20px;
+    text-align: center;
+  }
+}

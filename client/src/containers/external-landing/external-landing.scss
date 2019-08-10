@@ -1,0 +1,116 @@
+@import '~styles/_index';
+
+.external-landing-rct-component {
+  background: $gradient-white-white-green;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+
+  &__logo {
+    margin: 20px auto;
+
+    .logo-image {
+      width: 33vw;
+    }
+  }
+
+  &__title {
+    color: $greendream-dark-green;
+    font-family: $font-roboto;
+    font-size: $font-size-xl-1;
+    font-weight: $font-weight-bold;
+    margin: 0 auto 20px;
+    text-align: center;
+  }
+
+  &__subtitle {
+    color: $greendream-dark-green;
+    font-family: $font-roboto;
+    font-size: $font-size-sm-2;
+    font-weight: $font-weight-bold;
+    margin: 0 auto 20px;
+    text-align: center;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &__content {
+    @include mquery($width-breakpoint-md) {
+      width: 50vw;
+    }
+
+    @include mquery($width-breakpoint-sm) {
+      width: 65vw;
+    }
+
+    background: $gradient-green-4;
+    border-radius: 20px;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: $fluid-spacing-sample-1;
+    width: 35vw;
+
+    &.with-height {
+      height: 25vh;
+    }
+
+    &.error {
+      background: $gradient-red-2;
+    }
+
+    .message {
+      color: $white;
+      font-family: $font-roboto;
+      font-size: $font-size-xs-2;
+      font-weight: $font-weight-normal;
+      margin: auto;
+      text-align: center;
+
+      &.hidden {
+        display: none;
+      }
+    }
+
+    .site-button-container {
+      .site-button {
+        @include mquery($width-breakpoint-sm) {
+          border: 1px solid $white;
+          border-radius: 12px;
+        }
+
+        background: none;
+        border: 2px solid $white;
+        border-radius: 25px;
+        color: $white;
+        cursor: pointer;
+        font-family: $font-orbitron;
+        font-size: $font-size-sm-1;
+        font-weight: $font-weight-bold;
+        padding: 3px;
+        width: 100%;
+
+        &:hover {
+          background: $greendream-green;
+        }
+      }
+
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+
+  &__background-image {
+    @include mquery($width-breakpoint-sm) {
+      width: 65vw;
+    }
+
+    bottom: 0;
+    margin-left: $fluid-spacing-sample-2;
+    opacity: 0.5;
+    position: absolute;
+    width: 30vw;
+  }
+}

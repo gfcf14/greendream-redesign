@@ -53,7 +53,7 @@ export function FacingMessage({ acceptedCookie, setAcceptCookies }) {
 }
 
 FacingMessage.propTypes = {
-  acceptedCookie: PropTypes.bool,
+  acceptedCookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   setAcceptCookies: PropTypes.func.isRequired,
 };
 

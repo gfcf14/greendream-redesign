@@ -149,3 +149,8 @@ export const MENU_ROUTES = [
   },
 ].map(injectItemKey);
 
+export const EXTERNAL_ROUTES = [
+  { path: '/change' },
+  { path: '/confirm' },
+  { path: '/recovery' },
+].map(injectItemKey);

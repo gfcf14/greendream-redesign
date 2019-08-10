@@ -4,7 +4,7 @@ import shortid from 'shortid';
 import classNames from 'classnames';
 import { Flex, Image } from 'rebass';
 import { FormButton, FormRadio } from 'components';
-import { FIELD_TEXTS, RADIO_BUTTON_CONFIGS } from 'utils/constants';
+import { FIELD_TEXTS, FORGOT_RADIO_CONFIGS, RADIO_BUTTON_CONFIGS } from 'utils/constants';
 import { getImageSource } from 'utils/helpers';
 import { MESSAGES } from 'utils/messages';
 import './form-field.scss';
@@ -86,10 +86,12 @@ function renderTextArea(formType, fieldType, textAreaProps) {
   );
 }
 
-function renderFormRadios(radioButtonProps) {
-  return Object.keys(RADIO_BUTTON_CONFIGS).map((key) => {
+function renderFormRadios(fieldType, radioButtonProps) {
+  const selectedConfig = fieldType === 'sex' ? RADIO_BUTTON_CONFIGS : FORGOT_RADIO_CONFIGS;
+
+  return Object.keys(selectedConfig).map((key) => {
     const formRadioProps = {
-      ...RADIO_BUTTON_CONFIGS[`${key}`],
+      ...selectedConfig[`${key}`],
       ...radioButtonProps,
     };
 
@@ -98,10 +100,13 @@ function renderFormRadios(radioButtonProps) {
 }
 
 function renderRadioButtons(fieldType, radioButtonProps) {
+  const radioText = fieldType === 'sex' ?
+    FIELD_TEXTS[`${fieldType}`] : MESSAGES.EXTERNAL_FORM_FORGOT;
+
   return (
     <Flex className="form-field-rct-component__radio-field">
-      <span className="radio-text">{FIELD_TEXTS[`${fieldType}`]}</span>
-      {renderFormRadios(radioButtonProps)}
+      <span className="radio-text">{radioText}</span>
+      {renderFormRadios(fieldType, radioButtonProps)}
     </Flex>
   );
 }
@@ -220,8 +225,10 @@ function renderFieldByType(formType, fieldType, otherProps, profilePicRef) {
     value,
     error,
     onChange,
+    onKeyUp,
     onBlur,
     selectedSex,
+    formClass,
   } = otherProps;
 
   switch (fieldType) {
@@ -234,6 +241,7 @@ function renderFieldByType(formType, fieldType, otherProps, profilePicRef) {
         value,
         error,
         onChange,
+        onKeyUp,
         onBlur,
       };
 
@@ -249,10 +257,12 @@ function renderFieldByType(formType, fieldType, otherProps, profilePicRef) {
 
       return renderTextArea(formType, fieldType, textAreaProps);
     }
-    case 'sex': {
+    case 'sex':
+    case 'forgot': {
       const radioButtonProps = {
         onChange,
         isChecked: value,
+        formClass,
       };
 
       return renderRadioButtons(fieldType, radioButtonProps);
@@ -277,11 +287,15 @@ export function FormField(props) {
   const { fieldType, formType, ...otherProps } = props;
   const profilePicRef = useRef(null);
 
+  const siteUrl = window.location.href;
+  const isExternal = siteUrl.includes('change') || siteUrl.includes('recovery');
+
   return (
     <Flex
       className={classNames(
         'form-field-rct-component',
         fieldType === 'username' && formType === 'signin' ? 'top-space' : '',
+        isExternal ? 'external' : '',
       )}
     >
       {renderFieldByType(formType, fieldType, otherProps, profilePicRef)}
@@ -295,10 +309,13 @@ FormField.propTypes = {
   value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   error: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
+  onKeyUp: PropTypes.func,
   onBlur: PropTypes.func.isRequired,
   selectedSex: PropTypes.string,
+  formClass: PropTypes.string.isRequired,
 };
 
 FormField.defaultProps = {
   selectedSex: '',
+  onKeyUp: () => null,
 };

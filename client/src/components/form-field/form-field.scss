@@ -209,4 +209,12 @@
       margin-left: 2px;
     }
   }
+
+  &.external {
+    @include mquery($width-breakpoint-sm) {
+      padding: 0 0 15px;
+    }
+
+    padding: 0 0 20px;
+  }
 }
