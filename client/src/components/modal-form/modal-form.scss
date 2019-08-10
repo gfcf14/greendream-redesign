@@ -36,8 +36,8 @@
     background: $gradient-black-green-1;
     border: 3px solid $greendream-dark-green;
     border-bottom: 0;
-    border-radius: $fluid-dim-2xs $fluid-dim-2xs 0 0;
-    min-height: $fluid-dim-xs;
+    border-radius: $fluid-dim-xs-1 $fluid-dim-xs-1 0 0;
+    min-height: $fluid-dim-sm-1;
 
     .title-text {
       @include mquery($width-breakpoint-md) {
@@ -46,7 +46,7 @@
 
       color: $white;
       font-family: $font-orbitron;
-      font-size:  $font-size-sample3;
+      font-size:  $font-size-lg-1;
       font-weight: $font-weight-bold;
       margin: 14px;
     }
@@ -58,11 +58,11 @@
       color: $white;
       cursor: pointer;
       font-family: $font-orbitron;
-      font-size: $font-size-sample4;
+      font-size: $font-size-xs-1;
       font-weight: $font-weight-bold;
-      height: $fluid-dim-sample3;
+      height: $fluid-dim-sm-2;
       margin: auto 15px auto auto;
-      width: $fluid-dim-sample3;
+      width: $fluid-dim-sm-2;
 
       &:hover {
         background: $gradient-light-green-green;
@@ -81,10 +81,10 @@
   &__field-container {
     background: $gradient-black-green-4;
     border: 3px solid $greendream-dark-green;
-    border-radius: 0 0 $fluid-dim-2xs $fluid-dim-2xs;
+    border-radius: 0 0 $fluid-dim-xs-1 $fluid-dim-xs-1;
     border-top: 0;
     flex-direction: column;
-    min-height: $fluid-dim-xs;
+    min-height: $fluid-dim-sm-1;
 
     .form-instructions {
       @include mquery($width-breakpoint-sm) {
@@ -93,7 +93,7 @@
 
       color: $white;
       font-family: $font-roboto;
-      font-size: $font-size-sm;
+      font-size: $font-size-sm-2;
       font-weight: $font-weight-bold;
       margin: 0 auto;
       padding: 20px;
@@ -115,9 +115,9 @@
       .error-text {
         color: $white;
         font-family: $font-roboto;
-        font-size: $font-size-sm;
+        font-size: $font-size-sm-2;
         font-weight: $font-weight-bold;
-        height: $fluid-dim-sample4;
+        height: $fluid-dim-xs-2;
         margin: 0 auto;
       }
     }
@@ -129,7 +129,7 @@
 
       color: $white;
       font-family: $font-roboto;
-      font-size: $font-size-sm;
+      font-size: $font-size-sm-2;
       font-weight: $font-weight-bold;
       margin: 0 auto 20px;
       text-decoration: underline;

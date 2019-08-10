@@ -6,7 +6,7 @@
   &__slideshow-container {
     background-position: center;
     background-size: 100vw;
-    height: $fluid-dim-2xl;
+    height: $fluid-dim-xl-2;
     overflow: hidden;
     width: 100vw;
 
@@ -14,7 +14,7 @@
       @include mquery($width-breakpoint-md) {
         border-radius: 15px;
         margin: auto auto 20px;
-        padding-right: $fluid-spacing-md;
+        padding-right: $fluid-spacing-lg;
       }
 
       @include mquery($width-breakpoint-sm) {
@@ -26,18 +26,18 @@
       color: $white;
       display: inline-block;
       font-family: $font-roboto;
-      font-size: $font-size-md;
+      font-size: $font-size-sm-1;
       font-weight: $font-weight-bold;
       margin: auto 0 20px;
-      padding: $fluid-spacing-md;
-      padding-right: calc(#{$fluid-spacing-md} + 10px);
+      padding: $fluid-spacing-lg;
+      padding-right: calc(#{$fluid-spacing-lg} + 10px);
     }
   }
 
   &__welcome-text {
     color: $greendream-dark-green;
     font-family: $font-roboto;
-    font-size: $font-size-sm;
+    font-size: $font-size-sm-2;
     font-weight: $font-weight-bold;
     margin: 20px;
     text-align: center;

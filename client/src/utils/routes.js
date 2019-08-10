@@ -108,12 +108,21 @@ const aboutProps = {
   },
 };
 
-export const ACCOUNT_ROUTES = [
+export const FORM_ROUTES = [
   {
     name: MESSAGES.SIGN_UP,
   },
   {
     name: MESSAGES.SIGN_IN,
+  },
+].map(injectItemKey);
+
+export const SESSION_ROUTES = [
+  {
+    name: MESSAGES.PROFILE,
+  },
+  {
+    name: MESSAGES.SIGN_OUT,
   },
 ].map(injectItemKey);
 

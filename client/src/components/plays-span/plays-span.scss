@@ -17,11 +17,11 @@
   border-radius: 20px;
   margin-left: 60px;
   padding: 0 28px;
-  width: $fluid-dim-sample2;
+  width: $fluid-dim-lg-2;
 
   &__text {
     font-family: $font-orbitron;
-    font-size: $font-size-sample1;
+    font-size: $font-size-md;
     font-weight: $font-weight-bold;
     margin: auto 0;
     padding-right: 20px;
@@ -32,10 +32,10 @@
 
     color: $greendream-green;
     font-family: $font-orbitron;
-    font-size: $font-size-sample2;
+    font-size: $font-size-xl-2;
     font-weight: $font-weight-bold;
-    height: $fluid-dim-xs;
-    line-height: $fluid-dim-xs;
+    height: $fluid-dim-sm-1;
+    line-height: $fluid-dim-sm-1;
     margin: auto 0 auto auto;
   }
 }

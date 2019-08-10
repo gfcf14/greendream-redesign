@@ -8,7 +8,7 @@
     .title {
       color: $greendream-black-green;
       font-family: $font-orbitron;
-      font-size: $font-size-md;
+      font-size: $font-size-sm-1;
       font-weight: $font-weight-bold;
       text-align: right;
       width: 30%;
@@ -16,9 +16,9 @@
 
     .description {
       flex-direction: column;
-      padding-left: $fluid-spacing-sample1;
+      padding-left: $fluid-spacing-xl-2;
       text-align: left;
-      width: calc(70% - #{$fluid-spacing-sample1});
+      width: calc(70% - #{$fluid-spacing-xl-2});
     }
   }
 }

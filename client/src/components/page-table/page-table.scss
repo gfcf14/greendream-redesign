@@ -12,8 +12,8 @@
     background: $gradient-green-black-1;
     border: 3px solid $greendream-dark-green;
     border-bottom: 0;
-    border-radius: $fluid-dim-2xs $fluid-dim-2xs 0 0;
-    min-height: $fluid-dim-xs;
+    border-radius: $fluid-dim-xs-1 $fluid-dim-xs-1 0 0;
+    min-height: $fluid-dim-sm-1;
     width: 100%;
   }
 
@@ -35,7 +35,7 @@
 
     &.last {
       border-bottom: 3px solid $greendream-dark-green;
-      border-radius: 0 0 $fluid-dim-2xs $fluid-dim-2xs;
+      border-radius: 0 0 $fluid-dim-xs-1 $fluid-dim-xs-1;
     }
 
     .preview-link {

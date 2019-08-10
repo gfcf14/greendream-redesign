@@ -1,0 +1,74 @@
+@import '~styles/_index';
+
+.facing-message-rct-component {
+  height: 100vh;
+  position: absolute;
+  width: 100vw;
+  z-index: 100;
+
+  &.hidden {
+    display: none;
+  }
+
+  &__container {
+    @include mquery($width-breakpoint-md) {
+      height: 70px;
+    }
+
+    background: $greendream-dark-green;
+    bottom: 0;
+    height: 100px;
+    padding: $fluid-spacing-lg;
+    position: absolute;
+    width: 100%;
+
+    .mobile-cookie {
+      height: 100%;
+      width: auto;
+
+      &.inverted {
+        transform: scaleX(-1);
+      }
+    }
+
+    .content-container {
+      flex-direction: column;
+      margin: 0 auto;
+
+      .display {
+        margin: 0 auto 10px;
+
+        .text {
+          color: $white;
+          font-family: $font-roboto;
+          font-size: $font-size-sm-2;
+          font-weight: $font-weight-bold;
+          margin: auto 0;
+          text-align: center;
+        }
+      }
+
+      .button {
+        animation: glowing 1500ms infinite;
+        background-color: $green-lighten-sample-1;
+        border-radius: 10px;
+        border: none;
+        color: $white;
+        cursor: pointer;
+        font-family: $font-roboto;
+        font-size: $font-size-sm-2;
+        font-weight: $font-weight-bold;
+        height: calc(#{$font-size-sm-2} * 2);
+        margin: 0 auto;
+        width: 80%;
+      }
+
+      @keyframes glowing {
+        0% { background-color: $greendream-green; box-shadow: 0 0 3px $greendream-green; }
+        50% { background-color: $green; box-shadow: 0 0 30px $green; }
+        100% { background-color: $greendream-green; box-shadow: 0 0 3px $greendream-green; }
+      }
+    }
+  }
+
+}

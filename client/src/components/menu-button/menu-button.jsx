@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Cookies from 'js-cookie';
 import classNames from 'classnames';
-import { Image } from 'rebass';
+import { Image, Link } from 'rebass';
 import { getImageSource } from 'utils/helpers';
+import { MESSAGES } from 'utils/messages';
 import './menu-button.scss';
 
 function getNewModal(modal, position) {
@@ -13,26 +15,50 @@ function getNewModal(modal, position) {
   return position === 'left' ? 1 : 2;
 }
 
-export function MenuButton({
-  buttonType,
-  position,
-  modal,
-  toggleModal,
-}) {
+function menuOrSessionAction(isLoggedIn, modal, position, showStatsBar, toggleModal) {
+  if (isLoggedIn) {
+    if (position === 'right') {
+      Cookies.remove('greendream-user');
+      showStatsBar(MESSAGES.STATS_SIGNOUT_SUCCESS, false, true);
+    }
+  } else {
+    toggleModal(getNewModal(modal, position));
+  }
+}
+
+function getBasedonLogin(isLoggedIn, position) {
+  return isLoggedIn !== '' && position === 'left' ?
+    `${process.env.PUBLIC_URL}/profile?user=${isLoggedIn}` : null;
+}
+
+export function MenuButton(props) {
+  const {
+    buttonType,
+    position,
+    modal,
+    toggleModal,
+    isLoggedIn,
+    showStatsBar,
+  } = props;
+
   return (
-    <button
-      className={classNames(
-        'menu-button-rct-component',
-        position,
-      )}
-      onClick={() => toggleModal(getNewModal(modal, position))}
+    <Link
+      href={getBasedonLogin(isLoggedIn, position)}
     >
-      <Image
-        src={getImageSource(buttonType)}
-        className="menu-button-rct-component__icon"
-        alt="menu-button-icon"
-      />
-    </button>
+      <button
+        className={classNames(
+          'menu-button-rct-component',
+          position,
+        )}
+        onClick={() => menuOrSessionAction(isLoggedIn, modal, position, showStatsBar, toggleModal)}
+      >
+        <Image
+          src={getImageSource(buttonType)}
+          className="menu-button-rct-component__icon"
+          alt="menu-button-icon"
+        />
+      </button>
+    </Link>
   );
 }
 
@@ -41,4 +67,6 @@ MenuButton.propTypes = {
   position: PropTypes.oneOf(['left', 'right']).isRequired,
   modal: PropTypes.number.isRequired,
   toggleModal: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.string.isRequired,
+  showStatsBar: PropTypes.func.isRequired,
 };

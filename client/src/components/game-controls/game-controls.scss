@@ -7,14 +7,14 @@
     background: $gradient-green-black-1;
     border: 3px solid $greendream-dark-green;
     border-bottom: 0;
-    border-radius: $fluid-dim-2xs $fluid-dim-2xs 0 0;
-    min-height: $fluid-dim-xs;
+    border-radius: $fluid-dim-xs-1 $fluid-dim-xs-1 0 0;
+    min-height: $fluid-dim-sm-1;
     width: 100%;
 
     .header-text {
       color: $white;
       font-family: $font-orbitron;
-      font-size: $font-size-md;
+      font-size: $font-size-sm-1;
       font-weight: $font-weight-bold;
       margin: auto;
     }
@@ -39,7 +39,7 @@
 
     &.last {
       border-bottom: 3px solid $greendream-dark-green;
-      border-radius: 0 0 $fluid-dim-2xs $fluid-dim-2xs;
+      border-radius: 0 0 $fluid-dim-xs-1 $fluid-dim-xs-1;
       margin-bottom: 20px;
     }
 
@@ -58,7 +58,7 @@
         }
 
         font-family: $font-orbitron;
-        font-size: $font-size-md;
+        font-size: $font-size-sm-1;
         font-weight: $font-weight-bold;
         margin: auto 0;
         padding-left: 20px;

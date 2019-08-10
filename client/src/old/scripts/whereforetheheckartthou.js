@@ -637,52 +637,54 @@ var onMobile = false;
 
 /*KEY PRESS*/
 document.onkeypress = function (e) {
-	if (e.keyCode >= 97 && e.keyCode <= 122) { //to detect letters from a to z
-		password += String.fromCharCode(e.keyCode);
-	}
-	else if (e.keyCode == 13) { //user pressed ENTER
-		if (password == "") alert("Non-recognized entry...");
-		else {
-			if (password == "gfcfa") {
-				alert("Recognized: Creator. Time skip 1 enabled");
-				TimeSkip1();
-			}
-			else if (password == "gfcfb") {
-				alert("Recognized: Creator. Time skip 2 enabled");
-				TimeSkip2();
-			}
-			else if (password == "gfcfc") {
-				alert("Recognized: Creator. Time skip 3 enabled");
-				TimeSkip3();
-			}
-			else if (password == "ric") {
-				if (!showDebug) {
-					alert("Recognized: Enrique. Debug enabled");
-					showDebug = true;
-				}
-				else {
-					alert("Recognized: Enrique. Debug disabled");
-					showDebug = false;
-				}
-			}
-			else if (password == "sab") {
-				if (!showDebug) {
-					alert("Recognized: Sabrina. Debug enabled");
-					showDebug = true;
-				}
-				else {
-					alert("Recognized: Sabrina. Debug disabled");
-					showDebug = false;
-				}
-			}
-			else if (password == "p") { //to pause sound when needed
-				if (soundTrack.paused) soundTrack.play();
-				else soundTrack.pause();
-			}
-			else alert("Non-recognized entry...");
-		}
-		password = "";
-	}
+  if (window.location.href.includes("/games/whereforetheheckartthou/whereforetheheckartthou")) {
+    if (e.keyCode >= 97 && e.keyCode <= 122) { //to detect letters from a to z
+      password += String.fromCharCode(e.keyCode);
+    }
+    else if (e.keyCode == 13) { //user pressed ENTER
+      if (password == "") alert("Non-recognized entry...");
+      else {
+        if (password == "gfcfa") {
+          alert("Recognized: Creator. Time skip 1 enabled");
+          TimeSkip1();
+        }
+        else if (password == "gfcfb") {
+          alert("Recognized: Creator. Time skip 2 enabled");
+          TimeSkip2();
+        }
+        else if (password == "gfcfc") {
+          alert("Recognized: Creator. Time skip 3 enabled");
+          TimeSkip3();
+        }
+        else if (password == "ric") {
+          if (!showDebug) {
+            alert("Recognized: Enrique. Debug enabled");
+            showDebug = true;
+          }
+          else {
+            alert("Recognized: Enrique. Debug disabled");
+            showDebug = false;
+          }
+        }
+        else if (password == "sab") {
+          if (!showDebug) {
+            alert("Recognized: Sabrina. Debug enabled");
+            showDebug = true;
+          }
+          else {
+            alert("Recognized: Sabrina. Debug disabled");
+            showDebug = false;
+          }
+        }
+        else if (password == "p") { //to pause sound when needed
+          if (soundTrack.paused) soundTrack.play();
+          else soundTrack.pause();
+        }
+        else alert("Non-recognized entry...");
+      }
+      password = "";
+    }
+  }
 };
 
 //function to skip favor gathering. Comment out as soon as done testing
