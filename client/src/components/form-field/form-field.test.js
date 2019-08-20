@@ -10,6 +10,7 @@ describe('FormField Component Unit Test', () => {
     error: false,
     onChange: jest.fn(),
     onBlur: jest.fn(),
+    formClass: 'modal',
   };
 
   const wrapper = mountWithIntl(

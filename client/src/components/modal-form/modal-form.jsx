@@ -53,7 +53,7 @@ const initialFormsStates = {
       username: false,
       password: false,
     },
-    loginError: false,
+    loginError: '',
   },
   signup: {
     name: '',
@@ -127,6 +127,12 @@ function isNotAcceptedSize(value) {
 }
 
 async function picHasError(value) {
+  const defaultCheck = document.querySelector('.check-box');
+
+  if (defaultCheck.checked) {
+    return false;
+  }
+
   if (isNotAcceptedExtension(value)) {
     return true;
   }
@@ -184,6 +190,7 @@ function renderByConfig(config, form, fieldFunctions) {
       error: form.errors[`${value}`],
       ...fieldFunctions,
       selectedSex: value === 'pic' ? form['sex'] : '',
+      formClass: 'modal',
     };
 
     return <FormField key={field.key} {...formFieldProps} />;
@@ -230,9 +237,14 @@ function hasError(errors) {
 }
 
 function getErrorMessage(form) {
-  if (form.loginError) {
-    return MESSAGES.FORM_ERROR_SIGNIN;
+  if (form.loginError === 'invalid') {
+    return MESSAGES.FORM_ERROR_SIGNIN_INVALID;
   }
+
+  if (form.loginError === 'unconfirmed') {
+    return MESSAGES.FORM_ERROR_SIGNIN_UNCONFIRMED;
+  }
+
   const { errors } = form;
 
   const errorIndex = hasError(errors);
@@ -298,7 +310,9 @@ function getErrorMessage(form) {
 }
 
 function renderErrorArea(type, form) {
-  const showError = hasError(form[`${type}`].errors) !== -1 || (type === 'signin' && form['signin'].loginError);
+  const { loginError } = form['signin'];
+  const loginFail = !(loginError === 'success' || loginError === '');
+  const showError = hasError(form[`${type}`].errors) !== -1 || (type === 'signin' && loginFail);
 
   return (
     <Flex
@@ -314,15 +328,13 @@ function renderErrorArea(type, form) {
   );
 }
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
 function renderExternalLink(type) {
   return type === 'signin' ? (
-    <Link className="external-link" href="#">
+    <Link className="external-link" href={`${process.env.PUBLIC_URL}/recovery`}>
       {MESSAGES.FORM_FORGOT}
     </Link>
   ) : null;
 }
-/* eslint-enable jsx-a11y/anchor-is-valid */
 
 function resetForm(form, setForm, type) {
   const { contact, signin, signup } = form;
@@ -493,8 +505,8 @@ export function ModalForm({
 
         const signInAttempt = await signIn('Users', username, password);
 
-        if (signInAttempt.length === 1) {
-          Cookies.set('greendream-user', signInAttempt[0].username, { expires: 7 });
+        if (signInAttempt.status === 'success') {
+          Cookies.set('greendream-user', signInAttempt.data[0].username, { expires: 7 });
 
           formSuccess(fadeOut, showStatsBar, form, setForm, type);
         } else {
@@ -505,7 +517,7 @@ export function ModalForm({
             signup,
             signin: {
               ...currentForm,
-              loginError: true,
+              loginError: signInAttempt.status,
             },
           });
         }

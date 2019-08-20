@@ -8,7 +8,7 @@ import {
 import { MESSAGES } from './messages';
 import { injectItemKey } from './helpers';
 
-export const SERVER_ADDRESS = `http://localhost:${process.env.REACT_APP_SERVER_PORT}`;
+export const SERVER_ADDRESS = `http://${process.env.REACT_APP_IP_ADDRESS}:${process.env.REACT_APP_SERVER_PORT}`;
 export const PREVIEW_GAMES = [
   {
     path: 'votebuster',
@@ -217,6 +217,31 @@ export const FORM_CONFIGS = [
   },
 ];
 
+export const EXTERNAL_FORM_CONFIGS = [
+  {
+    type: 'recovery',
+    fields: [
+      {
+        value: 'forgot',
+      },
+      {
+        value: 'email',
+      },
+    ].map(injectItemKey),
+  },
+  {
+    type: 'change',
+    fields: [
+      {
+        value: 'password',
+      },
+      {
+        value: 'repeat',
+      },
+    ].map(injectItemKey),
+  },
+];
+
 export const DEFAULT_FORM_CONFIG = {
   type: 'contact',
   fields: [],
@@ -245,6 +270,11 @@ export const ACTION_BUTTONS_MESSAGES = {
   signup: MESSAGES.FORM_SUBMIT_SIGNUP,
 };
 
+export const EXTERNAL_BUTTONS_MESSAGES = {
+  recovery: MESSAGES.EXTERNAL_FORM_SUBMIT_RECOVERY,
+  change: MESSAGES.EXTERNAL_FORM_SUBMIT_CHANGE,
+};
+
 export const RADIO_BUTTON_CONFIGS = {
   female: {
     text: MESSAGES.FORM_SEX_FEMALE,
@@ -253,6 +283,17 @@ export const RADIO_BUTTON_CONFIGS = {
   male: {
     text: MESSAGES.FORM_SEX_MALE,
     value: 'm',
+  },
+};
+
+export const FORGOT_RADIO_CONFIGS = {
+  username: {
+    text: MESSAGES.EXTERNAL_FORM_USERNAME,
+    value: 'u',
+  },
+  password: {
+    text: MESSAGES.EXTERNAL_FORM_PASSWORD,
+    value: 'p',
   },
 };
 
@@ -289,5 +330,52 @@ export const FORM_STATS_MESSAGES = {
     contact: MESSAGES.STATS_CONTACT_ERROR,
     signin: MESSAGES.STATS_SIGNIN_ERROR,
     signup: MESSAGES.STATS_SIGNUP_ERROR,
+  },
+};
+
+export const EXTERNAL_CONFIRMATION_CONFIGS = {
+  dubious: {
+    image: 'weird',
+    message: MESSAGES.EXTERNAL_MESSAGE_CONFIRM_DUBIOUS,
+  },
+  empty: {
+    image: 'weird',
+    message: MESSAGES.EXTERNAL_MESSAGE_CONFIRM_EMPTY,
+  },
+  success: {
+    image: 'success',
+    message: MESSAGES.EXTERNAL_MESSAGE_CONFIRM_SUCCESS,
+  },
+};
+
+export const EXTERNAL_CHANGE_CONFIGS = {
+  empty: {
+    image: 'error',
+    message: MESSAGES.EXTERNAL_MESSAGE_PASSWORD_EMPTY,
+  },
+  expired: {
+    image: 'timeup',
+    message: MESSAGES.EXTERNAL_MESSAGE_PASSWORD_EXPIRED,
+  },
+  invalid: {
+    image: 'error',
+    message: MESSAGES.EXTERNAL_MESSAGE_PASSWORD_INVALID,
+  },
+  valid: {
+    image: 'change',
+    message: MESSAGES.EXTERNAL_FORM_SUCCESS_CHANGE,
+  },
+};
+
+export const EXTERNAL_SITE_CONFIGS = {
+  change: EXTERNAL_CHANGE_CONFIGS,
+  confirm: EXTERNAL_CONFIRMATION_CONFIGS,
+  recovery: {
+    image: 'recovery',
+    message: {
+      password: MESSAGES.EXTERNAL_FORM_SUCCESS_RECOVERY_PASSWORD,
+      username: MESSAGES.EXTERNAL_FORM_SUCCESS_RECOVERY_USERNAME,
+    },
+    subtitle: MESSAGES.EXTERNAL_MESSAGE_SELECT_RECOVER,
   },
 };

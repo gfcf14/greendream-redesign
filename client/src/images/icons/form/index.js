@@ -1,0 +1,12 @@
+export { default as formEmailIcon } from './email.svg';
+export { default as formEmailErrorIcon } from './email-error.svg';
+export { default as formEmailReadyIcon } from './email-ready.svg';
+export { default as formNameIcon } from './name.svg';
+export { default as formNameErrorIcon } from './name-error.svg';
+export { default as formNameReadyIcon } from './name-ready.svg';
+export { default as formPasswordIcon } from './password.svg';
+export { default as formPasswordErrorIcon } from './password-error.svg';
+export { default as formPasswordReadyIcon } from './password-ready.svg';
+export { default as formTextIcon } from './text.svg';
+export { default as formTextErrorIcon } from './text-error.svg';
+export { default as formTextReadyIcon } from './text-ready.svg';

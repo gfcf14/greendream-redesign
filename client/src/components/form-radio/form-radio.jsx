@@ -9,13 +9,14 @@ export function FormRadio(props) {
     value,
     onChange,
     isChecked,
+    formClass,
   } = props;
 
   return (
     <Flex className="form-radio-rct-component">
       <input
         type="radio"
-        name="sex"
+        name={formClass === 'modal' ? 'sex' : 'forgot'}
         value={value}
         onChange={e => onChange(e)}
         checked={isChecked === value}
@@ -32,4 +33,5 @@ FormRadio.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   isChecked: PropTypes.string.isRequired,
+  formClass: PropTypes.string.isRequired,
 };

@@ -4,6 +4,7 @@ import shortid from 'shortid';
 import { css } from 'styled-components';
 import { MenuItem } from 'components';
 import {
+  changeBackground,
   chooseForMeLogo,
   chordPlayerLogo,
   CodePenLogo,
@@ -12,6 +13,7 @@ import {
   CSharpWhiteLogo,
   DeviantArtLogo,
   employmentAssistantLogo,
+  errorBackground,
   FacebookLogo,
   FanfictionLogo,
   femaleDefaultProfile,
@@ -41,10 +43,13 @@ import {
   orugaLogo,
   profileIcon,
   raceMasterLogo,
+  recoveryBackground,
   signInIcon,
   signOutIcon,
   signUpIcon,
   smsSenderLogo,
+  successBackground,
+  timeupBackground,
   troubleShooterLogo,
   TwitterLogo,
   typingTestLogo,
@@ -52,6 +57,7 @@ import {
   urlPlayerLogo,
   VBDotNetWhiteLogo,
   voteBusterLogo,
+  weirdBackground,
   whereforeTheHeckArtThouLogo,
   YoutubeLogo,
 } from 'images';
@@ -191,6 +197,38 @@ export function incrementCount(rowName, tableName, columnName, setRowData) {
   });
 }
 
+export function activateAccount(token) {
+  return axios.get(`${SERVER_ADDRESS}/confirm`, {
+    params: {
+      token,
+    },
+  }).then(response => response.data);
+}
+
+export function checkExpiry(token) {
+  return axios.get(`${SERVER_ADDRESS}/change`, {
+    params: {
+      token,
+    },
+  }).then(response => response.data);
+}
+
+export function recoverData(recoverFields) {
+  return axios.get(`${SERVER_ADDRESS}/recover`, {
+    params: {
+      ...recoverFields,
+    },
+  }).then(response => response.data);
+}
+
+export function updatePassword(changeFields) {
+  return axios.get(`${SERVER_ADDRESS}/password`, {
+    params: {
+      ...changeFields,
+    },
+  }).then(response => response.data);
+}
+
 export function renderString(text, delimiter) {
   return text.split(delimiter).map(line => (
     <span key={shortid.generate()}>{line}</span>
@@ -199,6 +237,9 @@ export function renderString(text, delimiter) {
 
 export function getImageSource(identifier) {
   switch (identifier) {
+    case 'change': {
+      return changeBackground;
+    }
     case 'chooseforme': {
       return chooseForMeLogo;
     }
@@ -231,6 +272,9 @@ export function getImageSource(identifier) {
     }
     case 'employmentassistant': {
       return employmentAssistantLogo;
+    }
+    case 'error': {
+      return errorBackground;
     }
     case 'f': {
       return femaleDefaultProfile;
@@ -316,6 +360,9 @@ export function getImageSource(identifier) {
     case 'racemaster': {
       return raceMasterLogo;
     }
+    case 'recovery': {
+      return recoveryBackground;
+    }
     case 'sign-in': {
       return signInIcon;
     }
@@ -327,6 +374,12 @@ export function getImageSource(identifier) {
     }
     case 'smssender': {
       return smsSenderLogo;
+    }
+    case 'success': {
+      return successBackground;
+    }
+    case 'timeup': {
+      return timeupBackground;
     }
     case 'troubleshooter': {
       return troubleShooterLogo;
@@ -348,6 +401,9 @@ export function getImageSource(identifier) {
     }
     case 'votebuster': {
       return voteBusterLogo;
+    }
+    case 'weird': {
+      return weirdBackground;
     }
     case 'whereforetheheckartthou': {
       return whereforeTheHeckArtThouLogo;

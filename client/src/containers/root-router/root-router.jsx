@@ -2,10 +2,21 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import { AppPreview, HomePage, NotFound } from 'components';
-import { MainLanding, PageContainer } from 'containers';
+import { ExternalLanding, MainLanding, PageContainer } from 'containers';
 import { OLD_APPS, PREVIEW_GAMES, PREVIEW_PROGRAMS } from 'utils/constants';
 import { capitalizeFromLower, injectItemKey } from 'utils/helpers';
-import { MENU_ROUTES } from 'utils/routes';
+import { EXTERNAL_ROUTES, MENU_ROUTES } from 'utils/routes';
+
+function renderExternalRoutes() {
+  return EXTERNAL_ROUTES.map(route => (
+    <Route
+      exact
+      path={route.path}
+      component={ExternalLanding}
+      key={route.key}
+    />
+  ));
+}
 
 function renderOldAppRoutes() {
   return Object.keys(OLD_APPS).map(key => (
@@ -83,6 +94,7 @@ export function RootRouter() {
         {renderPreviewRoutes('/programs/', PREVIEW_PROGRAMS)}
         {renderPreviewRoutes('/games/', PREVIEW_GAMES)}
         {renderOldAppRoutes()}
+        {renderExternalRoutes()}
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

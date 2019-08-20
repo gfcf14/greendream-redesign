@@ -3,6 +3,15 @@ export { default as programsImage } from './programspic.svg';
 export { default as vortexImage } from './vortex.svg';
 
 export {
+  changeBackground,
+  errorBackground,
+  recoveryBackground,
+  successBackground,
+  timeupBackground,
+  weirdBackground,
+} from './backgrounds';
+
+export {
   sortButtonDownActive,
   sortButtonDown,
   sortButtonUpActive,

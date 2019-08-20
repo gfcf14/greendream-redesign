@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Flex } from 'rebass';
-import './form-button.scss';
+import './external-button.scss';
 
 function hasError(errors) {
   return Object.values(errors).find(e => e === true);
 }
 
-export function FormButton(props) {
+export function ExternalButton(props) {
   const {
     buttonText,
     isSubmit,
@@ -16,25 +16,21 @@ export function FormButton(props) {
     complete,
     onClick,
     isDefault,
-    loginError,
-    formType,
   } = props;
-
-  const loginFail = !(loginError === 'success' || loginError === '');
 
   return (
     <Flex
       className={classNames(
-        'form-button-rct-component',
+        'external-button-rct-component',
         isSubmit ? 'submit' : 'pic',
-        (isSubmit && hasError(errors)) || (loginFail && formType === 'signin') ? 'error' : '',
+        isSubmit && hasError(errors) ? 'error' : '',
       )}
     >
       <button
         className={classNames(
-          'form-button-rct-component__action-button',
+          'external-button-rct-component__action-button',
           isSubmit ? 'submit' : 'pic',
-          (isSubmit && hasError(errors)) || (loginFail && formType === 'signin') ? 'error' : '',
+          isSubmit && hasError(errors) ? 'error' : '',
           (isSubmit && !complete) || (!isSubmit && isDefault) ? 'disabled' : '',
           complete ? '' : 'disabled',
         )}
@@ -48,22 +44,18 @@ export function FormButton(props) {
   );
 }
 
-FormButton.propTypes = {
+ExternalButton.propTypes = {
   buttonText: PropTypes.string.isRequired,
   isSubmit: PropTypes.bool.isRequired,
   errors: PropTypes.objectOf(PropTypes.bool),
   complete: PropTypes.bool,
   onClick: PropTypes.func,
   isDefault: PropTypes.bool,
-  loginError: PropTypes.string,
-  formType: PropTypes.string,
 };
 
-FormButton.defaultProps = {
+ExternalButton.defaultProps = {
   errors: {},
   complete: true,
   onClick: () => null,
   isDefault: false,
-  loginError: '',
-  formType: '',
 };

@@ -1,6 +1,6 @@
 @import '~styles/_index';
 
-.form-button-rct-component {
+.external-button-rct-component {
   width: 100%;
 
   &__action-button {
@@ -11,14 +11,15 @@
     border: 0;
     border-radius: 25px;
     color: $white;
-    font-family: $font-roboto;
-    font-size: $font-size-sm-2;
+    font-family: $font-orbitron;
+    font-size: $font-size-md;
     font-weight: $font-weight-bold;
     height: 36px;
     width: 100%;
 
-    &.pic, &.submit {
-      background: $green-darken-1;
+    &.submit {
+      background: none;
+      border: 2px solid $white;
       cursor: pointer;
 
       &:hover {
@@ -26,17 +27,18 @@
       }
 
       &.error {
-        background: $red-lighten-2;
+        background: none;
         border: 2px solid $white;
       }
     }
 
     &.disabled {
       background: $grey-darken-sample-2;
+      border: none;
       cursor: not-allowed;
 
       &.error {
-        background: $red-lighten-2;
+        background: none;
         border: 2px solid $white;
       }
 
@@ -44,27 +46,5 @@
         background: $grey-darken-sample-2;
       }
     }
-  }
-
-  &.pic {
-    @include mquery($width-breakpoint-sm) {
-      width: calc(100% - 15px);
-    }
-
-    width: calc(100% - 20px);
-  }
-
-  &.submit {
-    @include mquery($width-breakpoint-sm) {
-      padding: 0 15px 15px;
-    }
-
-    border-radius: 0 0 $fluid-dim-xs-1 $fluid-dim-xs-1;
-    padding: 0 20px 20px;
-    width: 100%;
-  }
-
-  &.error {
-    background: $red-lighten-2;
   }
 }
