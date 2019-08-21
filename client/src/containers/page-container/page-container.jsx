@@ -4,10 +4,14 @@ import { Flex } from 'rebass';
 import { PageBody, PageTitle } from 'components';
 import './page-container.scss';
 
+function renderPageTitle(titleContent) {
+  return titleContent ? <PageTitle {...titleContent} /> : null;
+}
+
 export function PageContainer({ bodyContent, titleContent }) {
   return (
     <Flex as="section" className="page-container-rct-component">
-      <PageTitle {...titleContent} />
+      {renderPageTitle(titleContent)}
       <PageBody {...bodyContent} />
     </Flex>
   );
@@ -22,6 +26,10 @@ PageContainer.propTypes = {
     titleImage: PropTypes.string,
     order: PropTypes.oneOf(['normal', 'reverse']),
     isPreview: PropTypes.bool,
-  }).isRequired,
+  }),
+};
+
+PageContainer.defaultProps = {
+  titleContent: null,
 };
 

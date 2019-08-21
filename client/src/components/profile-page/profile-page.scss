@@ -1,0 +1,93 @@
+@import '~styles/_index';
+
+.profile-page-rct-component {
+  @include mquery($width-breakpoint-md) {
+    width: 100%;
+  }
+
+  margin: 0 auto;
+  text-align: center;
+  width: 70%;
+
+  &__unspecified {
+    margin: 0 auto;
+  }
+
+  &__profile-container {
+    width: 100%;
+
+    .profile-image {
+      @include mquery($width-breakpoint-sm) {
+        height: 100px;
+        width: 100px;
+      }
+
+      border-radius: 20px 0 0 20px;
+      height: 150px;
+      width: 150px;
+    }
+    .profile-info {
+      flex-direction: column;
+      width: 100%;
+
+      .username {
+        @include mquery($width-breakpoint-md) {
+          padding: 16px 0 16px 30px;
+        }
+
+        @include mquery($width-breakpoint-sm) {
+          padding: 15px 0 15px 15px;
+        }
+
+        background: $gradient-green-4;
+        border-radius: 0 20px 0 0;
+        color: $white;
+        font-family: $font-orbitron;
+        font-size: $font-size-md;
+        font-weight: $font-weight-bold;
+        padding: 28px 0 28px 50px;
+      }
+
+      .info-container {
+        @include mquery($width-breakpoint-md) {
+          padding: 30px 0 30px 30px;
+        }
+
+        @include mquery($width-breakpoint-sm) {
+          padding: 15px 0 15px 15px;
+        }
+
+        background: $greendream-dark-green-opaque;
+        border-radius: 0 0 20px 20px;
+        color: $white;
+        padding: 50px 0 50px 50px;
+
+        .about {
+          @include mquery($width-breakpoint-sm) {
+            flex-direction: column;
+            min-height: 150px;
+          }
+
+          min-height: 200px;
+
+          .about-title {
+            font-family: $font-orbitron;
+            font-size: $font-size-md;
+            font-weight: $font-weight-bold;
+          }
+
+          .about-description {
+            @include mquery($width-breakpoint-sm) {
+              padding: 15px 0 0 0;
+            }
+
+            font-family: $font-roboto;
+            font-size: $font-size-sm-1;
+            font-weight: $font-weight-bold;
+            padding-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,34 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
-import { AppPreview, HomePage, NotFound } from 'components';
+import {
+  AppPreview,
+  HomePage,
+  NotFound,
+  ProfilePage,
+} from 'components';
 import { ExternalLanding, MainLanding, PageContainer } from 'containers';
 import { OLD_APPS, PREVIEW_GAMES, PREVIEW_PROGRAMS } from 'utils/constants';
 import { capitalizeFromLower, injectItemKey } from 'utils/helpers';
 import { EXTERNAL_ROUTES, MENU_ROUTES } from 'utils/routes';
+
+function renderProfileRoute() {
+  const profileRouteProps = {
+    bodyContent: {
+      content: <ProfilePage />,
+    },
+  };
+
+  return (
+    <Route
+      exact
+      path="/profile"
+      render={() => (
+        <MainLanding contentComponent={<PageContainer {...profileRouteProps} />} />
+      )}
+    />
+  );
+}
 
 function renderExternalRoutes() {
   return EXTERNAL_ROUTES.map(route => (
@@ -95,6 +118,7 @@ export function RootRouter() {
         {renderPreviewRoutes('/games/', PREVIEW_GAMES)}
         {renderOldAppRoutes()}
         {renderExternalRoutes()}
+        {renderProfileRoute()}
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

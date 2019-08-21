@@ -174,7 +174,7 @@ export function getTable(tableName, tableOrder, setTableData) {
 }
 
 export function getRow(rowName, tableName, columnName, setRowData) {
-  axios.get(`${SERVER_ADDRESS}/row`, {
+  return axios.get(`${SERVER_ADDRESS}/row`, {
     params: {
       rowName,
       tableName,
@@ -415,4 +415,10 @@ export function getImageSource(identifier) {
       return identifier;
     }
   }
+}
+
+export function getImageFromBuffer(arrayBuffer) {
+  return arrayBuffer.data.map(num => (
+    String.fromCharCode(num)
+  )).join('');
 }
