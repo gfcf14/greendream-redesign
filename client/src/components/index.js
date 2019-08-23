@@ -24,6 +24,7 @@ export { PageButton } from './page-button/page-button';
 export { PageTable } from './page-table/page-table';
 export { PageTitle } from './page-title/page-title';
 export { PlaysSpan } from './plays-span/plays-span';
+export { ProfilePage } from './profile-page/profile-page';
 export { ProgramSpecs } from './program-specs/program-specs';
 export { SitesTable } from './sites-table/sites-table';
 export { StatsBar } from './stats-bar/stats-bar';
