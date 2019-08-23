@@ -19,11 +19,13 @@
     border: 3px solid $greendream-dark-green;
     border-radius: 25px;
     color: $white;
+    display: flex;
     font: $font-roboto $font-weight-bold;
     height: 252px;
     justify-content: space-between;
     margin-bottom: 60px;
     padding: 20px;
+    text-decoration: none;
     width: calc(50% - 30px);
 
     &.left {

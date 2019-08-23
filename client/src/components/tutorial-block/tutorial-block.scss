@@ -1,0 +1,122 @@
+@import '~styles/_index';
+
+.tutorial-block-rct-component {
+  @include mquery($width-breakpoint-md) {
+    width: 100%;
+  }
+
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: calc((100% - 40px) / 3);
+
+  &__title {
+    background: $gradient-black-green-1;
+    border-radius: $fluid-spacing-md;
+    color: $white;
+    font-family: $font-orbitron;
+    font-size: $font-size-md;
+    font-weight: $font-weight-bold;
+    padding: $fluid-spacing-sample-3 0;
+
+    &.expanded {
+      @include mquery($width-breakpoint-md) {
+        border-radius: $fluid-spacing-md $fluid-spacing-md 0 $fluid-spacing-md;
+      }
+
+      border-radius: $fluid-spacing-md $fluid-spacing-md 0 0;
+    }
+  }
+
+  &__button-container {
+    background: $gradient-green-black-1;
+    border: solid 1px $greendream-dark-green;
+    border-radius: 50%;
+    cursor: pointer;
+    height: $fluid-dim-sample-1;
+    margin: $fluid-spacing-sample-5;
+    position: absolute;
+    width: $fluid-dim-sample-1;
+
+    .button {
+      @include mquery($width-breakpoint-md) {
+        padding: 0 1px 2px 0;
+      }
+
+      color: $white;
+      font-family: $font-orbitron;
+      font-size: $font-size-sample-1;
+      font-weight: $font-weight-bold;
+      line-height: $fluid-dim-xs-3;
+      margin: auto;
+      padding: 0 1px 4px 0;
+    }
+
+    &.expanded {
+      background: $gradient-light-green-green;
+      border-color: $greendream-green;
+    }
+
+    &:hover {
+      background: $gradient-light-green-green;
+    }
+
+    &:active {
+      background: $gradient-neon-light-green-green;
+    }
+  }
+
+  &__block-list {
+    flex-direction: column;
+    overflow: hidden;
+    text-align: left;
+    transition: height 0.75s;
+
+    .element-container {
+      @include mquery($width-breakpoint-md) {
+        margin-left: $fluid-spacing-sample-6;
+      }
+
+      padding: $fluid-spacing-sample-3 0 $fluid-spacing-sample-3 $fluid-spacing-sample-4;
+      text-decoration: none;
+
+      &.even {
+        color: $greendream-dark-green;
+        background: $green-lighten-4;
+      }
+
+      &.odd {
+        color: $white;
+        background: $greendream-green;
+      }
+
+      &.last {
+        border-radius: 0 0 $fluid-spacing-md $fluid-spacing-md;
+      }
+
+      &:hover {
+        background: $green-darken-3;
+        color: $white;
+      }
+
+      &:active {
+        background: $green;
+        color: $white;
+      }
+
+      .element {
+        cursor: pointer;
+        font-family: $font-roboto;
+        font-size: $font-size-sm-2;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  &.with-margins {
+    @include mquery($width-breakpoint-md) {
+      margin: 0 0 20px;
+    }
+
+    margin: 0 20px;
+  }
+}

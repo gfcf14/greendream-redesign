@@ -8,8 +8,11 @@ import {
   chooseForMeLogo,
   chordPlayerLogo,
   CodePenLogo,
+  comingSoonImage,
   cookiesIcon,
+  CPlusPlusLogo,
   CPlusPlusWhiteLogo,
+  CSharpLogo,
   CSharpWhiteLogo,
   DeviantArtLogo,
   employmentAssistantLogo,
@@ -30,7 +33,9 @@ import {
   formTextErrorIcon,
   formTextReadyIcon,
   GithubLogo,
+  HTML5Logo,
   HTML5WhiteLogo,
+  JavaLogo,
   JavaWhiteLogo,
   LinkedinLogo,
   keyboardIcon,
@@ -55,6 +60,7 @@ import {
   typingTestLogo,
   unknownProfileIcon,
   urlPlayerLogo,
+  VBDotNetLogo,
   VBDotNetWhiteLogo,
   voteBusterLogo,
   weirdBackground,
@@ -249,8 +255,17 @@ export function getImageSource(identifier) {
     case 'CodePen': {
       return CodePenLogo;
     }
+    case 'soon': {
+      return comingSoonImage;
+    }
     case 'cookies': {
       return cookiesIcon;
+    }
+    case 'cplusplus': {
+      return CPlusPlusLogo;
+    }
+    case 'csharp': {
+      return CSharpLogo;
     }
     case 'C++': {
       return CPlusPlusWhiteLogo;
@@ -291,8 +306,14 @@ export function getImageSource(identifier) {
     case 'HTML': {
       return HTML5WhiteLogo;
     }
+    case 'html5': {
+      return HTML5Logo;
+    }
     case 'Java': {
       return JavaWhiteLogo;
+    }
+    case 'java': {
+      return JavaLogo;
     }
     case 'LinkedIn': {
       return LinkedinLogo;
@@ -398,6 +419,9 @@ export function getImageSource(identifier) {
     }
     case 'VB.NET': {
       return VBDotNetWhiteLogo;
+    }
+    case 'vbdotnet': {
+      return VBDotNetLogo;
     }
     case 'votebuster': {
       return voteBusterLogo;

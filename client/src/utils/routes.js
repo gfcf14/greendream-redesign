@@ -154,3 +154,115 @@ export const EXTERNAL_ROUTES = [
   { path: '/confirm' },
   { path: '/recovery' },
 ].map(injectItemKey);
+
+export const TUTORIAL_PREVIEW_ROUTES = [
+  { path: '/cplusplus' },
+  { path: '/csharp' },
+  { path: '/html5' },
+  { path: '/java' },
+  { path: '/vbdotnet' },
+].map(injectItemKey);
+
+// The path values for PRACTICE_PATHS, TRICK_PATHS, and TUTORIAL_PATHS
+// must match the names for {paths/tricks/tutorials}_{language}_{number}
+// declared in messages.js
+
+export const PRACTICE_PATHS = {
+  cplusplus: [
+    { value: 'strlen-with-pointers' },
+  ].map(injectItemKey),
+  csharp: [
+    { value: 'basic-application-form' },
+  ].map(injectItemKey),
+  html5: [
+    { value: 'making-a-table' },
+    { value: 'change-on-hover' },
+  ].map(injectItemKey),
+  java: [
+    { value: 'percentage-to-grade' },
+    { value: 'fizz-buzz' },
+    { value: 'abracadabra' },
+  ].map(injectItemKey),
+  vbdotnet: [
+    { value: 'set-custom-label-text' },
+  ].map(injectItemKey),
+};
+
+export const TRICK_PATHS = {
+  cplusplus: [
+    { value: 'fast-multiplication-by-two' },
+    { value: 'xor-swapping' },
+    { value: 'greatest-common-denominator' },
+    { value: 'automatic-variable-type' },
+  ].map(injectItemKey),
+  csharp: [
+    { value: 'is-operator' },
+  ].map(injectItemKey),
+  html5: [
+    { value: 'html5-semantic-elements' },
+    { value: 'html5-media-elements' },
+    { value: 'html5-form-elements' },
+  ].map(injectItemKey),
+  java: [
+    { value: 'binary-search' },
+    { value: 'quick-sort' },
+    { value: 'merge-sort' },
+  ].map(injectItemKey),
+  vbdotnet: [
+    { value: 'connecting-to-sql-databases' },
+  ].map(injectItemKey),
+};
+
+export const TUTORIAL_PATHS = {
+  cplusplus: [
+    { value: 'structure' },
+    { value: 'input-output' },
+    { value: 'functions' },
+    { value: 'file-handling' },
+    { value: 'structs' },
+    { value: 'classes' },
+    { value: 'pointers' },
+  ].map(injectItemKey),
+  csharp: [
+    { value: 'structure' },
+    { value: 'data-types' },
+    { value: 'flow-control' },
+    { value: 'functions' },
+    { value: 'file-handling' },
+    { value: 'object-oriented-programming' },
+    { value: 'classes' },
+  ].map(injectItemKey),
+  html5: [
+    { value: 'structure' },
+    { value: 'text-and-lists' },
+    { value: 'media-images-sound-video' },
+    { value: 'hyperlinks' },
+    { value: 'organizing' },
+    { value: 'forms' },
+    { value: 'events' },
+    { value: 'uncommon-tags' },
+  ].map(injectItemKey),
+  java: [
+    { value: 'structure' },
+    { value: 'data-types' },
+    { value: 'input-output' },
+    { value: 'decision-blocks' },
+    { value: 'looping' },
+    { value: 'functions' },
+    { value: 'recursion' },
+    { value: 'file-handling' },
+    { value: 'object-oriented-programming' },
+    { value: 'classes' },
+    { value: 'methods' },
+    { value: 'inheritance' },
+    { value: 'interfaces' },
+  ].map(injectItemKey),
+  vbdotnet: [
+    { value: 'structure' },
+    { value: 'project-properties' },
+    { value: 'basic-form-tools' },
+    { value: 'file-handling' },
+    { value: 'events' },
+    { value: 'advanced-form-tools' },
+  ].map(injectItemKey),
+};

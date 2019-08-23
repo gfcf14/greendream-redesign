@@ -3,6 +3,10 @@ export { default as programsImage } from './programspic.svg';
 export { default as vortexImage } from './vortex.svg';
 
 export {
+  comingSoonImage,
+} from './animated';
+
+export {
   changeBackground,
   errorBackground,
   recoveryBackground,
@@ -61,16 +65,21 @@ export {
 
 export {
   CodePenLogo,
+  CPlusPlusLogo,
   CPlusPlusWhiteLogo,
+  CSharpLogo,
   CSharpWhiteLogo,
   DeviantArtLogo,
   FacebookLogo,
   FanfictionLogo,
   GithubLogo,
+  HTML5Logo,
   HTML5WhiteLogo,
+  JavaLogo,
   JavaWhiteLogo,
   LinkedinLogo,
   TwitterLogo,
+  VBDotNetLogo,
   VBDotNetWhiteLogo,
   YoutubeLogo,
 } from './logos';
