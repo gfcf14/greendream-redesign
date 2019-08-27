@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   ChooseForMe,
   TypingTest,
@@ -7,6 +8,9 @@ import {
 } from 'old/components';
 import { MESSAGES } from './messages';
 import { injectItemKey } from './helpers';
+
+export const MAX_WINDOW_WIDTH = 1366;
+export const MIN_WINDOW_WIDTH = 360;
 
 export const SERVER_ADDRESS = `http://${process.env.REACT_APP_IP_ADDRESS}:${process.env.REACT_APP_SERVER_PORT}`;
 export const PREVIEW_GAMES = [
@@ -383,4 +387,145 @@ export const EXTERNAL_SITE_CONFIGS = {
 export const OBJECTIVE_PRONOUNS = {
   f: MESSAGES.PROFILE_FEMALE,
   m: MESSAGES.PROFILE_MALE,
+};
+
+export const TUTORIAL_TABLE_MESSAGES = {
+  cplusplus: MESSAGES.TUTORIALS_TABLE_CPLUSPLUS,
+  csharp: MESSAGES.TUTORIALS_TABLE_CSHARP,
+  html5: MESSAGES.TUTORIALS_TABLE_HTML5,
+  java: MESSAGES.TUTORIALS_TABLE_JAVA,
+  vbdotnet: MESSAGES.TUTORIALS_TABLE_VBDOTNET,
+};
+
+export const TUTORIAL_TITLES = {
+  cplusplus: MESSAGES.TUTORIALS_CPLUSPLUS,
+  csharp: MESSAGES.TUTORIALS_CSHARP,
+  html5: MESSAGES.TUTORIALS_HTML5,
+  java: MESSAGES.TUTORIALS_JAVA,
+  vbdotnet: MESSAGES.TUTORIALS_VBDOTNET,
+};
+
+export const TUTORIAL_BLOCK_TITLES = [
+  { text: MESSAGES.TUTORIAL_BLOCKS_TUTORIALS },
+  { text: MESSAGES.TUTORIAL_BLOCKS_TRICKS },
+  { text: MESSAGES.TUTORIAL_BLOCKS_PRACTICE },
+].map(injectItemKey);
+
+export const TUTORIAL_LISTS = {
+  cplusplus: {
+    practice: [
+      { value: MESSAGES.PRACTICE_CPLUSPLUS_1 },
+    ].map(injectItemKey),
+    tricks: [
+      { value: MESSAGES.TRICKS_CPLUSPLUS_1 },
+      { value: MESSAGES.TRICKS_CPLUSPLUS_2 },
+      { value: MESSAGES.TRICKS_CPLUSPLUS_3 },
+      { value: MESSAGES.TRICKS_CPLUSPLUS_4 },
+    ].map(injectItemKey),
+    tutorials: [
+      { value: MESSAGES.TUTORIALS_CPLUSPLUS_1 },
+      { value: MESSAGES.TUTORIALS_CPLUSPLUS_2 },
+      { value: MESSAGES.TUTORIALS_CPLUSPLUS_3 },
+      { value: MESSAGES.TUTORIALS_CPLUSPLUS_4 },
+      { value: MESSAGES.TUTORIALS_CPLUSPLUS_5 },
+      { value: MESSAGES.TUTORIALS_CPLUSPLUS_6 },
+      { value: MESSAGES.TUTORIALS_CPLUSPLUS_7 },
+    ].map(injectItemKey),
+  },
+  csharp: {
+    practice: [
+      { value: MESSAGES.PRACTICE_CSHARP_1 },
+    ].map(injectItemKey),
+    tricks: [
+      { value: MESSAGES.TRICKS_CSHARP_1 },
+    ].map(injectItemKey),
+    tutorials: [
+      { value: MESSAGES.TUTORIALS_CSHARP_1 },
+      { value: MESSAGES.TUTORIALS_CSHARP_2 },
+      { value: MESSAGES.TUTORIALS_CSHARP_3 },
+      { value: MESSAGES.TUTORIALS_CSHARP_4 },
+      { value: MESSAGES.TUTORIALS_CSHARP_5 },
+      { value: MESSAGES.TUTORIALS_CSHARP_6 },
+      { value: MESSAGES.TUTORIALS_CSHARP_7 },
+    ].map(injectItemKey),
+  },
+  html5: {
+    practice: [
+      { value: MESSAGES.PRACTICE_HTML5_1 },
+      { value: MESSAGES.PRACTICE_HTML5_2 },
+    ].map(injectItemKey),
+    tricks: [
+      { value: MESSAGES.TRICKS_HTML5_1 },
+      { value: MESSAGES.TRICKS_HTML5_2 },
+      { value: MESSAGES.TRICKS_HTML5_3 },
+    ].map(injectItemKey),
+    tutorials: [
+      { value: MESSAGES.TUTORIALS_HTML5_1 },
+      { value: MESSAGES.TUTORIALS_HTML5_2 },
+      { value: MESSAGES.TUTORIALS_HTML5_3 },
+      { value: MESSAGES.TUTORIALS_HTML5_4 },
+      { value: MESSAGES.TUTORIALS_HTML5_5 },
+      { value: MESSAGES.TUTORIALS_HTML5_6 },
+      { value: MESSAGES.TUTORIALS_HTML5_7 },
+      { value: MESSAGES.TUTORIALS_HTML5_8 },
+    ].map(injectItemKey),
+  },
+  java: {
+    practice: [
+      { value: MESSAGES.PRACTICE_JAVA_1 },
+      { value: MESSAGES.PRACTICE_JAVA_2 },
+      { value: MESSAGES.PRACTICE_JAVA_3 },
+    ].map(injectItemKey),
+    tricks: [
+      { value: MESSAGES.TRICKS_JAVA_1 },
+      { value: MESSAGES.TRICKS_JAVA_2 },
+      { value: MESSAGES.TRICKS_JAVA_3 },
+    ].map(injectItemKey),
+    tutorials: [
+      { value: MESSAGES.TUTORIALS_JAVA_1 },
+      { value: MESSAGES.TUTORIALS_JAVA_2 },
+      { value: MESSAGES.TUTORIALS_JAVA_3 },
+      { value: MESSAGES.TUTORIALS_JAVA_4 },
+      { value: MESSAGES.TUTORIALS_JAVA_5 },
+      { value: MESSAGES.TUTORIALS_JAVA_6 },
+      { value: MESSAGES.TUTORIALS_JAVA_7 },
+      { value: MESSAGES.TUTORIALS_JAVA_8 },
+      { value: MESSAGES.TUTORIALS_JAVA_9 },
+      { value: MESSAGES.TUTORIALS_JAVA_10 },
+      { value: MESSAGES.TUTORIALS_JAVA_11 },
+      { value: MESSAGES.TUTORIALS_JAVA_12 },
+      { value: MESSAGES.TUTORIALS_JAVA_13 },
+    ].map(injectItemKey),
+  },
+  vbdotnet: {
+    practice: [
+      { value: MESSAGES.PRACTICE_VBDOTNET_1 },
+    ].map(injectItemKey),
+    tricks: [
+      { value: MESSAGES.TRICKS_VBDOTNET_1 },
+    ].map(injectItemKey),
+    tutorials: [
+      { value: MESSAGES.TUTORIALS_VBDOTNET_1 },
+      { value: MESSAGES.TUTORIALS_VBDOTNET_2 },
+      { value: MESSAGES.TUTORIALS_VBDOTNET_3 },
+      { value: MESSAGES.TUTORIALS_VBDOTNET_4 },
+      { value: MESSAGES.TUTORIALS_VBDOTNET_5 },
+      { value: MESSAGES.TUTORIALS_VBDOTNET_6 },
+    ].map(injectItemKey),
+  },
+};
+
+export const MIN_TUTORIAL_BLOCK_ELEMENT_HEIGHT = 17;
+export const MAX_TUTORIAL_BLOCK_ELEMENT_HEIGHT = 40;
+
+export const COMING_SOON_CONFIG = {
+  titleContent: {
+    title: MESSAGES.COMING_SOON,
+    titleImage: 'soon',
+    order: 'reverse',
+    isPreview: true,
+  },
+  bodyContent: {
+    content: <span className="coming-soon">{MESSAGES.COMING_SOON_DESCRIPTION}</span>,
+  },
 };

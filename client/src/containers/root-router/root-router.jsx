@@ -6,11 +6,75 @@ import {
   HomePage,
   NotFound,
   ProfilePage,
+  TutorialPreview,
 } from 'components';
 import { ExternalLanding, MainLanding, PageContainer } from 'containers';
-import { OLD_APPS, PREVIEW_GAMES, PREVIEW_PROGRAMS } from 'utils/constants';
+import {
+  COMING_SOON_CONFIG,
+  OLD_APPS,
+  PREVIEW_GAMES,
+  PREVIEW_PROGRAMS,
+  TUTORIAL_TITLES,
+} from 'utils/constants';
 import { capitalizeFromLower, injectItemKey } from 'utils/helpers';
-import { EXTERNAL_ROUTES, MENU_ROUTES } from 'utils/routes';
+import {
+  EXTERNAL_ROUTES,
+  MENU_ROUTES,
+  PRACTICE_PATHS,
+  TRICK_PATHS,
+  TUTORIAL_PATHS,
+  TUTORIAL_PREVIEW_ROUTES,
+} from 'utils/routes';
+
+function renderTutorialPaths(pathList, tutorialType) {
+  return Object.keys(pathList).map((languageKey) => {
+    const pathArray = pathList[`${languageKey}`];
+
+    return pathArray.map((path) => {
+      const { key, value } = path;
+
+      return (
+        <Route
+          key={key}
+          exact
+          path={`/${tutorialType}/${languageKey}/${value}`}
+          render={() => (
+            <MainLanding contentComponent={<PageContainer {...COMING_SOON_CONFIG} />} />
+          )}
+        />
+      );
+    });
+  });
+}
+
+function renderTutorialPreviewRoutes() {
+  return TUTORIAL_PREVIEW_ROUTES.map((tutPrevRoute) => {
+    const { key, path } = tutPrevRoute;
+    const language = path.substring(1);
+    const tutorialPreviewProps = {
+      titleContent: {
+        title: TUTORIAL_TITLES[`${language}`],
+        titleImage: language,
+        order: 'reverse',
+        isPreview: true,
+      },
+      bodyContent: {
+        content: <TutorialPreview language={language} />,
+      },
+    };
+
+    return (
+      <Route
+        key={key}
+        exact
+        path={`/tutorials${path}`}
+        render={() => (
+          <MainLanding contentComponent={<PageContainer {...tutorialPreviewProps} />} />
+        )}
+      />
+    );
+  });
+}
 
 function renderProfileRoute() {
   const profileRouteProps = {
@@ -119,6 +183,10 @@ export function RootRouter() {
         {renderOldAppRoutes()}
         {renderExternalRoutes()}
         {renderProfileRoute()}
+        {renderTutorialPreviewRoutes()}
+        {renderTutorialPaths(PRACTICE_PATHS, 'practice')}
+        {renderTutorialPaths(TRICK_PATHS, 'tricks')}
+        {renderTutorialPaths(TUTORIAL_PATHS, 'tutorials')}
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

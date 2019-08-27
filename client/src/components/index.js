@@ -29,5 +29,7 @@ export { ProgramSpecs } from './program-specs/program-specs';
 export { SitesTable } from './sites-table/sites-table';
 export { StatsBar } from './stats-bar/stats-bar';
 export { TableCell } from './table-cell/table-cell';
+export { TutorialBlock } from './tutorial-block/tutorial-block';
+export { TutorialPreview } from './tutorial-preview/tutorial-preview';
 export { TutorialsPage } from './tutorials-page/tutorials-page';
 export { TutorialsTable } from './tutorials-table/tutorials-table';
