@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import { Box, Flex, Image } from 'rebass';
 import classNames from 'classnames';
 import { ContactButton, MenuButton } from 'components';
+import { MENU_BUTTON_TYPES } from 'utils/constants';
 import { renderMenuItems } from 'utils/helpers';
 import { sandwhichIcon } from 'images';
 import './menu.scss';
+
+
+function getButtonType(isLoggedIn, position) {
+  return MENU_BUTTON_TYPES[`${position}`][`${+(isLoggedIn !== 'no')}`];
+}
 
 function showMobileFirst(toggleMenu, menu) {
   const mobileMenu = document.querySelector('.mobile-menu-rct-component');
@@ -35,13 +41,13 @@ export function Menu(props) {
   };
 
   const leftButtonProps = {
-    buttonType: isLoggedIn ? 'profile' : 'sign-up',
+    buttonType: isLoggedIn === 'waiting' ? isLoggedIn : getButtonType(isLoggedIn, 'left'),
     position: 'left',
     ...buttonProps,
   };
 
   const rightbuttonProps = {
-    buttonType: isLoggedIn ? 'sign-out' : 'sign-in',
+    buttonType: isLoggedIn === 'waiting' ? isLoggedIn : getButtonType(isLoggedIn, 'right'),
     position: 'right',
     ...buttonProps,
   };

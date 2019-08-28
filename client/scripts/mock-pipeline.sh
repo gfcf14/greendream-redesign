@@ -29,26 +29,38 @@ TOTAL_STEPS=${#STEPS[@]}
 printf "${TITLE}MOCK PIPELINE PRE-COMMIT CHECK thanks to Husky\n"
 printf "==============================================\n\n${END}"
 
-for i in ${!STEPS[@]}; do
-  STEP_NO=$(($i + 1))
+printf "${ERROR}Before we begin...\n\n${END}"
 
-  printf "${STEP}${STEP_NO}) Step ${STEP_NO} of ${TOTAL_STEPS}: ${NAMES[$i]}\n${END}"
-  eval ${STEPS[$i]}
-  if [ $? = 0 ]
+while true;
+do
+  read -r -p "Have you exported greendreamdb.sql from greendream.net (y/n)? " response </dev/tty
+  if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
   then
-    printf "${PASS}${NAMES[$i]} successfully passed!\n\n${END}"
+    for i in ${!STEPS[@]}; do
+      STEP_NO=$(($i + 1))
+
+      printf "${STEP}${STEP_NO}) Step ${STEP_NO} of ${TOTAL_STEPS}: ${NAMES[$i]}\n${END}"
+      eval ${STEPS[$i]}
+      if [ $? = 0 ]
+      then
+        printf "${PASS}${NAMES[$i]} successfully passed!\n\n${END}"
+      else
+        let COMPLETE=false
+        printf "${ERROR}${NAMES[$i]} failed. Check your code and fix it!\n\n${END}"
+        break
+      fi
+    done
+
+    if [ $COMPLETE = true ]
+    then
+      printf "${FINISH}All Tests successfully passed!\n\n${END}"
+      exit 0
+    fi
+
+    exit 1
   else
-    let COMPLETE=false
-    printf "${ERROR}${NAMES[$i]} failed. Check your code and fix it!\n\n${END}"
-    break
+    printf "${ERROR}Please export greendreamdb.sql before pushing any commits to avoid loss of users/downloads!\n\n${END}"
+    exit 1
   fi
 done
-
-if [ $COMPLETE = true ]
-then
-  printf "${FINISH}All Tests successfully passed!\n\n${END}"
-  exit 0
-fi
-
-exit 1
 

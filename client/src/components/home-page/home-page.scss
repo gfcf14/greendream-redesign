@@ -3,34 +3,53 @@
 .home-page-rct-component {
   flex-direction: column;
 
-  &__slideshow-container {
-    background-position: center;
-    background-size: 100vw;
-    height: $fluid-dim-xl-2;
-    overflow: hidden;
-    width: 100vw;
+  &__slideshow-link {
+    text-decoration: none;
 
-    .image-descriptor {
-      @include mquery($width-breakpoint-md) {
-        border-radius: 15px;
-        margin: auto auto 20px;
-        padding-right: $fluid-spacing-lg;
+    .slideshow-container {
+      background-position: center;
+      background-size: 100vw;
+      height: $fluid-dim-xl-2;
+      width: 100vw;
+      z-index: 2;
+
+      .background-image {
+        background-position: center;
+        background-size: 100vw;
+        height: $fluid-dim-xl-2;
+        opacity: 1;
+        position: absolute;
+        transition: opacity 0.5s ease-in-out;
+        width: 100vw;
+
+        &.hide {
+          opacity: 0;
+        }
       }
 
-      @include mquery($width-breakpoint-sm) {
-        border-radius: 10px;
-      }
+      .image-descriptor {
+        @include mquery($width-breakpoint-md) {
+          border-radius: 15px;
+          margin: auto auto 20px;
+          padding-right: $fluid-spacing-lg;
+        }
 
-      background: background-with-opacity($greendream-green, 0.5);
-      border-radius: 0 20px 20px 0;
-      color: $white;
-      display: inline-block;
-      font-family: $font-roboto;
-      font-size: $font-size-sm-1;
-      font-weight: $font-weight-bold;
-      margin: auto 0 20px;
-      padding: $fluid-spacing-lg;
-      padding-right: calc(#{$fluid-spacing-lg} + 10px);
+        @include mquery($width-breakpoint-sm) {
+          border-radius: 10px;
+        }
+
+        background: background-with-opacity($greendream-green, 0.5);
+        border-radius: 0 20px 20px 0;
+        color: $white;
+        display: inline-block;
+        font-family: $font-roboto;
+        font-size: $font-size-sm-1;
+        font-weight: $font-weight-bold;
+        margin: auto 0 20px;
+        padding: $fluid-spacing-lg;
+        padding-right: calc(#{$fluid-spacing-lg} + 10px);
+        z-index: 2;
+      }
     }
   }
 

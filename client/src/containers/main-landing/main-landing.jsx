@@ -28,10 +28,10 @@ export function MainLanding({ contentComponent }) {
   const [isBigger, setBigger] = useState(false);
   const [statsBar, setStatsBar] = useState(initialStatsBar);
   const [acceptedCookies, setAcceptCookies] = useState(undefined);
-  const [isLoggedIn, setLoggedIn] = useState('');
+  const [isLoggedIn, setLoggedIn] = useState('waiting');
 
   useEffect(() => {
-    setLoggedIn(Cookies.get('greendream-user') || '');
+    setLoggedIn(Cookies.get('greendream-user') || 'no');
     setAcceptCookies(Cookies.get('greendream-accept-cookies') || false);
   }, []);
 

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1366 768" style="enable-background:new 0 0 1366 768;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:none;}
+	.st2{fill:#FFFFFF;}
+	.st3{font-family:'Roboto-Regular';}
+	.st4{font-size:26.4058px;}
+	.st5{font-size:23.4718px;}
+	.st6{font-size:16.1369px;}
+	.st7{font-size:44.0097px;}
+	.st8{font-size:35.2077px;}
+	.st9{font-size:13.2029px;}
+	.st10{font-size:17.6039px;}
+	.st11{font-size:32.2738px;}
+	.st12{font-size:15.4034px;}
+	.st13{font-size:24.9388px;}
+	.st14{font-size:21.2713px;}
+	.st15{font-size:28.6063px;}
+	.st16{font-size:30.8068px;}
+	.st17{font-size:13.9364px;}
+	.st18{font-size:31.5403px;}
+	.st19{font-size:30.0733px;}
+	.st20{font-size:27.8728px;}
+	.st21{font-size:18.3374px;}
+	.st22{font-size:20.5378px;}
+	.st23{font-size:19.0709px;}
+</style>
+<g>
+	
+		<radialGradient id="SVGID_1_" cx="26.8448" cy="30.0618" r="1244.4161" gradientTransform="matrix(1.0311 0.2039 -0.1631 0.8249 -4.8825 -6.7032)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFFF00"/>
+		<stop  offset="8.438596e-02" style="stop-color:#FFF700"/>
+		<stop  offset="0.2132" style="stop-color:#FFE200"/>
+		<stop  offset="0.3705" style="stop-color:#FFBF00"/>
+		<stop  offset="0.5501" style="stop-color:#FF8F00"/>
+		<stop  offset="0.7462" style="stop-color:#FF5200"/>
+		<stop  offset="0.7857" style="stop-color:#FF4500"/>
+	</radialGradient>
+	<rect y="0" class="st0" width="1366" height="768"/>
+</g>
+<rect x="494" y="181" class="st1" width="122.6" height="24.5"/>
+<text transform="matrix(1 0 0 1 494.0001 200.7764)" class="st2 st3 st4">Javascript</text>
+<rect x="489.9" y="203.4" transform="matrix(0.9999 -1.009618e-02 1.009618e-02 0.9999 -2.1992 5.0809)" class="st1" width="24.5" height="33.9"/>
+<text transform="matrix(1.009999e-02 0.9999 -0.9999 1.009999e-02 496.605 203.4762)" class="st2 st3 st5">Git</text>
+<rect x="653.9" y="220.6" class="st1" width="67.6" height="24.5"/>
+<text transform="matrix(1 0 0 1 653.9014 240.3853)" class="st2 st3 st4">React</text>
+<rect x="480.7" y="189.3" class="st1" width="13.4" height="40.3"/>
+<text transform="matrix(0 1 -1 0 482.0289 189.3262)" class="st2 st3 st6">CSS3</text>
+<rect x="514.5" y="221.4" class="st1" width="37.6" height="149.1"/>
+<text transform="matrix(0 1 -1 0 519.0699 221.3916)" class="st2 st3 st7">HTML5</text>
+<rect x="564.4" y="546.3" class="st1" width="105" height="28.2"/>
+<text transform="matrix(1 0 0 1 564.4156 572.6592)" class="st2 st3 st8">Razzle</text>
+<rect x="516.7" y="203.7" class="st1" width="97" height="24.5"/>
+<text transform="matrix(1 0 0 1 516.7388 221.3145)" class="st2 st3 st5">Webpack</text>
+<rect x="488.9" y="568.3" class="st1" width="88.9" height="24.5"/>
+<text transform="matrix(1 0 0 1 488.8658 588.0625)" class="st2 st3 st4">Rebass</text>
+<rect x="473.4" y="543.6" class="st1" width="13.4" height="40.3"/>
+<text transform="matrix(0 1 -1 0 474.6939 543.6045)" class="st2 st3 st6">SASS</text>
+<rect x="488.9" y="548.5" class="st1" width="45.6" height="20.1"/>
+<text transform="matrix(1 0 0 1 488.8658 568.2578)" class="st2 st3 st4">Lint</text>
+<rect x="485.9" y="538.2" class="st1" width="50.7" height="12.8"/>
+<text transform="matrix(1 0 0 1 485.9317 548.0869)" class="st2 st3 st9">StyleLint</text>
+<rect x="515.4" y="367.4" class="st1" width="30.9" height="168.2"/>
+<text transform="matrix(0 1 -1 0 519.8809 367.3569)" class="st2 st3 st8">Puppeteer</text>
+<rect x="899.5" y="299.1" class="st1" width="24.5" height="94.8"/>
+<text transform="matrix(0 1 -1 0 906.4327 299.1421)" class="st2 st3 st5">Enzyme</text>
+<rect x="568.1" y="530.8" class="st1" width="45.6" height="15"/>
+<text transform="matrix(1 0 0 1 568.0831 544.0527)" class="st2 st3 st10">Babel</text>
+<rect x="531.7" y="510.6" class="st1" width="32.8" height="66.3"/>
+<text transform="matrix(0 1 -1 0 540.3419 510.5967)" class="st2 st3 st11">SQL</text>
+<rect x="838" y="401.8" class="st1" width="122.6" height="24.5"/>
+<text transform="matrix(1 0 0 1 838.0089 421.5581)" class="st2 st3 st4">MySQLi</text>
+<rect x="779.3" y="384.2" class="st1" width="24.5" height="86"/>
+<text transform="matrix(0 1 -1 0 783.9385 384.2275)" class="st2 st3 st4">JQuery</text>
+<rect x="552.1" y="221" class="st1" width="39.3" height="215.5"/>
+<text transform="matrix(0 1 -1 0 558.3892 221.0249)" class="st2 st3 st7">Wordpress</text>
+<rect x="802.8" y="373.1" class="st1" width="124.8" height="31.1"/>
+<text transform="matrix(1 0 0 1 802.8018 399.5537)" class="st2 st3 st8">Flexbox</text>
+<rect x="613.8" y="181.3" class="st1" width="38.7" height="374.8"/>
+<text transform="matrix(0 1 -1 0 619.5587 181.2583)" class="st2 st3 st7">StyledComponents</text>
+<rect x="564.4" y="508.1" class="st1" width="72" height="26.7"/>
+<text transform="matrix(1 0 0 1 564.4156 527.916)" class="st2 st3 st4">PHP</text>
+<rect x="590.4" y="236.4" class="st1" width="24.5" height="73.5"/>
+<text transform="matrix(0 1 -1 0 595.064 236.4282)" class="st2 st3 st4">Redux</text>
+<rect x="757.6" y="274.6" class="st1" width="24.5" height="77.9"/>
+<text transform="matrix(0 1 -1 0 770.5518 274.5698)" class="st2 st3 st12">Hooks</text>
+<rect x="780.9" y="278.6" class="st1" width="27.9" height="110.2"/>
+<text transform="matrix(0 1 -1 0 782.4717 278.6045)" class="st2 st3 st8">Docker</text>
+<rect x="577.6" y="575.6" class="st1" width="62.5" height="17.2"/>
+<text transform="matrix(1 0 0 1 577.6182 587.1445)" class="st2 st3 st12">Express</text>
+<rect x="808.7" y="348.9" class="st1" width="122.6" height="24.5"/>
+<text transform="matrix(1 0 0 1 808.669 368.7466)" class="st2 st3 st4">NodeJS</text>
+<rect x="921.8" y="343.9" class="st1" width="11.1" height="58.2"/>
+<text transform="matrix(0 1 -1 0 922.9356 343.8853)" class="st2 st3 st9">Nodemon</text>
+<rect x="538.7" y="436.2" class="st1" width="54.4" height="24.5"/>
+<text transform="matrix(1 0 0 1 538.7437 454.9326)" class="st2 st3 st13">Yarn</text>
+<rect x="541.7" y="463.4" class="st1" width="47.8" height="18.6"/>
+<text transform="matrix(1 0 0 1 541.6773 479.3203)" class="st2 st3 st14">NPM</text>
+<rect x="591" y="318.2" class="st1" width="27.2" height="187.2"/>
+<text transform="matrix(0 1 -1 0 591.7632 318.2129)" class="st2 st3 st8">Sass-loader</text>
+<rect x="540.9" y="481.7" class="st1" width="46.3" height="24.5"/>
+<text transform="matrix(1 0 0 1 540.9439 501.5098)" class="st2 st3 st4">Pull</text>
+<rect x="541.8" y="386.4" class="st1" width="14.7" height="50.8"/>
+<text transform="matrix(0 1 -1 0 543.3526 386.4277)" class="st2 st3 st10">Merge</text>
+<rect x="879" y="279.3" class="st1" width="24.5" height="81.5"/>
+<text transform="matrix(0 1 -1 0 885.8956 279.3379)" class="st2 st3 st5">mixins</text>
+<rect x="654.6" y="178.8" class="st1" width="61" height="24.5"/>
+<text transform="matrix(1 0 0 1 654.6358 200.2261)" class="st2 st3 st15">alias</text>
+<rect x="651.7" y="198.6" class="st1" width="203.3" height="27.4"/>
+<text transform="matrix(1 0 0 1 651.7012 221.6812)" class="st2 st3 st16">node_modules</text>
+<rect x="732.4" y="523.5" class="st1" width="77.1" height="24.5"/>
+<text transform="matrix(1 0 0 1 732.3858 543.3193)" class="st2 st3 st4">Husky</text>
+<rect x="667.1" y="538.2" class="st1" width="156.4" height="35.5"/>
+<text transform="matrix(1 0 0 1 667.1055 571.1914)" class="st2 st3 st7">Commit</text>
+<rect x="720.6" y="181" class="st1" width="52.2" height="24.5"/>
+<text transform="matrix(1 0 0 1 720.6495 202.4268)" class="st2 st3 st15">FTP</text>
+<rect x="899" y="276.8" class="st1" width="13.6" height="32.1"/>
+<text transform="matrix(0 1 -1 0 902.2149 276.7705)" class="st2 st3 st17">SSL</text>
+<rect x="649.6" y="524.3" class="st1" width="12.5" height="28.8"/>
+<text transform="matrix(0 1 -1 0 650.626 524.3252)" class="st2 st3 st12">CSR</text>
+<rect x="772" y="186.1" class="st1" width="50" height="24.5"/>
+<text transform="matrix(1 0 0 1 771.9952 197.6597)" class="st2 st3 st12">SSR</text>
+<rect x="808.7" y="315.9" class="st1" width="82.3" height="36.2"/>
+<text transform="matrix(1 0 0 1 808.669 348.9424)" class="st2 st3 st7">JSX</text>
+<rect x="753.7" y="227.2" class="st1" width="122.6" height="24.5"/>
+<text transform="matrix(1 0 0 1 753.6573 250.8374)" class="st2 st3 st18">@import</text>
+<rect x="825.5" y="447.2" class="st1" width="153.4" height="53.8"/>
+<text transform="matrix(1 0 0 1 825.5401 469.7852)" class="st2 st3 st19">default</text>
+<rect x="801.5" y="423.8" class="st1" width="129.8" height="28.2"/>
+<text transform="matrix(1 0 0 1 801.4659 445.2139)" class="st2 st3 st15">--save-dev</text>
+<rect x="744.1" y="569.7" class="st1" width="122.6" height="24.5"/>
+<text transform="matrix(1 0 0 1 744.1212 585.6777)" class="st2 st3 st14">stash</text>
+<rect x="728.6" y="224.3" class="st1" width="24.5" height="40.5"/>
+<text transform="matrix(0 1 -1 0 735.5284 224.3257)" class="st2 st3 st5">log</text>
+<rect x="808.6" y="445.8" class="st1" width="24.5" height="122.6"/>
+<text transform="matrix(0 1 -1 0 811.628 445.8408)" class="st2 st3 st15">partials</text>
+<rect x="755.1" y="505.2" class="st1" width="122.6" height="24.5"/>
+<text transform="matrix(1 0 0 1 755.1241 522.7813)" class="st2 st3 st5">index</text>
+<rect x="752.9" y="252.9" class="st1" width="146.8" height="24.5"/>
+<text transform="matrix(1 0 0 1 752.9229 273.7593)" class="st2 st3 st20">component</text>
+<rect x="633.4" y="569.7" class="st1" width="140.2" height="24.5"/>
+<text transform="matrix(1 0 0 1 633.3643 589.5293)" class="st2 st3 st4">container</text>
+<rect x="813.1" y="285.9" class="st1" width="67.6" height="24.5"/>
+<text transform="matrix(1 0 0 1 813.0694 310.0674)" class="st2 st3 st11">HOC</text>
+<rect x="801.3" y="408.4" class="st1" width="35.3" height="15.7"/>
+<text transform="matrix(1 0 0 1 801.335 422.1089)" class="st2 st3 st21">ACF</text>
+<rect x="851.9" y="472.2" class="st1" width="140.2" height="24.5"/>
+<text transform="matrix(1 0 0 1 851.9454 487.5732)" class="st2 st3 st22">config</text>
+<rect x="832.1" y="475.9" class="st1" width="24.5" height="140.2"/>
+<text transform="matrix(0 1 -1 0 835.6495 475.9141)" class="st2 st3 st20">preset</text>
+<rect x="774.2" y="470" class="st1" width="140.2" height="24.5"/>
+<text transform="matrix(1 0 0 1 774.1944 484.2725)" class="st2 st3 st23">XSS</text>
+<rect x="764.7" y="489" class="st1" width="140.2" height="24.5"/>
+<text transform="matrix(1 0 0 1 764.6592 502.2432)" class="st2 st3 st10">Email</text>
+<rect x="850.4" y="489.1" class="st1" width="24.5" height="140.2"/>
+<text transform="matrix(0 1 -1 0 853.4366 489.1172)" class="st2 st3 st15">CRA</text>
+<rect x="872.5" y="492.7" class="st1" width="140.2" height="24.5"/>
+<text transform="matrix(1 0 0 1 872.4835 510.3115)" class="st2 st3 st5">JS</text>
+</svg>

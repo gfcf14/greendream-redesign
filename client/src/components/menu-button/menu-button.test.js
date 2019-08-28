@@ -11,7 +11,7 @@ describe('MenuButton Component Unit Test', () => {
   };
 
   const wrapperNotLoggedIn = mountWithIntl(
-    <MenuButton {...menuButtonProps} isLoggedIn="" />
+    <MenuButton {...menuButtonProps} isLoggedIn="no" />
   );
 
   const wrapperLoggedIn = mountWithIntl(

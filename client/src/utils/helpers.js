@@ -88,6 +88,21 @@ export function capitalizeFromLower(value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
+export function getModulusIndex(array, index, type) {
+  const totalCount = array.length;
+  const arrayIndex = index % totalCount;
+
+  if (type === 'top' && arrayIndex % 2 === 1 && index !== 0) {
+    return array[`${(index - 1) % totalCount}`];
+  }
+
+  if (type === 'bottom' && arrayIndex % 2 === 0 && index !== 0) {
+    return array[`${(index - 1) % totalCount}`];
+  }
+
+  return array[`${index % totalCount}`];
+}
+
 export function renderMenuItems(menuType, modal, toggleModal) {
   return MENU_ROUTES.map((route, i, arr) => {
     const { name, path } = route;
