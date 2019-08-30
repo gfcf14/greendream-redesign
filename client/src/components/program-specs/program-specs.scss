@@ -16,9 +16,9 @@
 
     .description {
       flex-direction: column;
-      padding-left: $fluid-spacing-xl-2;
+      padding-left: $fluid-spacing-lg-2;
       text-align: left;
-      width: calc(70% - #{$fluid-spacing-xl-2});
+      width: calc(70% - #{$fluid-spacing-lg-2});
     }
   }
 }

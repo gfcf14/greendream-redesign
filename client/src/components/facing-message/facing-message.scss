@@ -1,7 +1,7 @@
 @import '~styles/_index';
 
 .facing-message-rct-component {
-  height: 100vh;
+  height: 100%;
   position: absolute;
   width: 100vw;
   z-index: 100;
@@ -18,7 +18,7 @@
     background: $greendream-dark-green;
     bottom: 0;
     height: 100px;
-    padding: $fluid-spacing-lg;
+    padding: $fluid-spacing-md-1;
     position: absolute;
     width: 100%;
 

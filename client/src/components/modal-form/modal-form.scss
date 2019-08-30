@@ -46,7 +46,7 @@
 
       color: $white;
       font-family: $font-orbitron;
-      font-size:  $font-size-lg-1;
+      font-size:  $font-size-md-2;
       font-weight: $font-weight-bold;
       margin: 14px;
     }
@@ -60,9 +60,9 @@
       font-family: $font-orbitron;
       font-size: $font-size-xs-1;
       font-weight: $font-weight-bold;
-      height: $fluid-dim-sm-2;
+      height: $fluid-dim-sm-3;
       margin: auto 15px auto auto;
-      width: $fluid-dim-sm-2;
+      width: $fluid-dim-sm-3;
 
       &:hover {
         background: $gradient-light-green-green;

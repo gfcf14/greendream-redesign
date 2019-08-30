@@ -31,7 +31,7 @@
         @include mquery($width-breakpoint-md) {
           border-radius: 15px;
           margin: auto auto 20px;
-          padding-right: $fluid-spacing-lg;
+          padding-right: $fluid-spacing-md-1;
         }
 
         @include mquery($width-breakpoint-sm) {
@@ -46,8 +46,8 @@
         font-size: $font-size-sm-1;
         font-weight: $font-weight-bold;
         margin: auto 0 20px;
-        padding: $fluid-spacing-lg;
-        padding-right: calc(#{$fluid-spacing-lg} + 10px);
+        padding: $fluid-spacing-md-1;
+        padding-right: calc(#{$fluid-spacing-md-1} + 10px);
         z-index: 2;
       }
     }

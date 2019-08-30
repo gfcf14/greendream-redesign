@@ -18,7 +18,7 @@
   }
 
   &__input {
-    @include placeholder-color($grey-darken-sample-1);
+    @include placeholder-color($grey-darken-1);
 
     @include mquery($width-breakpoint-sm) {
       height: 27px;
@@ -44,7 +44,7 @@
   }
 
   &__textarea {
-    @include placeholder-color($grey-darken-sample-1);
+    @include placeholder-color($grey-darken-1);
 
     @include mquery($width-breakpoint-sm) {
       padding: 7px 10px;
