@@ -1,5 +1,11 @@
 import React from 'react';
 import {
+  aboutBackground,
+  gamesBackground,
+  programsBackground,
+  tutorialsBackground,
+} from 'images';
+import {
   ChooseForMe,
   TypingTest,
   UrlPlayer,
@@ -528,4 +534,38 @@ export const COMING_SOON_CONFIG = {
   bodyContent: {
     content: <span className="coming-soon">{MESSAGES.COMING_SOON_DESCRIPTION}</span>,
   },
+};
+
+export const SLIDESHOW_IMAGE_DURATION = 5000;
+
+export const SLIDESHOW_DESCRIPTIONS = [
+  MESSAGES.SLIDESHOW_PROGRAMS,
+  MESSAGES.SLIDESHOW_GAMES,
+  MESSAGES.SLIDESHOW_TUTORIALS,
+  MESSAGES.SLIDESHOW_ABOUT,
+];
+
+export const SLIDESHOW_IMAGES = [
+  programsBackground,
+  gamesBackground,
+  tutorialsBackground,
+  aboutBackground,
+];
+
+export const SLIDESHOW_LINKS = [
+  'programs',
+  'games',
+  'tutorials',
+  'about',
+];
+
+export const MENU_BUTTON_TYPES = {
+  left: [
+    'sign-up',
+    'profile',
+  ],
+  right: [
+    'sign-in',
+    'sign-out',
+  ],
 };

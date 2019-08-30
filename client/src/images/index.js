@@ -1,5 +1,4 @@
 export { default as logoImage } from './greendream.svg';
-export { default as programsImage } from './programspic.svg';
 export { default as vortexImage } from './vortex.svg';
 
 export {
@@ -7,11 +6,15 @@ export {
 } from './animated';
 
 export {
+  aboutBackground,
   changeBackground,
   errorBackground,
+  gamesBackground,
+  programsBackground,
   recoveryBackground,
   successBackground,
   timeupBackground,
+  tutorialsBackground,
   weirdBackground,
 } from './backgrounds';
 
