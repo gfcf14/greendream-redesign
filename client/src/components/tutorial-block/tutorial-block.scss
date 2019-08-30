@@ -11,19 +11,19 @@
 
   &__title {
     background: $gradient-black-green-1;
-    border-radius: $fluid-spacing-md;
+    border-radius: $fluid-spacing-sm-1;
     color: $white;
     font-family: $font-orbitron;
-    font-size: $font-size-md;
+    font-size: $font-size-md-1;
     font-weight: $font-weight-bold;
-    padding: $fluid-spacing-sample-3 0;
+    padding: $fluid-spacing-xs-1 0;
 
     &.expanded {
       @include mquery($width-breakpoint-md) {
-        border-radius: $fluid-spacing-md $fluid-spacing-md 0 $fluid-spacing-md;
+        border-radius: $fluid-spacing-sm-1 $fluid-spacing-sm-1 0 $fluid-spacing-sm-1;
       }
 
-      border-radius: $fluid-spacing-md $fluid-spacing-md 0 0;
+      border-radius: $fluid-spacing-sm-1 $fluid-spacing-sm-1 0 0;
     }
   }
 
@@ -32,10 +32,10 @@
     border: solid 1px $greendream-dark-green;
     border-radius: 50%;
     cursor: pointer;
-    height: $fluid-dim-sample-1;
-    margin: $fluid-spacing-sample-5;
+    height: $fluid-dim-sm-2;
+    margin: $fluid-spacing-xs-2;
     position: absolute;
-    width: $fluid-dim-sample-1;
+    width: $fluid-dim-sm-2;
 
     .button {
       @include mquery($width-breakpoint-md) {
@@ -44,7 +44,7 @@
 
       color: $white;
       font-family: $font-orbitron;
-      font-size: $font-size-sample-1;
+      font-size: $font-size-lg-1;
       font-weight: $font-weight-bold;
       line-height: $fluid-dim-xs-3;
       margin: auto;
@@ -73,10 +73,10 @@
 
     .element-container {
       @include mquery($width-breakpoint-md) {
-        margin-left: $fluid-spacing-sample-6;
+        margin-left: $fluid-spacing-xl-3;
       }
 
-      padding: $fluid-spacing-sample-3 0 $fluid-spacing-sample-3 $fluid-spacing-sample-4;
+      padding: $fluid-spacing-xs-1 0 $fluid-spacing-xs-1 $fluid-spacing-xl-1;
       text-decoration: none;
 
       &.even {
@@ -90,7 +90,7 @@
       }
 
       &.last {
-        border-radius: 0 0 $fluid-spacing-md $fluid-spacing-md;
+        border-radius: 0 0 $fluid-spacing-sm-1 $fluid-spacing-sm-1;
       }
 
       &:hover {

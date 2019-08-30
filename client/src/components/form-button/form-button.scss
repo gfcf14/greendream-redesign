@@ -32,7 +32,7 @@
     }
 
     &.disabled {
-      background: $grey-darken-sample-2;
+      background: $grey-darken-4;
       cursor: not-allowed;
 
       &.error {
@@ -41,7 +41,7 @@
       }
 
       &:hover {
-        background: $grey-darken-sample-2;
+        background: $grey-darken-4;
       }
     }
   }

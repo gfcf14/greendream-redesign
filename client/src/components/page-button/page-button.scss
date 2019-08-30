@@ -17,7 +17,7 @@
   font-family: $font-orbitron;
   font-size: 20px;
   font-weight: $font-weight-bold;
-  padding: $fluid-spacing-xl-1 15px calc(#{$fluid-spacing-xl-1} - 5px);
+  padding: $fluid-spacing-lg-1 15px calc(#{$fluid-spacing-lg-1} - 5px);
 
   &:hover {
     background: $gradient-green-2;
@@ -29,6 +29,6 @@
 
   &.homepage {
     margin: 0 30px;
-    padding: $fluid-spacing-xl-1 30px calc(#{$fluid-spacing-xl-1} - 5px);
+    padding: $fluid-spacing-lg-1 30px calc(#{$fluid-spacing-lg-1} - 5px);
   }
 }
