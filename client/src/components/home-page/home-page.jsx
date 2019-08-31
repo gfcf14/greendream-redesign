@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Flex, Link } from 'rebass';
 import classNames from 'classnames';
 import { PageButton } from 'components';
 import {
+  FORM_CONFIGS,
   SLIDESHOW_IMAGE_DURATION,
   SLIDESHOW_DESCRIPTIONS,
   SLIDESHOW_IMAGES,
@@ -12,11 +14,15 @@ import { getModulusIndex } from 'utils/helpers';
 import { MESSAGES } from 'utils/messages';
 import './home-page.scss';
 
+function decideOnLength(modal, toggleModal) {
+  return modal === FORM_CONFIGS.length ? toggleModal(-1) : toggleModal(FORM_CONFIGS.length);
+}
+
 function getBackgroundIndex(backgroundIndex) {
   return getModulusIndex(SLIDESHOW_IMAGES, backgroundIndex, 'bottom');
 }
 
-export function HomePage() {
+export function HomePage({ menu, modal, toggleModal }) {
   const [backgroundIndex, setBackgroundIndex] = useState(0);
 
   useEffect(() => {
@@ -45,7 +51,12 @@ export function HomePage() {
             )}
             style={{ backgroundImage: `url(${getModulusIndex(SLIDESHOW_IMAGES, backgroundIndex, 'top')})` }}
           />
-          <div className="image-descriptor">
+          <div
+            className={classNames(
+              'image-descriptor',
+              menu ? 'deeper' : '',
+            )}
+          >
             {getModulusIndex(SLIDESHOW_DESCRIPTIONS, backgroundIndex)}
           </div>
         </Flex>
@@ -53,7 +64,23 @@ export function HomePage() {
       <span className="home-page-rct-component__welcome-text">
         {MESSAGES.HOMEPAGE}
       </span>
-      <PageButton buttonText={MESSAGES.HOMEPAGE_BUTTON} isAtHomePage />
+      <PageButton
+        buttonText={MESSAGES.HOMEPAGE_BUTTON}
+        isAtHomePage
+        onClick={() => decideOnLength(modal, toggleModal)}
+      />
     </Flex>
   );
 }
+
+HomePage.propTypes = {
+  menu: PropTypes.bool,
+  modal: PropTypes.number,
+  toggleModal: PropTypes.func,
+};
+
+HomePage.defaultProps = {
+  menu: false,
+  modal: -1,
+  toggleModal: () => null,
+};

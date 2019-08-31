@@ -49,6 +49,10 @@
         padding: $fluid-spacing-md-1;
         padding-right: calc(#{$fluid-spacing-md-1} + 10px);
         z-index: 2;
+
+        &.deeper {
+          z-index: 0;
+        }
       }
     }
   }

@@ -1,3 +1,4 @@
+export { default as favIcon } from './greendream.ico';
 export { default as logoImage } from './greendream.svg';
 export { default as vortexImage } from './vortex.svg';
 
@@ -56,6 +57,7 @@ export {
   formTextIcon,
   formTextErrorIcon,
   formTextReadyIcon,
+  greendreamIcon,
   keyboardIcon,
   mouseIcon,
   profileIcon,

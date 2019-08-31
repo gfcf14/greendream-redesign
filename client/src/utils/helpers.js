@@ -33,6 +33,7 @@ import {
   formTextErrorIcon,
   formTextReadyIcon,
   GithubLogo,
+  greendreamIcon,
   HTML5Logo,
   HTML5WhiteLogo,
   JavaLogo,
@@ -323,6 +324,9 @@ export function getImageSource(identifier) {
     }
     case 'html5': {
       return HTML5Logo;
+    }
+    case 'icon': {
+      return greendreamIcon;
     }
     case 'Java': {
       return JavaWhiteLogo;

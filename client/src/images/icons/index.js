@@ -14,6 +14,7 @@ export {
 } from './form';
 
 export { default as cookiesIcon } from './cookies.svg';
+export { default as greendreamIcon } from './greendream.png';
 export { default as keyboardIcon } from './keyboard.svg';
 export { default as mouseIcon } from './mouse.svg';
 export { default as profileIcon } from './profile.svg';

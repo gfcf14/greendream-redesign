@@ -5,7 +5,7 @@ import { DEFAULT_FORM_CONFIG } from 'utils/constants';
 describe('ModalForm Component Unit Test', () => {
   const modalFormProps = {
     config: DEFAULT_FORM_CONFIG,
-    modal: -1,
+    modal: 0,
     fadeOut: jest.fn(),
     isBigger: false,
     showStatsBar: jest.fn(),

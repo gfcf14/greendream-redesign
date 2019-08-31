@@ -569,3 +569,24 @@ export const MENU_BUTTON_TYPES = {
     'sign-out',
   ],
 };
+
+export const FEATURED_CONFIGS = {
+  programs: {
+    image: 'urlplayer',
+    isNew: false,
+    message: MESSAGES.FEATURED_PROGRAM,
+    title: MESSAGES.FEATURED_TITLE_PROGRAMS,
+  },
+  games: {
+    image: 'votebuster',
+    isNew: false,
+    message: MESSAGES.FEATURED_GAME,
+    title: MESSAGES.FEATURED_TITLE_GAMES,
+  },
+  tutorials: {
+    image: 'icon',
+    isNew: false,
+    message: MESSAGES.FEATURED_TUTORIAL,
+    title: MESSAGES.FEATURED_TITLE_TUTORIALS,
+  },
+};
