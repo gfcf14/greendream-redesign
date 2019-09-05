@@ -1,0 +1,108 @@
+@import '~styles/_index';
+
+.featured-block-rct-component {
+  @include mquery($width-breakpoint-sm) {
+    margin-bottom: $fluid-dim-sm-2;
+    margin-right: 0;
+  }
+
+  margin-right: $fluid-spacing-lg-2;
+  text-decoration: none;
+
+  &__outer-block {
+    @include mquery($width-breakpoint-sm) {
+      flex-direction: row;
+    }
+
+    flex-direction: column;
+
+    .title-bar {
+      background: $greendream-green;
+
+      &.horizontal {
+        @include mquery($width-breakpoint-sm) {
+          display: none;
+        }
+
+        border-radius: 0 0 15px 15px;
+      }
+
+      &.vertical {
+        @include mquery($width-breakpoint-sm) {
+          display: flex;
+        }
+
+        border-radius: 15px 0 0 15px;
+        display: none;
+      }
+
+      .title-text {
+        color: $white;
+        font-family: $font-orbitron;
+        font-size: $font-size-xs-2;
+        font-weight: $font-weight-bold;
+        margin: $fluid-spacing-sm-2 auto $fluid-spacing-xs-2;
+
+        &.vertical {
+          margin: auto $fluid-spacing-xs-2;
+          writing-mode: vertical-lr;
+        }
+      }
+    }
+
+    .inner-block {
+      padding: $fluid-dim-xs-2;
+      width: 100%;
+
+      &.programs {
+        background: $gradient-green-5;
+      }
+
+      &.games {
+        background: $gradient-green-6;
+      }
+
+      &.tutorials {
+        background: $gradient-grey-green;
+      }
+
+      .image-container {
+        height: $fluid-dim-md-2;
+        margin-right: $fluid-dim-xs-2;
+        width: $fluid-dim-md-2;
+
+        .block-image {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .content-container {
+        flex-direction: column;
+        margin: 0 auto;
+        text-align: center;
+        width: calc(100% - #{$fluid-dim-md-2} - #{$fluid-dim-xs-2});
+
+        .title {
+          color: $white;
+          font-family: $font-orbitron;
+          font-size: $font-size-sm-2;
+          font-weight: $font-weight-bold;
+          padding-bottom: 8px;
+        }
+
+        .description {
+          color: $white;
+          font-family: $font-roboto;
+          font-size: $font-size-xs-3;
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+  }
+
+  &.tutorials {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+}

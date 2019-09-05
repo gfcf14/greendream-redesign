@@ -5,15 +5,18 @@ import { Flex, Image, Link } from 'rebass';
 import classNames from 'classnames';
 import {
   FacingMessage,
+  HomePage,
   Menu,
   MobileMenu,
   ModalForm,
+  ModalView,
   StatsBar,
 } from 'components';
 import { ModalBackground } from 'containers';
 import { logoImage } from 'images';
 import breakpoints from 'styles/_layout.scss';
 import { DEFAULT_FORM_CONFIG, FORM_CONFIGS, SIGN_UP_FORM_HEIGHT_MOBILE } from 'utils/constants';
+import { MESSAGES } from 'utils/messages';
 import './main-landing.scss';
 
 const initialStatsBar = {
@@ -21,6 +24,28 @@ const initialStatsBar = {
   hasError: false,
   sessionAction: false,
 };
+
+function isAtHome(contentComponent) {
+  return contentComponent.type.toString().includes('HomePage');
+}
+
+function renderBasedOnComponent(contentComponent, menu, modal, toggleModal) {
+  if (isAtHome(contentComponent)) {
+    const homePageProps = {
+      menu,
+      modal,
+      toggleModal,
+    };
+
+    return <HomePage {...homePageProps} />;
+  }
+
+  return contentComponent;
+}
+
+function getComponentName(contentComponent, modal) {
+  return isAtHome(contentComponent) && modal === FORM_CONFIGS.length ? 'view' : 'form';
+}
 
 export function MainLanding({ contentComponent }) {
   const [menu, setMenu] = useState(false);
@@ -77,9 +102,11 @@ export function MainLanding({ contentComponent }) {
     setMenu(false);
 
     if (modal !== -1) {
-      const modalForm = document.querySelector('.modal-form-rct-component');
-      if (modalForm) {
-        modalForm.classList.remove('modal');
+      const componentName = getComponentName(contentComponent, modal);
+      const modalComponent = document.querySelector(`.modal-${componentName}-rct-component`);
+
+      if (modalComponent) {
+        modalComponent.classList.remove('modal');
         setTimeout(() => {
           setModal(-1);
         }, 350); // should match the transition time in modal-form.scss
@@ -114,6 +141,13 @@ export function MainLanding({ contentComponent }) {
     showStatsBar,
   };
 
+  const modalViewProps = {
+    fadeOut,
+    modal,
+    title: MESSAGES.FEATURED,
+    type: 'featured',
+  };
+
   const facingMessageProps = {
     acceptedCookie: acceptedCookies,
     setAcceptCookies,
@@ -140,7 +174,7 @@ export function MainLanding({ contentComponent }) {
         </Flex>
       </Flex>
       <MobileMenu {...mobileMenuProps} />
-      {contentComponent}
+      {renderBasedOnComponent(contentComponent, menu, modal, toggleModal)}
       <ModalBackground
         isBigger={isBigger}
         isModal={modal >= 0 ? 'modal' : ''}
@@ -148,6 +182,7 @@ export function MainLanding({ contentComponent }) {
         onClick={() => fadeOut()}
       />
       <ModalForm {...modalFormProps} />
+      <ModalView {...modalViewProps} />
       <StatsBar {...statsBarProps} />
       <FacingMessage {...facingMessageProps} />
     </Flex>

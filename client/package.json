@@ -75,7 +75,7 @@
   "jest": {
     "moduleNameMapper": {
       "^.+\\.(css|less|scss)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png|gif|svg|wav|mp3|m4a)$": "<rootDir>/testing/file-mock.js",
+      "\\.(gif|ico|jpg|jpeg|m4a|mp3|png|svg|wav)$": "<rootDir>/testing/file-mock.js",
       "^components(.*)$": "<rootDir>/src/components/$1",
       "^containers(.*)$": "<rootDir>/src/containers/$1",
       "^images(.*)$": "<rootDir>/src/images/$1",

@@ -21,7 +21,8 @@ $fluid-spacing-xs-3: fluid-spacing(3px, 5px);
 $fluid-dim-xl-3: fluid-dim(250px, 500px);
 $fluid-dim-xl-2: fluid-dim(202px, 448px);
 $fluid-dim-xl-1: fluid-dim(120px, 440px);
-$fluid-dim-lg-2: fluid-dim(226px, 332px);
+$fluid-dim-lg-3: fluid-dim(226px, 332px);
+$fluid-dim-lg-2: fluid-dim(155px, 231px);
 $fluid-dim-lg-1: fluid-dim(101px, 202px);
 $fluid-dim-md-3: fluid-dim(80px, 120px);
 $fluid-dim-md-2: fluid-dim(50px, 75px);
@@ -32,7 +33,6 @@ $fluid-dim-sm-3: fluid-dim(28px, 32px);
 $fluid-dim-xs-1: fluid-dim(15px, 25px);
 $fluid-dim-xs-2: fluid-dim(11px, 20px);
 $fluid-dim-xs-3: fluid-dim(8px, 13px);
-
 
 :export {
   lg: $width-breakpoint-lg;

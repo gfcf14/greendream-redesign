@@ -9,6 +9,7 @@ import {
   ACCEPTED_IMAGE_TYPES,
   ACTION_BUTTONS_MESSAGES,
   EMAIL_REGEX,
+  FORM_CONFIGS,
   FORM_ERROR_MESSAGES,
   FORM_STATS_MESSAGES,
   FORM_TITLES,
@@ -406,7 +407,7 @@ export function ModalForm({
   isBigger,
   showStatsBar,
 }) {
-  const { type } = config;
+  const { type } = config || '';
   const [form, setForm] = useState({
     contact: initialFormsStates['contact'],
     signin: initialFormsStates['signin'],
@@ -545,12 +546,14 @@ export function ModalForm({
     onBlur,
   };
 
+  const mustShowForm = modal >= 0 && modal < FORM_CONFIGS.length;
+
   return (
     <Flex
       as="form"
       className={classNames(
         'modal-form-rct-component',
-        modal >= 0 ? 'modal' : '',
+        mustShowForm ? 'modal' : '',
         isBigger && type === 'signup' ? 'bigger' : '',
       )}
       onSubmit={e => handleSubmit(e)}
@@ -565,11 +568,11 @@ export function ModalForm({
         </Flex>
       </Flex>
       <Flex className="modal-form-rct-component__field-container">
-        {renderInstructionsText(type)}
-        {renderByConfig(config, form[`${type}`], fieldFunctions)}
-        {renderExternalLink(type)}
-        {renderErrorArea(type, form)}
-        {renderActionButton(type, form)}
+        {mustShowForm ? renderInstructionsText(type) : null}
+        {mustShowForm ? renderByConfig(config, form[`${type}`], fieldFunctions) : null}
+        {mustShowForm ? renderExternalLink(type) : null}
+        {mustShowForm ? renderErrorArea(type, form) : null}
+        {mustShowForm ? renderActionButton(type, form) : null}
       </Flex>
     </Flex>
   );
@@ -579,10 +582,17 @@ ModalForm.propTypes = {
   config: PropTypes.shape({
     type: PropTypes.oneOf(['contact', 'signup', 'signin']).isRequired,
     fields: PropTypes.arrayOf(PropTypes.object).isRequired,
-  }).isRequired,
+  }),
   modal: PropTypes.number.isRequired,
   fadeOut: PropTypes.func.isRequired,
   isBigger: PropTypes.bool.isRequired,
   showStatsBar: PropTypes.func.isRequired,
+};
+
+ModalForm.defaultProps = {
+  config: {
+    type: 'contact',
+    fields: [{}],
+  },
 };
 
