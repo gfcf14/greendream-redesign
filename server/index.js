@@ -6,6 +6,7 @@ const multer = require('multer');
 const mysql = require('mysql');
 const nodeMailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
+const sqlString = require('sqlstring');
 
 const app = express();
 const upload = multer();
@@ -137,6 +138,12 @@ function getToken(limit) {
   return generatedKey;
 }
 
+function sanitize(value) {
+  const sanitizedString = sqlString.escape(value);
+
+  return sanitizedString.substring(1, sanitizedString.length - 1);
+}
+
 app.listen(process.env.REACT_APP_SERVER_PORT, () => {
   console.log(`App server now listening on port ${process.env.REACT_APP_SERVER_PORT}`);
 });
@@ -259,19 +266,21 @@ app.get('/signin', (req, res) => {
 app.get('/recover', async (req, res) => {
   const { email, value } = req.query;
 
+  const safeEmail = sanitize(email);
+
   let referer = '';
   let messageBody = '';
 
   switch(value) {
     case 'p': {
       const generatedToken = getToken(60);
-      pool.query(`update Users set token = '${generatedToken}' where email = '${email}'`, (err) => {
+      pool.query(`update Users set token = '${generatedToken}' where email = '${safeEmail}'`, (err) => {
         if (err) {
           console.error(err);
         } else {
           const iDateU = Math.round(new Date().getTime() / 1000);
 
-          pool.query(`update Users set datelimit = '${iDateU}' where email = '${email}'`, (err) => {
+          pool.query(`update Users set datelimit = '${iDateU}' where email = '${safeEmail}'`, (err) => {
             if (err) {
               console.error(err);
             }
@@ -356,13 +365,13 @@ app.get('/change', (req, res) => {
 app.get('/password', async (req, res) => {
   const { password, token } = req.query;
 
-  pool.query(`select * from Users where token = '${token}'`, (err, results) => {
+  pool.query(`select * from Users where token = '${sanitize(token)}'`, (err, results) => {
     if (err) {
       res.send(err);
     } else {
       const { username } = results[0];
 
-      pool.query(`update Users set password = '${bcrypt.hashSync(password, 10)}', token = '', datelimit = 0 where username = '${username}'`, (updateErr) => {
+      pool.query(`update Users set password = '${bcrypt.hashSync(sanitize(password), 10)}', token = '', datelimit = 0 where username = '${username}'`, (updateErr) => {
         if (updateErr) {
           res.send('error');
         } else {
@@ -379,7 +388,7 @@ app.get('/confirm', (req, res) => {
   if (!token) {
     res.send('empty');
   } else {
-    pool.query(`select * from Users where active = '${token}'`, (err, results) => {
+    pool.query(`select * from Users where active = '${sanitize(token)}'`, (err, results) => {
       if (err) {
         res.send(err);
       } else {
@@ -419,10 +428,12 @@ app.post('/insert', upload.none(), async (req, res) => {
     if (!(key === 'img' && userValues[`${key}`] === 'default')) {
       columnList += `${key}${arr.length - 1 !== i ? ', ' : ''}`;
 
+      const escapedVal = sanitize(userValues[`${key}`]);
+
       if (key === 'password') {
-        valueList += `"${bcrypt.hashSync(userValues[`${key}`], 10)}", `;
+        valueList += `"${bcrypt.hashSync(escapedVal, 10)}", `;
       } else {
-        valueList += `"${userValues[`${key}`]}"${arr.length - 1 !== i ? ', ' : ''}`;
+        valueList += `"${escapedVal}"${arr.length - 1 !== i ? ', ' : ''}`;
       }
     }
   });
