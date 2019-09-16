@@ -223,7 +223,7 @@ app.get('/email', (req, res) => {
 app.get('/user', (req, res) => {
   const { userName } = req.query;
 
-  pool.query(`select * from Users where username = '${userName}'`, (err, results) => {
+  pool.query(`select * from Users where username = '${sanitize(userName)}'`, (err, results) => {
     if (err) {
       res.send(err);
     } else {
@@ -235,11 +235,11 @@ app.get('/user', (req, res) => {
 app.get('/signin', (req, res) => {
   const { table, userName, password } = req.query;
 
-  pool.query(`select * from ${table} where username = '${userName}'`, (err, results) => {
+  pool.query(`select * from ${table} where username = '${sanitize(userName)}'`, (err, results) => {
     if (err) {
       res.send(err);
     } else {
-      if (bcrypt.compareSync(password, results[0].password)) {
+      if (bcrypt.compareSync(sanitize(password), results[0].password)) {
         const activeToken = results[0].active;
 
         if (activeToken === 'yes') {
@@ -305,7 +305,7 @@ app.get('/recover', async (req, res) => {
       break;
     }
     case 'u': {
-      pool.query(`select * from Users where email = '${email}'`, (err, results) => {
+      pool.query(`select * from Users where email = '${sanitize(email)}'`, (err, results) => {
         if (err) {
           console.error(err);
         } else {
