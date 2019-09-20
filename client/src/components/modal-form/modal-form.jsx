@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import Cookies from 'js-cookie';
 import { Flex, Link } from 'rebass';
 import classNames from 'classnames';
@@ -13,7 +12,6 @@ import {
   FORM_ERROR_MESSAGES,
   FORM_STATS_MESSAGES,
   FORM_TITLES,
-  SERVER_ADDRESS,
 } from 'utils/constants';
 import {
   allTrue,
@@ -21,6 +19,7 @@ import {
   insertRow,
   sendMail,
   signIn,
+  userExists,
 } from 'utils/helpers';
 import { MESSAGES, MIN_MESSAGE_LENGTH } from 'utils/messages';
 import './modal-form.scss';
@@ -88,15 +87,6 @@ const initialFormsStates = {
   },
 };
 
-function userNameExists(value) {
-  return axios.get(`${SERVER_ADDRESS}/user`, {
-    params: {
-      userName: value,
-    },
-  }).then(response => response.data)
-    .then(data => data.length > 0);
-}
-
 // for the repeat password in sign up forms only
 function isTheSamePassword(value, currentForm) {
   return value === currentForm['password'];
@@ -152,14 +142,16 @@ async function fieldHasError(name, value, currentForm, type) {
     case 'name':
     case 'password':
       return value.length === 0;
-    case 'email':
-      return value.length === 0 || !EMAIL_REGEX.test(value);
+    case 'email': {
+      const emailUsed = await userExists(name, value);
+      return value.length === 0 || !EMAIL_REGEX.test(value) || (emailUsed && type === 'signup');
+    }
     case 'message':
       return value.length === 0 || value.length < MIN_MESSAGE_LENGTH;
     case 'username': {
       if (type === 'signup') {
-        const userExists = await userNameExists(value);
-        return value.length === 0 || userExists;
+        const userNameUsed = await userExists(name, value);
+        return value.length === 0 || userNameUsed;
       }
 
       return value.length === 0;
@@ -263,8 +255,10 @@ function getErrorMessage(form) {
       return `${capitalizeFromLower(errorKey)} ${MESSAGES.FORM_ERROR_REQUIRED}`;
     }
     case 'email': {
-      if (errorFound) {
-        return FORM_ERROR_MESSAGES[`${errorKey}`];
+      if (errorFound) { // either email taken or wrong email format
+        return EMAIL_REGEX.test(errorFound) ?
+          `${capitalizeFromLower(errorKey)} ${MESSAGES.FORM_ERROR_TAKEN}` :
+          FORM_ERROR_MESSAGES[`${errorKey}`];
       }
 
       return `${capitalizeFromLower(errorKey)} ${MESSAGES.FORM_ERROR_REQUIRED}`;
@@ -285,7 +279,7 @@ function getErrorMessage(form) {
     }
     case 'username': {
       if (errorFound) {
-        return FORM_ERROR_MESSAGES[`${errorKey}`];
+        return `${capitalizeFromLower(errorKey)} ${MESSAGES.FORM_ERROR_TAKEN}`;
       }
 
       return `${capitalizeFromLower(errorKey)} ${MESSAGES.FORM_ERROR_REQUIRED}`;
