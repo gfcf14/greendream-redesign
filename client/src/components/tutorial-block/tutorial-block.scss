@@ -81,7 +81,7 @@
 
       &.even {
         color: $greendream-dark-green;
-        background: $green-lighten-5;
+        background: color-with-opacity($green-lighten-5, 0.15);
       }
 
       &.odd {

@@ -154,3 +154,19 @@ $max-viewport-width: 100vw;
       color: $color;
   }
 }
+
+/// Generates a color with a set opacity.
+/// @access public
+/// @param {String} $color - Color in Hex value
+/// @param {Float} $opacity - Opacity
+/// @example scss - Usage
+///   .foo {
+///     color: color-with-opacity(#00b456, 0.5);
+///   }
+/// @example css - Result
+///   .foo {
+///     color: rgba(0, 180, 86, 0.5);
+///   }
+@function color-with-opacity($color, $opacity) {
+  @return rgba($color, $opacity);
+}
