@@ -235,6 +235,16 @@ export function checkExpiry(token) {
   }).then(response => response.data);
 }
 
+export function userExists(column, value) {
+  return axios.get(`${SERVER_ADDRESS}/exists`, {
+    params: {
+      column,
+      value,
+    },
+  }).then(response => response.data)
+    .then(data => data.length > 0);
+}
+
 export function recoverData(recoverFields) {
   return axios.get(`${SERVER_ADDRESS}/recover`, {
     params: {

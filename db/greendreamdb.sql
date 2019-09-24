@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Aug 23, 2019 at 12:59 AM
+-- Generation Time: Sep 20, 2019 at 01:37 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.19
 
@@ -45,7 +45,7 @@ INSERT INTO `Games` (`id`, `name`, `imgurl`, `language`, `count`) VALUES
 (2, 'RaceMaster', 'racemaster', 'Java', 165),
 (3, 'Oruga', 'oruga', 'Java', 70),
 (4, 'TroubleShooter', 'troubleshooter', 'Java', 160),
-(5, 'Wherefore The Heck Art Thou?', 'whereforetheheckartthou', 'JavaScript', 52);
+(5, 'Wherefore The Heck Art Thou?', 'whereforetheheckartthou', 'JavaScript', 53);
 
 -- --------------------------------------------------------
 

@@ -220,10 +220,10 @@ app.get('/email', (req, res) => {
   }
 });
 
-app.get('/user', (req, res) => {
-  const { userName } = req.query;
+app.get('/exists', (req, res) => {
+  const { column, value } = req.query;
 
-  pool.query(`select * from Users where username = '${sanitize(userName)}'`, (err, results) => {
+  pool.query(`select * from Users where ${column} = '${sanitize(value)}'`, (err, results) => {
     if (err) {
       res.send(err);
     } else {
